@@ -1,0 +1,130 @@
+* {
+    font-family: 'Montserrat', sans-serif;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+/*LOGIN*/
+
+#login-container,
+#login-form,
+.label-icon,
+#login-title,
+.loginInput-container,
+#login-title h1 {
+    display: flex;
+}
+
+#login-container,
+#login-form,
+#login-title {
+    justify-content: center;
+    align-items: center;
+    height: auto;
+}
+
+.loginInput-container,
+#login-container,
+#login-form,
+#login-title,
+#login-title h1 {
+    flex-direction: column;
+}
+
+#login-title,
+#login-title small,
+.btn-form,
+.label-icon {
+    margin: 10px 0;
+}
+
+#logo,
+#login-form {
+    width: 30%;
+}
+
+.btn-form, #login-form{
+    border-radius: 15px;
+}
+
+.login-input, .btn-form{
+    padding: 10px 0;
+}
+
+.btn-form, .login-input{
+    border: none;
+}
+.btn-form, .loginInput-container{
+    width: 80%;
+}
+
+#login-container {
+    width: 100%;
+    height: 100vh;
+}
+
+#login-form {
+    border: 1px solid #94958B;
+    box-shadow: 8px 8px 34px #cccccc,
+        -8px -8px 34px #f4f4f4;
+}
+
+#login-title h1{
+    text-align: center;
+}
+
+#login-title small {
+    color: #94958B;
+    font-size: 0.5em;
+    font-weight: 300;
+}
+
+.loginInput-container {
+    text-align: left;
+    margin: 25px 30px;
+}
+
+.label-icon {
+    align-items: center;
+    gap: 2px;
+    font-size: 14px;
+}
+
+.login-input {
+    border-bottom: 1px solid #94958B;
+    transition: 0.1s;
+}
+
+.login-input:focus {
+    border-bottom: 3px solid #075AB3;
+}
+
+.btn-form {
+    background-color: #075AB3;
+    color: #fff;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.btn-form:hover {
+    background-color: #0550a0;
+}
+
+@media (max-width: 480px){
+    /*LOGIN*/
+    
+    #login-form{
+        width: 100%;
+        height: 100%;
+    }
+
+    .label-icon {
+        margin: 0;
+    }
+
+    .loginInput-container{
+        margin: 20px 0;
+    }
+    
+}
