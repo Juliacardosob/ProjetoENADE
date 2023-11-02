@@ -1,8 +1,9 @@
 <?php
 include_once("../content/body.php");
+include_once("../backend/bd_login.php");
 ?>
 <main class="login-container">
-    <form class="login-form">
+    <form class="login-form" method="post">
         <div class="login-title">
             <img src="../img/logo.png" alt="" class="logo">
             <h1>Bem-vindo<small>Preencha com suas informações</small></h1>
@@ -21,9 +22,9 @@ include_once("../content/body.php");
             </div>
             <input type="password" name="senha" class="login-input" placeholder="Preencha com sua senha" required>
         </div>
-        <button class="btn-form">Entrar</button>
+        <button class="btn-form" name="entrar">Entrar</button>
         <div class="voltarusuario">
-            <span>Não tem usuário? <u><b><a href="#">Faça o cadastro</a></u></b></span>
+            <span>Não tem usuário? <u><b><a href="cadastro.php">Faça o cadastro</a></u></b></span>
         </div>
     </form>
 </main>
