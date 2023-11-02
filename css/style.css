@@ -289,22 +289,29 @@ footer {
 /*Index*/
 
 #banner{
-    background-image: url("../img/enade.png");
     width: 100%;
-    height: 550px;
+    height: auto;
+}
+
+#banner-img{
+    width: 100%;
 }
 
 #info-banner{
-    position: relative;
+    position: absolute;
     left: 15%;
-    top: 30%;
+    top: 35%;
     width: 30%;
     text-align: left;
 }
 
-#info-banner h1, p{
+#info-banner h1, #info-banner p{
     color: #fff;
-    margin: 30px 0 ;
+    margin: 10px 0 ;
+}
+
+#info-banner h1{
+    font-size: 36px;
 }
 
 #info-banner button{
@@ -313,6 +320,7 @@ footer {
     padding: 15px 25px;
     color: #000;
     font-weight: 500;
+    margin: 30px 0;
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -327,6 +335,51 @@ footer {
 
 #info-banner p{
     font-weight: 300;
+}
+
+#text-container{
+    width: 100%;
+    background-color: #94958B;
+}
+
+#infoText{
+    width: 60%;
+    margin: 50px;
+}
+
+#infoText h2{
+    font-size: 18px;
+    margin: 40px 0 30px 0;
+}
+
+.icons-text p{
+    font-size: 14px;
+}
+
+#display3{
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    text-align: left;
+}
+
+#indeximg{
+    width: 100%;
+    margin: 20px 60px;
+    display: flex;
+    gap: 50px;
+}
+
+.imgindex-container img{
+    width: 100%;
+}
+
+.imgindex-container:first-child{
+    width: 60%;
+}
+
+.imgindex-container:last-child{
+    width: 40%;
 }
 
 
