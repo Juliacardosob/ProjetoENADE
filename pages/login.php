@@ -12,15 +12,18 @@ include_once("../content/body.php");
                 <i class="material-icons">person</i>
                 <label for="usuario">Usuário:</label>
             </div>
-            <input type="text" class="login-input" placeholder="Preencha com seu Usuário" required>
+            <input type="text" name="usuario" class="login-input" placeholder="Preencha com seu Usuário" required>
         </div>
         <div class="loginInput-container">
             <div class="label-icon">
                 <i class="material-icons">lock</i>
-                <label for="usuario">Senha:</label>
+                <label for="senha">Senha:</label>
             </div>
-            <input type="password" class="login-input" placeholder="Preencha com sua senha" required>
+            <input type="password" name="senha" class="login-input" placeholder="Preencha com sua senha" required>
         </div>
         <button class="btn-form">Entrar</button>
+        <div class="voltarusuario">
+            <span>Não tem usuário? <u><b><a href="#">Faça o cadastro</a></u></b></span>
+        </div>
     </form>
 </main>

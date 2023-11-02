@@ -89,11 +89,9 @@
 
 .logo,
 .login-form {
-    width: 30%;
+    width: 35%;
 }
-/* #cadastro-form{
-  
-} */
+
 .btn-form,
 .login-form {
     border-radius: 15px;
@@ -116,13 +114,15 @@
 
 .login-container {
     width: 100%;
+    background-color: #94958B;
     height: 100vh;
 }
 
 .login-form {
+    background-color: #fff;
     border: 1px solid #94958B;
-    box-shadow: 8px 8px 34px #cccccc,
-        -8px -8px 34px #f4f4f4;
+    box-shadow: 8px 8px 34px #707070,
+        -8px -8px 34px #5e5e5e;
 }
 
 .login-title h1 {
@@ -137,7 +137,7 @@
 
 .loginInput-container {
     text-align: left;
-    margin: 25px 30px;
+    margin: 10px 30px;
 }
 
 .label-icon {
@@ -161,7 +161,7 @@
     color: #fff;
     transition: 0.3s;
     cursor: pointer;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
 }
 
 .btn-form:hover {
@@ -233,7 +233,7 @@
     background-color: #f2f2f2;
 }
 
-.action-link i{
+.action-link i {
     margin-right: 5px;
 }
 
@@ -256,41 +256,39 @@ footer {
 
 /*Cadastro*/
 
-#cadastro-container{
-    margin: 150px 0px;
-}
-.checkpolitica {
+#cadastro-form {
+    width: 100%;
     display: flex;
-    margin: 25px 37px;
-    font-size: 15px;
-    /* border-top: 1px solid #ccc; */
-    /* padding-top: 30px; */
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+}
+
+
+#cadastro-title{
+    margin: 0;
+}
+
+.cadastroInput{
+    width: 100%;
+    margin-left: 0;
+}
+
+.checkpolitica, .voltarusuario {
+    display: flex;
+    margin: 10px;
+    font-size: 14px;
 }
 
 .check {
     margin-right: 5px;
 }
 
-.voltarusuario {
-    display: flex;
-    flex-direction: row;
-    margin-right: 100px;
-    font-size: 15px;
-    padding: 30px;
-    gap: 5px;
-}
-
-.separador{
-    border-top: 1px  solid #ccc;
-    width: 90%;
-    margin: 20px;
-}
-
 
 @media (max-width: 480px) {
     /*LOGIN*/
 
-    #login-form {
+    .login-form {
         width: 100%;
         height: 100%;
     }
@@ -309,7 +307,7 @@ footer {
 @media (min-width: 481px) and (max-width:767px) {
 
     /*LOGIN*/
-    #login-form {
+    .login-form {
         width: 100%;
         height: 100%;
     }
@@ -320,9 +318,9 @@ footer {
 @media (min-width: 768px) and (max-width:991px) {
 
     /*LOGIN*/
-    #login-form {
-        width: 80%;
-        height: 80%;
+    .login-form {
+        width: 100%;
+        height: 100%;
     }
 
     /*FIM-LOGIN*/
@@ -331,9 +329,9 @@ footer {
 @media (min-width: 992px) and (max-width:1199px) {
 
     /*LOGIN*/
-    #login-form {
-        width: 60%;
-        height: 60%;
+    .login-form {
+        width: 100%;
+        height: 100%;
     }
 
     /*FIM-LOGIN*/
