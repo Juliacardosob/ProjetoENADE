@@ -1,0 +1,6 @@
+Administrador:
+
+Usuário - admprojetoenade
+Senha - gjst2023
+
+(adicionar na tabela usuario)

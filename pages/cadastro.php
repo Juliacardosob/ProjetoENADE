@@ -1,9 +1,10 @@
 <?php
 include_once("../content/body.php");
+include_once("../backend/bd_cadastro.php");
 ?>
 
 <main class="login-container">
-    <form class="login-form" id="cadastro-container">
+    <form class="login-form" id="cadastro-container" method="post">
         <div class="login-title" id="cadastro-title">
             <img src="../img/logo.png" alt="" class="logo">
             <h1>Crie uma conta<small>Preencha com suas informações</small></h1>
@@ -46,9 +47,9 @@ include_once("../content/body.php");
             <input type="checkbox" name="check" class="check" required>
             <label for="check">Li, entendi e concordo com a <u><b><a href="#">Política de privacidade</a></u></b></label>
         </div>
-        <button class="btn-form">Cadastrar</button>
+        <button class="btn-form" name="cadastrar">Cadastrar</button>
         <div class="voltarusuario">
-            <span>Já tem usuário? <u><b><a href="#">Faça o login</a></u></b></span>
+            <span>Já tem usuário? <u><b><a href="login.php">Faça o login</a></u></b></span>
         </div>
     </form>
 </main>
