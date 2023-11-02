@@ -38,7 +38,7 @@ include_once("../content/body.php");
                         <i class="material-icons">lock</i>
                         <label for="confirme">Confirme sua senha:</label>
                     </div>
-                    <input type="password" name="conforme" class="login-input " placeholder="Confirme sua senha" required>
+                    <input type="password" name="confirme" class="login-input " placeholder="Confirme sua senha" required>
                 </div>
             </div>
         </div>

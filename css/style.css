@@ -284,6 +284,51 @@ footer {
     margin-right: 5px;
 }
 
+/*FIM-Cadastro*/
+
+/*Index*/
+
+#banner{
+    background-image: url("../img/enade.png");
+    width: 100%;
+    height: 550px;
+}
+
+#info-banner{
+    position: relative;
+    left: 15%;
+    top: 30%;
+    width: 30%;
+    text-align: left;
+}
+
+#info-banner h1, p{
+    color: #fff;
+    margin: 30px 0 ;
+}
+
+#info-banner button{
+    border: none;
+    background-color: #fff;
+    padding: 15px 25px;
+    color: #000;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 10px 10px 0px 1px rgba(240,240,240,0.75);
+    transition: 0.3s;
+}
+
+#info-banner button:hover{
+    background-color: #e0dede;
+    box-shadow: none;
+}
+
+#info-banner p{
+    font-weight: 300;
+}
+
 
 @media (max-width: 480px) {
     /*LOGIN*/
