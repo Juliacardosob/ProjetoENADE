@@ -382,6 +382,66 @@ footer {
     width: 40%;
 }
 
+/* FIM INDEX */
+
+/* INÍCIO PERFIL */
+
+/* CLASSE QUE CONTEM TODA A ESTRUTURA DO PERFIL */
+
+.perfil-container{
+    width: 100%;
+    height: 100vh;
+}
+
+/* CLASSE QUE CONTEM AS DUAS 'BOX' */
+.perfil-form{
+    display: flex;
+    gap: 5px;
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+}
+
+/* CLASSE QUE CONTEM INFORMAÇÕES E FOTO DO ALUNO */
+.perfil-box{
+    display: flex;
+    width: 50%;
+    height: 100%;
+    background-color: white;
+}
+
+/* CLASSE QUE ALTERA O CONTEUDO DO PERFIL */
+.perfil-conteudo{
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+    width: 90%;
+    background-color: rgb(255, 254, 254);
+    margin: 30px auto;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+/* CLASSE QUE ALTERA IMAGEM DO PERFIL */
+.perfil-conteudo img{
+    border-radius: 70px;
+    border: 1px solid;
+    height: 200px;
+    width: 200px;
+}
+
+/* CLASSE QUE ALTERA INPUTS DO USUARIO */
+.perfil-conteudo input{
+   width: 100%;
+}
+
+/* CLASSE QUE ALTERA BOTAO DE TROCA-IMAGEM */
+.btn-foto{
+   width: 150px;
+}
+
+/* FIM PERFIL */
+
 
 @media (max-width: 480px) {
     /*LOGIN*/
@@ -400,6 +460,30 @@ footer {
     }
 
     /*FIM-LOGIN*/
+
+
+    /* PERFIL */
+
+    .perfil-container{
+        width: 100%;
+        height: 100%;
+        padding: 0;
+    }
+
+    .perfil-form{
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .perfil-box{
+        width: 100%;
+    }
+
+    .btn-atualizar{
+        width: 150px;
+     }
+
+    /* FIM PERFIL */
 }
 
 @media (min-width: 481px) and (max-width:767px) {
@@ -411,6 +495,29 @@ footer {
     }
 
     /*FIM-LOGIN*/
+    
+    /* PERFIL */
+
+    .perfil-container{
+        width: 100%;
+        height: 100%;
+        padding: 0;
+    }
+
+    .perfil-form{
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .perfil-box{
+        width: 100%;
+    }
+
+    .btn-atualizar{
+        width: 150px;
+     }
+
+    /* FIM PERFIL */
 }
 
 @media (min-width: 768px) and (max-width:991px) {
@@ -422,6 +529,31 @@ footer {
     }
 
     /*FIM-LOGIN*/
+
+    
+    /* PERFIL */
+
+    .perfil-container{
+        width: 100%;
+        height: 100%;
+        padding: 0;
+    }
+
+    .perfil-form{
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .perfil-box{
+        width: 100%;
+
+    }
+
+    .btn-atualizar{
+        width: 150px;
+     }
+
+    /* FIM PERFIL */
 }
 
 @media (min-width: 992px) and (max-width:1199px) {
@@ -433,4 +565,28 @@ footer {
     }
 
     /*FIM-LOGIN*/
+
+    
+    /* PERFIL */
+
+    .perfil-container{
+        width: 100%;
+        height: 100%;
+        padding: 0;
+    }
+
+    .perfil-form{
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .perfil-box{
+        width: 100%;
+    }
+
+    .btn-atualizar{
+        width: 150px;
+     }
+
+    /* FIM PERFIL */
 }
