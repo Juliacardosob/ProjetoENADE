@@ -442,6 +442,179 @@ footer {
 
 /* FIM PERFIL */
 
+/* INÍCIO RANKING */
+
+/* CLASSE QUE CONTEM ESTRUTURA DO RANKING */
+.ranking-container{
+    width: 100%;
+    height: auto;
+    background-color: #f2f2f2;
+}
+
+/* CLASSE QUE CONTEM AS TRÊS 'LINHAS' DO RANKING E STATS INDIVIDUAL */
+.ranking-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    max-width: 1200px;
+    padding: 15px;
+    margin: 0 auto;
+
+}
+
+/*CLASSE QUE CONTEM RANKING PESSOAL MOSTRANDO POSICAO E QTD DE ACERTOS*/
+/* MOSTRA SITUAÇÃO DO ALUNO */
+.personal-stats{
+    flex-wrap: wrap;
+    justify-content: center;
+    display: flex;
+    gap: 30px;
+}
+
+
+/* CLASSE QUE CONTEM O 'BOX' DOS STATS INDIVIDUAIS */
+.card{
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 30px;
+    font-size: 17px;
+    height: 200px;
+    width: 180px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50px;
+    border: 1px solid;
+    box-shadow: 5px 5px 5px #747272;
+    margin-bottom: 20px;
+  
+}
+
+.card:hover{
+    transform: scale(1.05);
+}
+
+.card a{
+    margin-bottom: 10px;
+}
+
+/* CLASSE QUE CONTEM OS NUMEROS DOS STATS INDIVIDUAIS (POSICAO, PONTOS E ERROS) */
+
+.rank-number{
+    color: black;
+    background-color: white;
+    padding: 30px;
+    font-size: 50px
+}
+
+/* TOP 3 ALUNOS COM RESPECTIVAS IMAGENS */
+
+/* CLASSE QUE CONTEM OS CARDS COM OS TRÊS TOP ALUNOS */
+.top-ranked-form{
+    flex-wrap: wrap;
+    justify-content: center;
+    display: flex;
+    gap: 30px;
+
+}
+
+/* CLASSE 'BOX' DE CADA ALUNO DO TOP 3 */
+.top-ranked-box{
+ 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 200px;
+    width: 250px;
+    background-color: white;
+    padding: 35px;
+    border-radius: 35px;
+    box-shadow: 5px 5px 5px #747272;
+}
+
+.top-ranked-box:hover{
+    transform: scale(1.05);
+}
+
+
+/* IMAGEM DO ALUNO TOP3 */
+.top-ranked-box img{
+    border: 1px solid; 
+    border-radius: 35px;
+    width: 75px;
+    height: 75px;
+}
+
+.top-ranked-box label{
+    background-color: white;
+    margin: 0 auto;
+}
+
+.top-ranked-number{
+    display: flex;
+    margin: 15px auto; 
+    justify-content: center;
+    font-size: 26px;
+    padding: 20px;
+    border: 1px solid #000000;
+    border-radius: 100px;
+    align-items: center;
+    background-color:rgba(0, 0, 255, 0); 
+    height: 15px;
+    width: 15px;
+}
+
+.top-ranked-img{
+    text-align: center;
+    background-color: white;
+    width: 100%;
+}
+
+
+/* Inicio do ranking com respectivos usuarios*/
+
+/* CLASSE QUE ENVOLVE A TABELA*/
+.ranking-table{
+    padding-top: 50px;
+    width: 100%;
+
+}
+/* CLASSE QUE ALTERA TABELA TOP ALUNOS */
+table{
+    box-shadow: 5px 5px 5px #747272;
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid;
+}
+
+/* CELULA INDIVIDUAL DA TABELA */
+td{ 
+    
+    text-align: center;
+}
+
+th, td {
+    height: 45px;
+    border-bottom: 1px solid #ddd;
+  }
+
+table, th, td{
+    background-color: white;
+}
+
+/* CABEÇALHO DA COLUNA */
+th{
+    background: linear-gradient(#ffffff, #a1a0a0, #7a7a7a);
+    background-color: rgb(157, 157, 160);
+    color: rgb(24, 23, 23);
+}
+
+td:hover{
+    background-color: rgb(133, 211, 241);
+    /* transform: scale(1.05); */
+}
+
+/* FIM RANKING */
+
 
 @media (max-width: 480px) {
     /*LOGIN*/
@@ -484,6 +657,21 @@ footer {
      }
 
     /* FIM PERFIL */
+
+      /* INICIO RANKING */
+
+      .personal-stats{
+        flex-direction:column;
+        align-content: center;
+    }
+
+    .top-ranked-form{
+        flex-direction:column;
+        align-content: center;
+    }
+  
+    /* FIM RANKING */
+
 }
 
 @media (min-width: 481px) and (max-width:767px) {
@@ -518,6 +706,20 @@ footer {
      }
 
     /* FIM PERFIL */
+
+    /* INICIO RANKING */
+
+    .personal-stats{
+        flex-direction:column;
+        align-content: center;
+    
+    }
+
+    .top-ranked-form{
+        flex-direction:column;
+        align-content: center;
+    }
+    /* FIM RANKING */
 }
 
 @media (min-width: 768px) and (max-width:991px) {
