@@ -5,6 +5,10 @@
     margin: 0;
 }
 
+main{
+    margin-bottom: 150px;
+}
+
 /*HEADER*/
 
 #navbar {
@@ -189,13 +193,22 @@
     display: flex;
 }
 
+#userDetails{
+    align-items: center;
+    gap: 10px;
+}
+
 #userImg {
-    width: 80%;
+    width: 75px;
+    height: 75px;
     border-radius: 50%;
 }
 
-#user,
-#userDetails {
+#userDetails-txt p{
+    margin: 10px 0;
+}
+
+#user {
     flex-direction: column;
 }
 
@@ -246,9 +259,7 @@ footer {
     width: 100%;
     padding: 25px;
     color: #fff;
-    position: absolute;
     text-align: center;
-    bottom: 0;
 }
 
 /*FIM-FOOTER*/
@@ -265,16 +276,17 @@ footer {
 }
 
 
-#cadastro-title{
+#cadastro-title {
     margin: 0;
 }
 
-.cadastroInput{
+.cadastroInput {
     width: 100%;
     margin-left: 0;
 }
 
-.checkpolitica, .voltarusuario {
+.checkpolitica,
+.voltarusuario {
     display: flex;
     margin: 10px;
     font-size: 14px;
@@ -288,33 +300,34 @@ footer {
 
 /*Index*/
 
-#banner{
+#banner {
     width: 100%;
     height: auto;
+    display: flex;
+    background-image: url("../img/enade-enade.jpg");
+    align-items: center;
 }
 
-#banner-img{
+#banner-img {
     width: 100%;
 }
 
-#info-banner{
-    position: absolute;
-    left: 15%;
-    top: 35%;
-    width: 30%;
-    text-align: left;
+#info-banner {
+    position: relative;
+    left: 10%;
 }
 
-#info-banner h1, #info-banner p{
+#info-banner h1,
+#info-banner p {
     color: #fff;
-    margin: 10px 0 ;
+    margin: 10px 0;
 }
 
-#info-banner h1{
+#info-banner h1 {
     font-size: 36px;
 }
 
-#info-banner button{
+#info-banner button {
     border: none;
     background-color: #fff;
     padding: 15px 25px;
@@ -324,63 +337,148 @@ footer {
     display: flex;
     align-items: center;
     cursor: pointer;
-    box-shadow: 10px 10px 0px 1px rgba(240,240,240,0.75);
+    box-shadow: 10px 10px 0px 1px rgba(240, 240, 240, 0.75);
     transition: 0.3s;
 }
 
-#info-banner button:hover{
+#info-banner button:hover {
     background-color: #e0dede;
     box-shadow: none;
 }
 
-#info-banner p{
+#info-banner p {
     font-weight: 300;
 }
 
-#text-container{
+#index-container,
+#index-content,
+#retrato {
     width: 100%;
-    background-color: #94958B;
+    height: 100%;
 }
 
-#infoText{
+.content {
+    width: 100%;
+    display: flex;
+    margin: 50px 0;
+}
+
+#content-icons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.content-icons {
+    text-align: center;
+}
+
+#index-title h3 {
+    margin: 40px 0;
+    color: #075AB3;
+}
+
+.content:first-child {
+    gap: 5%;
+    justify-content: center;
+}
+
+#Text-content {
     width: 60%;
-    margin: 50px;
+    height: 100%;
 }
 
-#infoText h2{
-    font-size: 18px;
-    margin: 40px 0 30px 0;
+#aside-content {
+    width: 30%;
+    height: 100%;
+    color: #fff;
 }
 
-.icons-text p{
+#aside-content h1{
+    text-align: center;
+    margin: 10px 0;
+}
+
+.aside-cards i{
+    font-size: 40px;
+    color: #075AB3;
+}
+
+.asideCards-txt h2{
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.aside-cards{
+    background-color: #fff;
+    color: #000;
+    display: flex;
+    padding: 15px;
+    margin: 10px;
+    align-items: center;
+    gap: 10px;
+}
+
+#button-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+#button-container button{
+    background-color: #075AB3;
+    border: none;
+    color: #fff;
+    padding: 15px;
+    border-radius: 70px;
+    transition: 0.3s;
+}
+
+#button-container button:hover{
+    cursor: pointer;
+    background-color: #0550a0;
+}
+
+#indexImg-container {
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+}
+
+.indexImg {
+    margin: 40px 20px;
+    width: 100%;
+}
+
+.content:last-child {
+    justify-content: space-evenly;
+}
+
+.cards-container {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    background-color: #fff;
+    width: 30%;
+    align-items: center;
+    box-shadow: 0px 1px 40px -13px rgba(0, 0, 0, 0.2);
+}
+
+.cards-container i {
+    font-size: 80px;
+    color: #075AB3;
+}
+
+.cardsText h1 {
+    font-size: 24px;
+}
+
+.cardsText p {
+    margin: 10px 0;
     font-size: 14px;
 }
 
-#display3{
-    display: flex;
-    flex-direction: row;
-    gap: 50px;
-    text-align: left;
-}
-
-#indeximg{
-    width: 100%;
-    margin: 20px 60px;
-    display: flex;
-    gap: 50px;
-}
-
-.imgindex-container img{
-    width: 100%;
-}
-
-.imgindex-container:first-child{
-    width: 60%;
-}
-
-.imgindex-container:last-child{
-    width: 40%;
-}
 
 /* FIM INDEX */
 
@@ -388,13 +486,13 @@ footer {
 
 /* CLASSE QUE CONTEM TODA A ESTRUTURA DO PERFIL */
 
-.perfil-container{
+.perfil-container {
     width: 100%;
     height: 100vh;
 }
 
 /* CLASSE QUE CONTEM AS DUAS 'BOX' */
-.perfil-form{
+.perfil-form {
     display: flex;
     gap: 5px;
     width: 100%;
@@ -403,7 +501,7 @@ footer {
 }
 
 /* CLASSE QUE CONTEM INFORMAÇÕES E FOTO DO ALUNO */
-.perfil-box{
+.perfil-box {
     display: flex;
     width: 50%;
     height: 100%;
@@ -411,7 +509,7 @@ footer {
 }
 
 /* CLASSE QUE ALTERA O CONTEUDO DO PERFIL */
-.perfil-conteudo{
+.perfil-conteudo {
     display: flex;
     flex-direction: column;
     height: 90%;
@@ -423,7 +521,7 @@ footer {
 }
 
 /* CLASSE QUE ALTERA IMAGEM DO PERFIL */
-.perfil-conteudo img{
+.perfil-conteudo img {
     border-radius: 70px;
     border: 1px solid;
     height: 200px;
@@ -431,187 +529,230 @@ footer {
 }
 
 /* CLASSE QUE ALTERA INPUTS DO USUARIO */
-.perfil-conteudo input{
-   width: 100%;
+.perfil-conteudo input {
+    width: 100%;
 }
 
 /* CLASSE QUE ALTERA BOTAO DE TROCA-IMAGEM */
-.btn-foto{
-   width: 150px;
+.btn-foto {
+    width: 150px;
 }
 
 /* FIM PERFIL */
 
 /* INÍCIO RANKING */
 
-/* CLASSE QUE CONTEM ESTRUTURA DO RANKING */
-.ranking-container{
+/* ID QUE CONTEM O INICIO DO RANKING */
+
+
+#ranking-title{
+    margin: 50px;
+}
+
+#rankingTitle-card{
+    padding: 15px;
+    margin: 30px 0;
     width: 100%;
-    height: auto;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 1px 40px -13px rgba(0, 0, 0, 0.2);
+}
+
+.BtnMes{
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #94958B;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.BtnMes:hover{
     background-color: #f2f2f2;
 }
 
 /* CLASSE QUE CONTEM AS TRÊS 'LINHAS' DO RANKING E STATS INDIVIDUAL */
-.ranking-form{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 50px;
-    max-width: 1200px;
-    padding: 15px;
-    margin: 0 auto;
 
-}
 
 /*CLASSE QUE CONTEM RANKING PESSOAL MOSTRANDO POSICAO E QTD DE ACERTOS*/
 /* MOSTRA SITUAÇÃO DO ALUNO */
-.personal-stats{
-    flex-wrap: wrap;
-    justify-content: center;
+.personal-stats {
+    margin: 50px;
     display: flex;
-    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
 
 /* CLASSE QUE CONTEM O 'BOX' DOS STATS INDIVIDUAIS */
-.card{
-    color: rgb(0, 0, 0);
+.personal-stats  .card {
+    background-color: #fff;
+    border-radius: 5px;
     text-align: center;
-    padding: 30px;
-    font-size: 17px;
-    height: 200px;
-    width: 180px;
-    background-color: rgb(255, 255, 255);
-    border-radius: 50px;
-    border: 1px solid;
-    box-shadow: 5px 5px 5px #747272;
-    margin-bottom: 20px;
-  
+    width: 25%;
+    color: #2D3047;
+    box-shadow: 0px 1px 40px -13px rgba(0, 0, 0, 0.3);
 }
 
-.card:hover{
-    transform: scale(1.05);
+.personal-stats .card:first-child{
+    background-color: #075AB3;
+    color: #fff;
 }
 
-.card a{
-    margin-bottom: 10px;
+.personal-stats .card:last-child{
+    width: 40%;
+    text-align: justify;
 }
 
-/* CLASSE QUE CONTEM OS NUMEROS DOS STATS INDIVIDUAIS (POSICAO, PONTOS E ERROS) */
+.personal-stats .card:last-child p{
+    margin: 20px 10px;
+}
 
-.rank-number{
-    color: black;
-    background-color: white;
-    padding: 30px;
-    font-size: 50px
+.personal-stats .card p{
+    margin: 20px 0;
+}
+
+.personal-stats .rank-number{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.personal-stats  #rank{
+    font-size: 40px;
 }
 
 /* TOP 3 ALUNOS COM RESPECTIVAS IMAGENS */
 
 /* CLASSE QUE CONTEM OS CARDS COM OS TRÊS TOP ALUNOS */
-.top-ranked-form{
+#top-ranked-form {
     flex-wrap: wrap;
     justify-content: center;
     display: flex;
-    gap: 30px;
-
+    justify-content: space-evenly;
 }
 
 /* CLASSE 'BOX' DE CADA ALUNO DO TOP 3 */
-.top-ranked-box{
- 
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    height: 200px;
-    width: 250px;
-    background-color: white;
-    padding: 35px;
-    border-radius: 35px;
-    box-shadow: 5px 5px 5px #747272;
-}
-
-.top-ranked-box:hover{
-    transform: scale(1.05);
+.top-ranked-box {
+    width: 30%;
+    border-radius: 5px;
+    background-color: #075AB3;
+    box-shadow: 2px 10px 26px -7px rgba(0,0,0,0.15);
 }
 
 
 /* IMAGEM DO ALUNO TOP3 */
-.top-ranked-box img{
-    border: 1px solid; 
-    border-radius: 35px;
+.top-ranked-img img {
+    border: 3px solid #fff;
+    border-radius: 50%;
     width: 75px;
     height: 75px;
 }
 
-.top-ranked-box label{
-    background-color: white;
-    margin: 0 auto;
-}
-
-.top-ranked-number{
+.top-ranked-number {
     display: flex;
-    margin: 15px auto; 
-    justify-content: center;
-    font-size: 26px;
-    padding: 20px;
-    border: 1px solid #000000;
-    border-radius: 100px;
     align-items: center;
-    background-color:rgba(0, 0, 255, 0); 
+    justify-content: center;
+    font-size: 20px;
+    padding: 20px;
+    border: 2px solid #fff;
+    color: #fff;;
+    border-radius: 50%;
     height: 15px;
     width: 15px;
+    position: relative;
+    left: 30%;
 }
 
-.top-ranked-img{
-    text-align: center;
-    background-color: white;
-    width: 100%;
+.top-ranked-img {
+    display: flex;
+    justify-content: center;
+    margin: 15px 0;
 }
+
+.top-ranked-name{
+    margin: 20px 0;
+    text-align: center;
+    color: #fff;
+    font-weight: 500;
+}
+.top-ranked-status{
+    background-color: #fff;
+    display: flex;
+    color: #000;
+    padding: 5px;
+    justify-content: space-evenly;
+}
+
+.points{
+    margin: 10px 0;
+    text-align: center;
+}
+
+.top-ranked-subtitle{
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
 
 
 /* Inicio do ranking com respectivos usuarios*/
 
 /* CLASSE QUE ENVOLVE A TABELA*/
-.ranking-table{
-    padding-top: 50px;
+.ranking-table {
     width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 50px 0;
 
 }
+
 /* CLASSE QUE ALTERA TABELA TOP ALUNOS */
-table{
-    box-shadow: 5px 5px 5px #747272;
+
+
+table {
+    margin: 0 20px;
     width: 100%;
     border-collapse: collapse;
-    border: 1px solid;
+}
+
+.img-table{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+
+.img-td{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 
 /* CELULA INDIVIDUAL DA TABELA */
-td{ 
-    
+
+.ranking-table td{
     text-align: center;
 }
 
-th, td {
-    height: 45px;
-    border-bottom: 1px solid #ddd;
-  }
-
-table, th, td{
-    background-color: white;
+tr:nth-child(odd) {
+    background-color: #f2f2f2;
 }
+
+th,
+td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
 
 /* CABEÇALHO DA COLUNA */
-th{
-    background: linear-gradient(#ffffff, #a1a0a0, #7a7a7a);
-    background-color: rgb(157, 157, 160);
-    color: rgb(24, 23, 23);
+th {
+    background-color: #2D3047;
+    color: #fff
 }
 
-td:hover{
-    background-color: rgb(133, 211, 241);
-    /* transform: scale(1.05); */
-}
 
 /* FIM RANKING */
 
@@ -637,39 +778,39 @@ td:hover{
 
     /* PERFIL */
 
-    .perfil-container{
+    .perfil-container {
         width: 100%;
         height: 100%;
         padding: 0;
     }
 
-    .perfil-form{
+    .perfil-form {
         flex-direction: column;
         width: 100%;
     }
 
-    .perfil-box{
+    .perfil-box {
         width: 100%;
     }
 
-    .btn-atualizar{
+    .btn-atualizar {
         width: 150px;
-     }
+    }
 
     /* FIM PERFIL */
 
-      /* INICIO RANKING */
+    /* INICIO RANKING */
 
-      .personal-stats{
-        flex-direction:column;
+    .personal-stats {
+        flex-direction: column;
         align-content: center;
     }
 
-    .top-ranked-form{
-        flex-direction:column;
+    .top-ranked-form {
+        flex-direction: column;
         align-content: center;
     }
-  
+
     /* FIM RANKING */
 
 }
@@ -683,42 +824,43 @@ td:hover{
     }
 
     /*FIM-LOGIN*/
-    
+
     /* PERFIL */
 
-    .perfil-container{
+    .perfil-container {
         width: 100%;
         height: 100%;
         padding: 0;
     }
 
-    .perfil-form{
+    .perfil-form {
         flex-direction: column;
         width: 100%;
     }
 
-    .perfil-box{
+    .perfil-box {
         width: 100%;
     }
 
-    .btn-atualizar{
+    .btn-atualizar {
         width: 150px;
-     }
+    }
 
     /* FIM PERFIL */
 
     /* INICIO RANKING */
 
-    .personal-stats{
-        flex-direction:column;
+    .personal-stats {
+        flex-direction: column;
         align-content: center;
-    
+
     }
 
-    .top-ranked-form{
-        flex-direction:column;
+    .top-ranked-form {
+        flex-direction: column;
         align-content: center;
     }
+
     /* FIM RANKING */
 }
 
@@ -732,28 +874,28 @@ td:hover{
 
     /*FIM-LOGIN*/
 
-    
+
     /* PERFIL */
 
-    .perfil-container{
+    .perfil-container {
         width: 100%;
         height: 100%;
         padding: 0;
     }
 
-    .perfil-form{
+    .perfil-form {
         flex-direction: column;
         width: 100%;
     }
 
-    .perfil-box{
+    .perfil-box {
         width: 100%;
 
     }
 
-    .btn-atualizar{
+    .btn-atualizar {
         width: 150px;
-     }
+    }
 
     /* FIM PERFIL */
 }
@@ -768,27 +910,27 @@ td:hover{
 
     /*FIM-LOGIN*/
 
-    
+
     /* PERFIL */
 
-    .perfil-container{
+    .perfil-container {
         width: 100%;
         height: 100%;
         padding: 0;
     }
 
-    .perfil-form{
+    .perfil-form {
         flex-direction: column;
         width: 100%;
     }
 
-    .perfil-box{
+    .perfil-box {
         width: 100%;
     }
 
-    .btn-atualizar{
+    .btn-atualizar {
         width: 150px;
-     }
+    }
 
     /* FIM PERFIL */
 }

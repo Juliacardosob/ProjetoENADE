@@ -1,13 +1,3 @@
 <?php
-include_once("../content/header.php");
+include_once("../content/painel.php");
 ?>
-
-<div id="userMenu-container">
-    <div id="userDetails">
-        <img src="../img/img.png" alt="" id="userImg">
-    </div>
-    <div id="userActions">
-        <a href="#" class="action-link"><i class="material-icons">sports_esports</i> Ranking</a>
-        <a href="#" class="action-link"><i class="material-icons">account_circle</i>Perfil</a>
-    </div>
-</div>

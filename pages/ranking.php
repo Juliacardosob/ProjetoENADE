@@ -1,103 +1,80 @@
 <?php
-include_once("../content/body.php");
+include_once("../content/painel.php");
 ?>
 
-<main class="ranking-container">
-
-    <div class="ranking-form"></div>
-    <!-- iNFORMAÇÕES PESSOAIS  -->
+<main id="ranking-container">
+    <div id="ranking-title">
+        <h1>Ranking</h1>
+        <div id="rankingTitle-card">
+            <p>Ranking do mês</p>
+            <button class="BtnMes">Novembro</button>
+            <button class="BtnMes">Outubro</button>
+            <button class="BtnMes">Setembro</button>
+        </div>
+    </div>
     <div class="personal-stats">
-        <div class="card">Colocação:
-            <hr>
+        <div class="card">
+            <p>Sua colocação</p>
             <div class="rank-number">
-                6°
+                <h1 id="rank">6°</h1>
             </div>
         </div>
-        <div class="card">Pontos:
-            <hr>
+        <div class="card">
+            <p>Seus pontos: </p>
             <div class="rank-number">
-                11
+                <h1 id="rank">10</h1>
             </div>
         </div>
-        <div class="card">Erros:
-            <hr>
-            <div class="rank-number">
-                5
-            </div>
+        <div class="card">
+            <p>Todos os pontos são zerados no primeiro dia do mês.
+                Sua pontuação no ranking será atualizada todo dia, caso seus pontos ainda não tenham sido computados, aguarde :)
+                Questões respondidas certas = 10 pontos.</p>
         </div>
     </div>
-
-    <hr style="margin: 50px;">
-
-    <!-- TRÊS MELHORES COLOCADOS COM IMG -->
-
-    <div class="top-ranked-form">
-        <div class="top-ranked-box">
-            <div class="top-ranked-img">
-                <img src="../img/logo.png">
-                <div class="top-ranked-number">
-                    1º
+    <div id="top-ranked-form">
+        <?php for ($i = 1; $i <= 3; $i++) : ?>
+            <div class="top-ranked-box">
+                <div class="top-ranked-img">
+                    <img src="../img/img.png">
+                    <div class="top-ranked-number">
+                        <p><?= $i; ?>°</p>
+                    </div>
+                </div>
+                <p class="top-ranked-name">Nome do Aluno</p>
+                <div class="top-ranked-status">
+                    <div class="top-ranked-points">
+                        <p class="points">XXXXX</p>
+                        <p class="top-ranked-subtitle">Pontos</p>
+                    </div>
+                    <div class="top-ranked-points">
+                        <p class="points"> X°</p>
+                        <p class="top-ranked-subtitle">Posição</p>
+                    </div>
                 </div>
             </div>
-            <hr>
-            <label>Zeca</label>
-        </div>
-
-        <div class="top-ranked-box">
-            <div class="top-ranked-img">
-                <img src="../img/logo.png">
-                <div class="top-ranked-number">
-                    2º
-                </div>
-            </div>
-            <hr>
-            <label>Lorem</label>
-        </div>
-
-        <div class="top-ranked-box">
-            <div class="top-ranked-img">
-                <img src="../img/logo.png">
-                <div class="top-ranked-number">
-                    3º
-                </div>
-            </div>
-            <hr>
-            <label>Lorem</label>
-        </div>
-
+        <?php endfor; ?>
     </div>
-
-    <hr style="margin: 50px">
-    <!-- TABELA DE RANKING -->
     <div class="ranking-table">
         <table>
-            <tr>
-                <th>#</th>
-                <th>Nome</th>
-                <th>Pontos</th>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Lorem</td>
-                <td>65</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Lorem</td>
-                <td>34</td>
-
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Lorem</td>
-                <td>20</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>Lorem</td>
-                <td>15</td>
-            </tr>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nome</th>
+                    <th>Pontos</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php for($i = 1; $i <= 5; $i++):?>
+                <tr>
+                    <td><?= $i;?></td>
+                    <td class="img-td"><img class="img-table" src="../img/img.png" alt=""> Nome do aluno</td>
+                    <td>XXXX</td>
+                </tr>
+                <?php endfor;?>
+            </tbody>
         </table>
     </div>
-
 </main>
+<?php
+include_once("../content/footer.php")
+?>
