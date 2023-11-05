@@ -13,16 +13,18 @@ if(isset($_POST["cadastrar"])){
     $resul = mysqli_query($mysqli, $u_banco);
 
     if(mysqli_num_rows($resul) > 0){
-        echo 'aluno ' .$usuario.' já cadastrado no banco de dados';
+        $_SESSION['msg'] = "Aluno " . $usuario . " já cadastrado";
     }else if($senha != $conf_senha){
-        echo 'as senhas não correspondem.';
+        $_SESSION['msg'] = "As senhas não correspondem";
     }else{
         $sql = "INSERT INTO aluno(usuario,senha,email_inst) VALUES ('$usuario','$senhacripto','$email')";
 
         if(mysqli_query($mysqli, $sql)) {
-            echo 'aluno adicionado';
+            $_SESSION['msg'] = "Aluno adicionado com sucesso";
+            header("Location: ../pages/login.php");
+            $_SESSION['msg'] = "";
         }else{
-            echo 'tabela não encontrada';
+            $_SESSION['msg'] = "Erro no sistema";
         }
     }
     mysqli_close($mysqli);

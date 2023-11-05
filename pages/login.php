@@ -4,6 +4,11 @@ include_once("../backend/bd_login.php");
 ?>
 <main class="login-container">
     <form class="login-form" method="post">
+    <?php if(isset($_SESSION['msg'])):?>
+        <div class="pop-up">
+            <h1><?= $_SESSION['msg']?></h1>
+        </div>
+    <?php endif;?>
         <div class="login-title">
             <img src="../img/logo.png" alt="" class="logo">
             <h1>Bem-vindo<small>Preencha com suas informações</small></h1>

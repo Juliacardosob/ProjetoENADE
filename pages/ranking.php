@@ -3,9 +3,9 @@ include_once("../content/painel.php");
 ?>
 
 <main id="ranking-container">
-    <div id="ranking-title">
+    <div class="title">
         <h1>Ranking</h1>
-        <div id="rankingTitle-card">
+        <div class="Title-card">
             <p>Ranking do mês</p>
             <button class="BtnMes">Novembro</button>
             <button class="BtnMes">Outubro</button>

@@ -5,6 +5,11 @@ include_once("../backend/bd_cadastro.php");
 
 <main class="login-container">
     <form class="login-form" id="cadastro-container" method="post">
+        <?php if (isset($_SESSION['msg'])) : ?>
+            <div class="pop-up">
+                <h1><?= $_SESSION['msg'] ?></h1>
+            </div>
+        <?php endif; ?>
         <div class="login-title" id="cadastro-title">
             <img src="../img/logo.png" alt="" class="logo">
             <h1>Crie uma conta<small>Preencha com suas informações</small></h1>
@@ -43,10 +48,19 @@ include_once("../backend/bd_cadastro.php");
                 </div>
             </div>
         </div>
-        <div class="checkpolitica">
-            <input type="checkbox" name="check" class="check" required>
-            <label for="check">Li, entendi e concordo com a <u><b><a href="#">Política de privacidade</a></u></b></label>
-        </div>
+        <div class="userData">
+                <div class="loginInput-container cadastroInput">
+                    <div class="label-icon">
+                        <i class="material-icons">photo</i>
+                        <label for="foto" >Escolha sua foto</label>
+                    </div>
+                    <input type="file" name="foto" accept="image/png, image/jpeg">
+                </div>
+                <div class="checkpolitica">
+                    <input type="checkbox" name="check" class="check" required>
+                    <label for="check">Li, entendi e concordo com a <u><b><a href="#">Política de privacidade</a></u></b></label>
+                </div>
+            </div>
         <button class="btn-form" name="cadastrar">Cadastrar</button>
         <div class="voltarusuario">
             <span>Já tem usuário? <u><b><a href="login.php">Faça o login</a></u></b></span>

@@ -5,8 +5,15 @@
     margin: 0;
 }
 
-main{
-    margin-bottom: 150px;
+
+
+.pop-up {
+    text-align: center;
+    font-size: 10px;
+    background-color: #e75757;
+    position: absolute;
+    top: 0;
+    color: #fff;
 }
 
 /*HEADER*/
@@ -45,6 +52,7 @@ main{
 #nav-button {
     background-color: #075AB3;
     gap: 10px;
+    border: none;
 }
 
 .navbar-list .material-icons {
@@ -91,9 +99,13 @@ main{
     margin: 10px 0;
 }
 
-.logo,
 .login-form {
     width: 35%;
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
 }
 
 .btn-form,
@@ -193,7 +205,7 @@ main{
     display: flex;
 }
 
-#userDetails{
+#userDetails {
     align-items: center;
     gap: 10px;
 }
@@ -204,7 +216,7 @@ main{
     border-radius: 50%;
 }
 
-#userDetails-txt p{
+#userDetails-txt p {
     margin: 10px 0;
 }
 
@@ -308,6 +320,10 @@ footer {
     align-items: center;
 }
 
+#btnBanner {
+    text-decoration: none;
+}
+
 #banner-img {
     width: 100%;
 }
@@ -393,22 +409,22 @@ footer {
     color: #fff;
 }
 
-#aside-content h1{
+#aside-content h1 {
     text-align: center;
     margin: 10px 0;
 }
 
-.aside-cards i{
+.aside-cards i {
     font-size: 40px;
     color: #075AB3;
 }
 
-.asideCards-txt h2{
+.asideCards-txt h2 {
     font-size: 16px;
     margin: 10px 0;
 }
 
-.aside-cards{
+.aside-cards {
     background-color: #fff;
     color: #000;
     display: flex;
@@ -418,7 +434,7 @@ footer {
     gap: 10px;
 }
 
-#button-container{
+#button-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -426,7 +442,7 @@ footer {
     margin: 20px 0;
 }
 
-#button-container button{
+#button-container button {
     background-color: #075AB3;
     border: none;
     color: #fff;
@@ -435,7 +451,7 @@ footer {
     transition: 0.3s;
 }
 
-#button-container button:hover{
+#button-container button:hover {
     cursor: pointer;
     background-color: #0550a0;
 }
@@ -545,11 +561,11 @@ footer {
 /* ID QUE CONTEM O INICIO DO RANKING */
 
 
-#ranking-title{
+.title {
     margin: 50px;
 }
 
-#rankingTitle-card{
+.Title-card {
     padding: 15px;
     margin: 30px 0;
     width: 100%;
@@ -558,7 +574,7 @@ footer {
     box-shadow: 0px 1px 40px -13px rgba(0, 0, 0, 0.2);
 }
 
-.BtnMes{
+.BtnMes {
     margin: 10px 0;
     padding: 10px;
     background-color: #fff;
@@ -568,7 +584,7 @@ footer {
     transition: 0.3s;
 }
 
-.BtnMes:hover{
+.BtnMes:hover {
     background-color: #f2f2f2;
 }
 
@@ -586,7 +602,7 @@ footer {
 
 
 /* CLASSE QUE CONTEM O 'BOX' DOS STATS INDIVIDUAIS */
-.personal-stats  .card {
+.personal-stats .card {
     background-color: #fff;
     border-radius: 5px;
     text-align: center;
@@ -595,31 +611,31 @@ footer {
     box-shadow: 0px 1px 40px -13px rgba(0, 0, 0, 0.3);
 }
 
-.personal-stats .card:first-child{
+.personal-stats .card:first-child {
     background-color: #075AB3;
     color: #fff;
 }
 
-.personal-stats .card:last-child{
+.personal-stats .card:last-child {
     width: 40%;
     text-align: justify;
 }
 
-.personal-stats .card:last-child p{
+.personal-stats .card:last-child p {
     margin: 20px 10px;
 }
 
-.personal-stats .card p{
+.personal-stats .card p {
     margin: 20px 0;
 }
 
-.personal-stats .rank-number{
+.personal-stats .rank-number {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.personal-stats  #rank{
+.personal-stats #rank {
     font-size: 40px;
 }
 
@@ -638,7 +654,7 @@ footer {
     width: 30%;
     border-radius: 5px;
     background-color: #075AB3;
-    box-shadow: 2px 10px 26px -7px rgba(0,0,0,0.15);
+    box-shadow: 2px 10px 26px -7px rgba(0, 0, 0, 0.15);
 }
 
 
@@ -657,7 +673,8 @@ footer {
     font-size: 20px;
     padding: 20px;
     border: 2px solid #fff;
-    color: #fff;;
+    color: #fff;
+    ;
     border-radius: 50%;
     height: 15px;
     width: 15px;
@@ -671,13 +688,14 @@ footer {
     margin: 15px 0;
 }
 
-.top-ranked-name{
+.top-ranked-name {
     margin: 20px 0;
     text-align: center;
     color: #fff;
     font-weight: 500;
 }
-.top-ranked-status{
+
+.top-ranked-status {
     background-color: #fff;
     display: flex;
     color: #000;
@@ -685,12 +703,12 @@ footer {
     justify-content: space-evenly;
 }
 
-.points{
+.points {
     margin: 10px 0;
     text-align: center;
 }
 
-.top-ranked-subtitle{
+.top-ranked-subtitle {
     font-size: 12px;
     margin-bottom: 10px;
 }
@@ -717,13 +735,13 @@ table {
     border-collapse: collapse;
 }
 
-.img-table{
+.img-table {
     width: 35px;
     height: 35px;
     border-radius: 50%;
 }
 
-.img-td{
+.img-td {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -732,7 +750,7 @@ table {
 
 /* CELULA INDIVIDUAL DA TABELA */
 
-.ranking-table td{
+.ranking-table td {
     text-align: center;
 }
 
@@ -756,6 +774,135 @@ th {
 
 /* FIM RANKING */
 
+/*TOPICOS*/
+
+#escolha {
+    width: 100%;
+    padding: 15px 5px;
+    background-color: #fff;
+    font-size: 18px;
+    border-radius: 0 10px 10px 0;
+    transition: 0.3s;
+    border: 1px solid #94958B;
+}
+
+#escolha:hover{
+    background-color: #f2f2f2;
+}
+
+#select-container{
+    display: flex;
+}
+
+#select-container label{
+    display: flex;
+    background-color: #cccccc;
+    border: 1px solid #94958B;
+    justify-content: center;
+    padding: 10px;
+    align-items: center;
+    border-radius: 10px 0 0 10px;
+}
+
+/* FIM TOPICOS*/
+
+/* QUESTOES */
+
+.questoes-container{
+    background-color: #fff;
+    border: 1px solid #f2f2f2;
+    border-radius: 5px;
+    width: 80%;
+    margin: 15px;
+}
+
+.questoesTitle{
+    color: #000;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.questoesSubTitle{
+    font-size: 14px;
+    color: #94958B;
+}
+
+.questoes-title{
+    margin: 15px;
+}
+
+.questoes-content{
+    margin: 15px;
+    font-size: 18px;
+}
+
+.questao-font{
+    position: relative;
+    left: 30%;
+    color: #94958B;
+}
+
+.questao-enunciado{
+    margin: 15px 0;
+}
+
+.alternativas{
+    margin: 15px;
+}
+
+.alternativas-card{
+    display: flex;
+    margin: 10px 0;
+    padding: 15px;
+    border: 1px solid #94958B;
+    border-radius: 5px;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.alternativas-activate{
+    display: flex;
+    margin: 10px 0;
+    padding: 15px;
+    border: 1px solid #075AB3;
+    border-radius: 5px;
+    gap: 10px;
+    cursor: pointer;
+    background-color: #e3effc;
+}
+
+.rightButton{
+    text-decoration: line-through;
+    background-color: #f2f2f2;
+    border: none;
+}
+
+.btnResponder{
+    border-radius: 15px;
+    background-color: #075AB3;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin: 15px;
+    padding: 20px;
+}
+
+.btnResponder:hover{
+    background-color: #0550a0;
+}
+
+.alternativas-card input{
+    width: 20px;
+    height: 20px;
+}
+
+.alternativas-activate input{
+    width: 20px;
+    height: 20px;
+}
+
+
+/* FIM - QUESTOES */
 
 @media (max-width: 480px) {
     /*LOGIN*/

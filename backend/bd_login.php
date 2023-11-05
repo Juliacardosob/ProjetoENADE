@@ -1,5 +1,6 @@
 <?php
 include_once("conexao.php");
+session_start();
 
 if(isset($_POST["entrar"])){
     $usuario = $_POST["usuario"];
@@ -21,13 +22,15 @@ if(isset($_POST["entrar"])){
         if(mysqli_num_rows($resul) > 0){
             $row = mysqli_fetch_assoc($resul);
             if(md5($senha) == $row["senha"]){
-                echo 'senha válida.';
+                $_SESSION['msg'] = "Entrando...";
+                $_SESSION['usuario'] = $usuario;
                 header("Location: ../pages/painel.php");
+                $_SESSION['msg'] = "";
             }else{
-                echo 'senha incorreta.';
+                $_SESSION['msg'] = "Senha incorreta";
             }
         }else{
-            echo 'usuario não cadastrado.';
+            $_SESSION['msg'] = "Não cadastrado";
         }
     }
     mysqli_close($mysqli);

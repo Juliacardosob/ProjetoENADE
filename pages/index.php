@@ -1,12 +1,12 @@
 <?php
-include_once("../content/header.php");
+include_once("../content/body.php");
 ?>
 
 <div id="banner">
     <div id="info-banner">
         <p>Teste seu conhecimento</p>
         <h1>Melhor plataforma de estudos para o ENADE</h1>
-        <button>Entrar para começar<i class="material-icons">arrow_right</i></button>
+        <a href="login.php" id="btnBanner"><button>Entrar para começar<i class="material-icons">arrow_right</i></button></a>
     </div>
     <img src="../img/estudante.png" alt="" id="estudanteImg">
 </div>
@@ -67,7 +67,7 @@ include_once("../content/header.php");
                     </div>
                 </div>
                 <div id="button-container">
-                    <button>Comece a estudar</button>
+                    <a href="login.php"><button>Comece a estudar</button></a>
                 </div>
             </aside>
         </div>
@@ -99,5 +99,5 @@ include_once("../content/header.php");
 </main>
 
 <?php
-    include_once("../content/footer.php");
+include_once("../content/footer.php");
 ?>
