@@ -1,8 +1,6 @@
 <?php
 include_once("conexao.php");
-if (!isset($_SESSION)) {
-    session_start();
-}
+session_start();
 
 if(isset($_SESSION['usuario'])){
     if(isset($_POST['enviar'])){
@@ -12,7 +10,7 @@ if(isset($_SESSION['usuario'])){
             $usuario = $_SESSION['usuario'];
             $caminho = "../img/fotos_perfil/'$usuario'";
 
-            if(!dirname($caminho) == '../img/fotos_perfil'){
+            if(!realpath("../img/fotos_perfil/'$usuario'")){
                 mkdir($caminho, 0755, true);
             }
             
@@ -36,5 +34,7 @@ if(isset($_SESSION['usuario'])){
         mysqli_close($mysqli);
     }
 }else{
+    
     echo 'Login na página não realizado';
 }
+?>
