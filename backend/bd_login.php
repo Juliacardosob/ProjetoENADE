@@ -21,9 +21,11 @@ if(isset($_POST["entrar"])){
         
         if(mysqli_num_rows($resul) > 0){
             $row = mysqli_fetch_assoc($resul);
+            $foto = $row["foto"];
             if(md5($senha) == $row["senha"]){
                 $_SESSION['msg'] = "Entrando...";
                 $_SESSION['usuario'] = $usuario;
+                $_SESSION['foto'] = $foto;
                 header("Location: ../pages/painel.php");
                 $_SESSION['msg'] = "";
             }else{

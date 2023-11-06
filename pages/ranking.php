@@ -35,7 +35,7 @@ include_once("../content/painel.php");
         <?php for ($i = 1; $i <= 3; $i++) : ?>
             <div class="top-ranked-box">
                 <div class="top-ranked-img">
-                    <img src="../img/img.png">
+                    <img src="../img/default.png">
                     <div class="top-ranked-number">
                         <p><?= $i; ?>°</p>
                     </div>
@@ -67,7 +67,7 @@ include_once("../content/painel.php");
                 <?php for($i = 1; $i <= 5; $i++):?>
                 <tr>
                     <td><?= $i;?></td>
-                    <td class="img-td"><img class="img-table" src="../img/img.png" alt=""> Nome do aluno</td>
+                    <td class="img-td"><img class="img-table" src="../img/default.png" alt=""> Nome do aluno</td>
                     <td>XXXX</td>
                 </tr>
                 <?php endfor;?>

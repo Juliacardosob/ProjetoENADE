@@ -34,7 +34,7 @@ include_once("../content/body.php");
                 </div>
                 <div id="indexImg-container">
                     <img src="../img/group.png" alt="" class="indexImg">
-                    <img src="../img/student.png" alt="" class="indexImg">
+                    <img src="../img/group(2).png" alt="" class="indexImg">
                 </div>
             </div>
             <aside id="aside-content">

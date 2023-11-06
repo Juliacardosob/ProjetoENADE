@@ -18,27 +18,29 @@ include_once("../content/painel.php");
             <p class="questao-enunciado">Considerando as informações do texto, assinale a alternativa em que o item é um requisito funcional.</p>
         </div>
         <div class="alternativas">
-            <label class="alternativas-card">
-                <input class="opcaoRadio" type="radio" name="alternativa" value="a">
-                <p>A&rpar; O software deve ser operacionalizado no sistema Linux.</p>
-            </label>
-            <label class="alternativas-card">
-                <input class="opcaoRadio" type="radio" name="alternativa" value="b">
-                <p>B&rpar; O tempo de desenvolvimento não deve ultrapassar seis meses.</p>
-            </label>
-            <label class="alternativas-card">
-                <input class="opcaoRadio" type="radio" name="alternativa" value="c">
-                <p>C&rpar; O software deve emitir relatórios de compras a cada quinze dias.</p>
-            </label>
-            <label class="alternativas-card">
-                <input class="opcaoRadio" type="radio" name="alternativa" value="d">
-                <p>D&rpar; O tempo de resposta do sistema não deve ultrapassar 30 segundos.</p>
-            </label>
-            <label class="alternativas-card">
-                <input class="opcaoRadio" type="radio" name="alternativa" value="e">
-                <p>E&rpar; A base de dados deve ser protegida para acesso apenas de usuários autorizados.</p>
-            </label>
+            <form method="POST">
+                <label class="alternativas-card">
+                    <input class="opcaoRadio" type="radio" name="alternativa" value="a">
+                    <p>A&rpar; O software deve ser operacionalizado no sistema Linux.</p>
+                </label>
+                <label class="alternativas-card">
+                    <input class="opcaoRadio" type="radio" name="alternativa" value="b">
+                    <p>B&rpar; O tempo de desenvolvimento não deve ultrapassar seis meses.</p>
+                </label>
+                <label class="alternativas-card">
+                    <input class="opcaoRadio" type="radio" name="alternativa" value="c">
+                    <p>C&rpar; O software deve emitir relatórios de compras a cada quinze dias.</p>
+                </label>
+                <label class="alternativas-card">
+                    <input class="opcaoRadio" type="radio" name="alternativa" value="d">
+                    <p>D&rpar; O tempo de resposta do sistema não deve ultrapassar 30 segundos.</p>
+                </label>
+                <label class="alternativas-card">
+                    <input class="opcaoRadio" type="radio" name="alternativa" value="e">
+                    <p>E&rpar; A base de dados deve ser protegida para acesso apenas de usuários autorizados.</p>
+                </label>
+                <button class="btnResponder">Responder</button>
+            </form>
         </div>
-        <button class="btnResponder">Responder</button>
     </div>
 </main>

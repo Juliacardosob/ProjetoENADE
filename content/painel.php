@@ -5,6 +5,7 @@ if (!isset($_SESSION)) {
 } else {
     if (isset($_SESSION['usuario'])) {
         $nome = $_SESSION['usuario'];
+        $foto = $_SESSION['foto'];
     }
 }
 
@@ -12,7 +13,7 @@ if (!isset($_SESSION)) {
 
 <div id="userMenu-container">
     <div id="userDetails">
-        <img src="../img/img.png" alt="" id="userImg">
+        <img src="<?=$foto;?>" alt="" id="userImg">
         <div id="userDetails-txt">
             <p><?= $nome ?></p>
             <p>Pontos: XXXX</p>

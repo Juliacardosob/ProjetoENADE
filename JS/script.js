@@ -29,12 +29,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     alternativas.forEach(function(alternativa) {
         alternativa.addEventListener('contextmenu', function(event) {
-            event.preventDefault(); // Previne o menu de contexto padrão do navegador
+            event.preventDefault();
 
             if (this.classList.contains('rightButton')) {
-                this.classList.remove('rightButton'); // Remove a classe se já estiver presente
+                this.classList.remove('rightButton');
             } else {
-                this.classList.add('rightButton'); // Adiciona a classe se não estiver presente
+                this.classList.add('rightButton');
             }
         });
     });

@@ -8,7 +8,12 @@ if(isset($_POST["cadastrar"])){
     $senha = $_POST["password"];
     $conf_senha = $_POST["confirme"];
     $senhacripto = md5($senha);
-
+    if(!empty($_POST["foto"])){
+        $foto = "../img/" . $_POST["foto"];
+    }
+    else{
+        $foto = "../img/default.png";
+    }
     $u_banco = "SELECT * FROM aluno WHERE usuario = '$usuario'";
     $resul = mysqli_query($mysqli, $u_banco);
 
@@ -17,7 +22,7 @@ if(isset($_POST["cadastrar"])){
     }else if($senha != $conf_senha){
         $_SESSION['msg'] = "As senhas não correspondem";
     }else{
-        $sql = "INSERT INTO aluno(usuario,senha,email_inst) VALUES ('$usuario','$senhacripto','$email')";
+        $sql = "INSERT INTO aluno(usuario,senha,email_inst, foto) VALUES ('$usuario','$senhacripto','$email', '$foto')";
 
         if(mysqli_query($mysqli, $sql)) {
             $_SESSION['msg'] = "Aluno adicionado com sucesso";
