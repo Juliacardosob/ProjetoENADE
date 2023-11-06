@@ -1,14 +1,22 @@
 <?php
 include_once("../content/header.php");
+include_once("../backend/alterar_cadastro.php");
 ?>
+<script src="../js/alterar_imagem.js" defer></script>
 
 <main class="perfil-container">
     <div class="perfil-form">
         <div class="perfil-box">
             <div class="perfil-conteudo">
                 <h1>Alterar cadastro</h1>
-                <img src="../img/logo.png" alt="fotoperfil">
-                <button class="btn-form btn-foto">Mudar Foto</button>
+                    <img src="../img/logo.png" alt="fotoperfil" name="foto">
+                    <form method="post" enctype="multipart/form-data">
+                        <button class="btn-form btn-foto" id="btnfoto">Mudar Foto</button>
+                        <div class="file">
+                            <input type="file" name="mudarFoto" id="mudarFoto" accept=".png, .jpeg, .jpg">
+                            <button name="enviar">Enviar</button>
+                        </div>
+                    </form>
             </div>
         </div>
         <hr>
