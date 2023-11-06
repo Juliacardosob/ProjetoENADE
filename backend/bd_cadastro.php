@@ -1,8 +1,11 @@
 <?php
 include_once("conexao.php");
+include_once("entities/UserDAO.php");
+
+$User = new UserDAO($conn);
+
 
 if(isset($_POST["cadastrar"])){
-    //Aluno
     $usuario = $_POST["usuario"];
     $email = $_POST["email"];
     $senha = $_POST["password"];
@@ -14,6 +17,7 @@ if(isset($_POST["cadastrar"])){
     else{
         $foto = "default.png";
     }
+
     $u_banco = "SELECT * FROM aluno WHERE usuario = '$usuario'";
     $resul = mysqli_query($mysqli, $u_banco);
 
