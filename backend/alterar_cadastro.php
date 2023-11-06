@@ -1,6 +1,8 @@
 <?php
 include_once("conexao.php");
-session_start();
+if(!isset($_SESSION)){
+    session_start();
+}
 
 if(isset($_SESSION['usuario'])){
     if(isset($_POST['enviar'])){
@@ -15,19 +17,15 @@ if(isset($_SESSION['usuario'])){
             }
             
             $move = move_uploaded_file($_FILES['mudarFoto']['tmp_name'], "$caminho/$foto");
-
             if($move == true){
                 echo 'foto adicionada';
-            }
-            /*
+                $inserir_bd = mysqli_query($mysqli, "UPDATE aluno SET foto = '$foto' WHERE usuario = '$usuario'"); //alterar no banco
+                $select_f = mysqli_query($mysqli, "SELECT * FROM aluno WHERE usuario = '$usuario'");
 
-            $inserir_bd = "UPDATE aluno SET foto = '$foto_end' WHERE usuario = '$usuario'";
-            $resul = mysqli_query($mysqli, $inserir_bd);
+                $dados = mysqli_fetch_object($select_f);
+                echo "<img src='../img/fotos_perfil/'$usuario'/'$dados->foto''/>";
 
-            if($resul == true){
-                echo 'Foto alterada';
             }
-            */
         }else{
             echo 'Por favor, selecione uma foto.';
         }
