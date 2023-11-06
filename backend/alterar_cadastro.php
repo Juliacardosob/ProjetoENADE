@@ -1,6 +1,8 @@
 <?php
 include_once("conexao.php");
-session_start();
+if (!isset($_SESSION)) {
+    session_start();
+}
 
 if(isset($_SESSION['usuario'])){
     if(isset($_POST['enviar'])){
@@ -36,4 +38,3 @@ if(isset($_SESSION['usuario'])){
 }else{
     echo 'Login na página não realizado';
 }
-?>
