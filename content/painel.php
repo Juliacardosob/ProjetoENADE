@@ -13,7 +13,7 @@ if (!isset($_SESSION)) {
 
 <div id="userMenu-container">
     <div id="userDetails">
-        <img src="<?=$foto;?>" alt="" id="userImg">
+        <img src="../img/<?=$foto;?>" alt="" id="userImg">
         <div id="userDetails-txt">
             <p><?= $nome ?></p>
             <p>Pontos: XXXX</p>

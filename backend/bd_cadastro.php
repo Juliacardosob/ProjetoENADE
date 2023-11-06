@@ -9,10 +9,10 @@ if(isset($_POST["cadastrar"])){
     $conf_senha = $_POST["confirme"];
     $senhacripto = md5($senha);
     if(!empty($_POST["foto"])){
-        $foto = "../img/" . $_POST["foto"];
+        $foto = $_POST["foto"];
     }
     else{
-        $foto = "../img/default.png";
+        $foto = "default.png";
     }
     $u_banco = "SELECT * FROM aluno WHERE usuario = '$usuario'";
     $resul = mysqli_query($mysqli, $u_banco);
