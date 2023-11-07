@@ -51,11 +51,6 @@ CREATE TABLE `aluno` (
 -- Extraindo dados da tabela `aluno`
 --
 
-INSERT INTO `aluno` (`usuario`, `senha`, `nickname`, `email_inst`, `foto`) VALUES
-('a', '202cb962ac59075b964b07152d234b70', NULL, 'a@asd', NULL),
-('ju', '0cc175b9c0f1b6a831c399e269772661', NULL, 'a@asd', NULL),
-('teste', '202cb962ac59075b964b07152d234b70', NULL, 'a@asd', NULL);
-
 --
 -- Índices para tabelas despejadas
 --
