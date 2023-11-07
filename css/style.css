@@ -129,7 +129,7 @@
 }
 
 .login-container {
-    width: 100%;
+    width: 100vw;
     background-color: #94958B;
     height: 100vh;
 }
@@ -287,6 +287,9 @@ footer {
     flex-direction: row;
 }
 
+.userData{
+    width: 30%;
+}
 
 #cadastro-title {
     margin: 0;
@@ -920,7 +923,20 @@ th {
         margin: 20px 0;
     }
 
+    .userData{
+        width: 80%;
+    }
+
     /*FIM-LOGIN*/
+
+    #cadastro-form{
+        flex-direction: column;
+    }
+
+    .login-input{
+        width: 100%;
+    }
+
 
 
     /* PERFIL */
@@ -971,6 +987,10 @@ th {
     }
 
     /*FIM-LOGIN*/
+
+    .userData{
+        width: 35%;
+    }
 
     /* PERFIL */
 
@@ -1080,4 +1100,11 @@ th {
     }
 
     /* FIM PERFIL */
+}
+
+@media (min-width: 1200px){
+    .login-form{
+        width: 50%;
+    }
+
 }

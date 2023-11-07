@@ -20,7 +20,7 @@ if(!isset($_SESSION)){
             <span class="space">
             </span>
             <?php if (!isset($_SESSION['usuario'])) : ?>
-                <li class="navbar-list"><a href="#" id="nav-button" class="navbar-link">Login/Cadastro<i class="material-icons">check_circle</i></a></li>
+                <li class="navbar-list"><a href="../pages/login.php" id="nav-button" class="navbar-link">Login/Cadastro<i class="material-icons">check_circle</i></a></li>
             <?php else : ?>
                 <li class="navbar-list">
                     <form action="../backend/logout.php" method="POST">

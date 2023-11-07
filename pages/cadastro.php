@@ -4,7 +4,7 @@ include_once("../backend/bd_cadastro.php");
 ?>
 
 <main class="login-container">
-    <form class="login-form" id="cadastro-container" method="post">
+    <form class="login-form" method="post">
         <?php if (isset($_SESSION['msg'])) : ?>
             <div class="pop-up">
                 <h1><?= $_SESSION['msg'] ?></h1>
