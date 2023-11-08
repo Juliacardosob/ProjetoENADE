@@ -1,6 +1,9 @@
 <?php
 include_once("conexao.php");
 include_once("../backend/entities/UserDAO.php");
+if (!isset($_SESSION)) {
+    session_start();
+} 
 
 if (isset($_POST["cadastrar"])) {
     $User = new UserDAO($conn);
@@ -11,10 +14,24 @@ if (isset($_POST["cadastrar"])) {
     $senha = $_POST["password"];
     $conf_senha = $_POST["confirme"];
 
-    if (!empty($_POST["foto"])) {
-        $foto = $_POST["foto"];
+    $foto = $_FILES["foto"]["name"];
+
+    if (!empty($foto)) {
+
+        $_SESSION['caminho'] = "../img/fotos_perfil/'$usuario'";
+
+        $caminho = $_SESSION['caminho'];
+
+        mkdir($caminho, 0755, true);
+
+        $foto_s = $_FILES["foto"]["tmp_name"];
+
+        $move = move_uploaded_file($foto_s, "$caminho/$foto");
+
     } else {
         $foto = "default.png";
+
+        $_SESSION['caminho'] = '../img/';
     }
 
     if (verificarSenha($senha, $conf_senha)) {
