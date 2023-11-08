@@ -25,14 +25,12 @@ if(isset($_POST["editar"])){
 
     if($userEdit->verificarSenha($senha, $conf_senha)){
         if(!$User->verificarCadastrado($usuario)){
-            print_r($_SESSION);
             $userEdit->setUsuario($usuario);
             $userEdit->setEmail($email);
             $userEdit->setSenha($senha);
             // $userEdit->setFoto($foto);
 
             $User->atualizarCadastro($id, $userEdit);
-            print_r($_SESSION);
             $_SESSION['msg'] = "";
         }
         else {
