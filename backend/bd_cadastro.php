@@ -17,9 +17,9 @@ if (isset($_POST["cadastrar"])) {
         $foto = "default.png";
     }
 
-    if (verificarSenha($senha, $conf_senha)) {
+    if ($newUser->verificarSenha($senha, $conf_senha)) {
         if (!$User->verificarCadastrado($usuario)) {
-
+            
             $newUser->setUsuario($usuario);
             $newUser->setEmail($email);
             $newUser->setSenha($senha);
@@ -38,13 +38,4 @@ if (isset($_POST["cadastrar"])) {
     }
 
     $conn = null;
-}
-
-function verificarSenha($senha, $confirme)
-{
-    if ($senha == $confirme) {
-        return true;
-    } else {
-        return false;
-    }
 }

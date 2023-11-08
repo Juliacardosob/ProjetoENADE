@@ -17,4 +17,6 @@ interface IUser{
     public function setFoto($foto);
     
     public function getFoto();
+
+    public function verificarSenha($senha, $confirme);
 }

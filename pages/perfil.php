@@ -16,6 +16,11 @@ if (!isset($_SESSION)) {
 
 <main class="perfil-container">
     <div class="perfil-form">
+        <?php if (isset($_SESSION['msg'])) : ?>
+            <div class="pop-up">
+                <h1><?= $_SESSION['msg'] ?></h1>
+            </div>
+        <?php endif; ?>
         <div class="perfil-box">
             <div class="perfil-conteudo">
                 <h1>Alterar cadastro</h1>
@@ -23,14 +28,14 @@ if (!isset($_SESSION)) {
                 <form method="post" enctype="multipart/form-data">
                     <button class="btn-form btn-foto" id="btnfoto">Mudar Foto</button>
                     <div class="file">
-                        <input type="file" name="mudarFoto" id="mudarFoto" accept=".png, .jpeg, .jpg">
+                        <input type="file" name="foto" id="mudarFoto" accept=".png, .jpeg, .jpg">
                         <button name="enviar">Enviar</button>
                     </div>
                 </form>
             </div>
         </div>
         <hr>
-        <form action="../backend/bd_editar.php" method="POST" class="perfil-box">
+        <form method="POST" class="perfil-box">
             <div class="perfil-conteudo">
                 <div class="loginInput-container  cadastroInput">
                     <div class="label-icon">

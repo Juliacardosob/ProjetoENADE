@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 02-Nov-2023 às 20:03
+-- Tempo de geração: 08/11/2023 às 14:49
 -- Versão do servidor: 10.4.28-MariaDB
--- versão do PHP: 8.2.4
+-- Versão do PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,10 +24,11 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `administrador`
+-- Estrutura para tabela `administrador`
 --
 
 CREATE TABLE `administrador` (
+  `id` int(10) UNSIGNED NOT NULL,
   `usuario` varchar(100) NOT NULL,
   `email` varchar(100) DEFAULT NULL,
   `senha` varchar(100) DEFAULT NULL
@@ -36,36 +37,49 @@ CREATE TABLE `administrador` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `aluno`
+-- Estrutura para tabela `aluno`
 --
 
 CREATE TABLE `aluno` (
-  `usuario` varchar(10) NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL,
+  `usuario` varchar(255) NOT NULL,
   `senha` varchar(100) DEFAULT NULL,
-  `nickname` varchar(100) DEFAULT NULL,
-  `email_inst` varchar(100) DEFAULT NULL,
+  `nickname` varchar(10) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
   `foto` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Extraindo dados da tabela `aluno`
---
 
 --
 -- Índices para tabelas despejadas
 --
 
 --
--- Índices para tabela `administrador`
+-- Índices de tabela `administrador`
 --
 ALTER TABLE `administrador`
-  ADD PRIMARY KEY (`usuario`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `aluno`
+-- Índices de tabela `aluno`
 --
 ALTER TABLE `aluno`
-  ADD PRIMARY KEY (`usuario`);
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT para tabelas despejadas
+--
+
+--
+-- AUTO_INCREMENT de tabela `administrador`
+--
+ALTER TABLE `administrador`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `aluno`
+--
+ALTER TABLE `aluno`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

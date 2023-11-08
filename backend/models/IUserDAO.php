@@ -1,5 +1,7 @@
 <?php
 include_once("../backend/entities/User.php");
+include_once("../backend/entities/UserEdit.php");
+
 interface IUserDAO{
     public function Cadastrar(User $user);
 
@@ -8,5 +10,7 @@ interface IUserDAO{
     public function verificarAdmin($usuario, $senha);
 
     public function verificarUsuario($usuario, $senha);
+
+    public function atualizarCadastro($id, UserEdit $user);
 
 }

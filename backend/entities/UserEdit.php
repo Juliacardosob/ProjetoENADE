@@ -2,9 +2,8 @@
 
 include_once("../backend/models/UserInterace.php");
 
-class User implements IUser
+class UserEdit implements IUser
 {
-
     private $Usuario;
     private $Senha;
     private $Email;
@@ -12,9 +11,12 @@ class User implements IUser
 
     public function setUsuario($usuario)
     {
-        $this->Usuario = $usuario;
+        if (!empty($usuario)) {
+            $this->Usuario = $usuario;
+        } else {
+            $this->Usuario = $_SESSION['usuario'];
+        }
     }
-
     public function getUsuario()
     {
         return $this->Usuario;
@@ -22,7 +24,11 @@ class User implements IUser
 
     public function setSenha($senha)
     {
-        $this->Senha = $senha;
+        if (!empty($senha)) {
+            $this->Senha = password_hash($senha, PASSWORD_DEFAULT);
+        } else {
+            $this->Senha = $_SESSION['senha'];
+        }
     }
 
     public function getSenha()
@@ -32,7 +38,11 @@ class User implements IUser
 
     public function setEmail($email)
     {
-        $this->Email = $email;
+        if (!empty($email)) {
+            $this->Email = $email;
+        } else {
+            $this->Email = $_SESSION['email'];
+        }
     }
 
     public function getEmail()
@@ -42,7 +52,11 @@ class User implements IUser
 
     public function setFoto($foto)
     {
-        $this->Foto = $foto;
+        if (!empty($foto)) {
+            $this->Foto = $foto;
+        } else {
+            $this->Foto = $_SESSION['foto'];
+        }
     }
 
     public function getFoto()
@@ -58,5 +72,4 @@ class User implements IUser
             return false;
         }
     }
-
 }
