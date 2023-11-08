@@ -35,7 +35,7 @@ if(isset($_POST['enviar'])){
             $User = new UserDAO($conn);
             $newUser = new User();
             $newUser->setFoto($foto2);
-            $User->definirVariaveisSessao($usuario, $foto2);
+            // $User->definirVariaveisSessao($usuario, $foto2);
             
             if($result == true){
                 echo 'foto adicionada';
