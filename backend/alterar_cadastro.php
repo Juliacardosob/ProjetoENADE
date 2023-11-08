@@ -1,54 +1,47 @@
 <?php
 include_once("conexao.php");
-include_once("../backend/entities/UserDAO.php");
+
 if(!isset($_SESSION)){
     session_start();
 }else{
-    $usuario = $_SESSION['usuario'];
-    $foto = $_SESSION['foto'];
+    if (isset($_SESSION['usuario'])) {
+        $usuario = $_SESSION['usuario'];
+        $foto = $_SESSION['foto'];
+        $caminho = $_SESSION['caminho'];
+    }
 }
 
-//vê se tem foto no banco do usuário
-$select_f = $conn->prepare("SELECT * FROM aluno WHERE usuario = '$usuario'");
-$select_f->execute();
-$row = $select_f->fetch(PDO::FETCH_ASSOC);
-$resul = $row['foto'];
-
 if(isset($_POST['enviar'])){
-    if(isset($_FILES['mudarFoto']['name'])){
-        $foto2 = $_FILES['mudarFoto'];
-        $fotonome = $_FILES['mudarFoto']['name'];
-        $fotonometemp = $_FILES['mudarFoto']['tmp_name'];
+    $foton = $_FILES['mudarFoto']['name'];
 
-        $caminho_p = "../img/fotos_perfil/'$usuario'";
+    if(isset($foton)){
 
-        if(!realpath($caminho_p)){
-            mkdir($caminho_p, 0755, true);
+        $fotontmp = $_FILES['mudarFoto']['tmp_name'];
+
+        if($caminho == '../img/'){
+            $_SESSION['caminho'] = "../img/fotos_perfil/'$usuario'";
+
+            $caminho = $_SESSION['caminho'];
+            
+            mkdir($caminho, 0755, true);
         }
 
-        $move = move_uploaded_file($fotonometemp, "$caminho_p/$fotonome");
+        $move = move_uploaded_file($fotontmp, "$caminho/$foton");
 
         if($move == true){
-            $update_f = $conn->prepare("UPDATE aluno SET foto = '$fotonome' WHERE usuario = '$usuario'");
-            $result = $update_f->execute();
 
-            $User = new UserDAO($conn);
-            $newUser = new User();
-            $newUser->setFoto($foto2);
-            // $User->definirVariaveisSessao($usuario, $foto2);
+            $_SESSION['foto'] = $foton;
+
+            $update_f = $conn->prepare("UPDATE aluno SET foto = '$foton' WHERE usuario = '$usuario'");
+
+            $result = $update_f->execute();
             
             if($result == true){
-                echo 'foto adicionada';
+                echo 'foto atualizada';
             }
         }
     }else{
         echo 'Por favor, selecione uma foto.';
     }
-}
-
-if($resul == null){
-    $caminho = '../img/';
-}else{
-    $caminho = "../img/fotos_perfil/'$usuario'";
 }
 ?>
