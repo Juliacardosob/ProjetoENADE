@@ -25,7 +25,7 @@ if (!isset($_SESSION)) {
         <div class="perfil-box">
             <div class="perfil-conteudo">
                 <h1>Alterar cadastro</h1>
-                <img src="<?php echo "$caminho/$foto" ?>" alt="fotoperfil" name="foto">
+                <img src="<?=$caminho?>/<?=$foto?>" alt="fotoperfil" name="foto">
                 <form method="post" enctype="multipart/form-data">
                     <button class="btn-form btn-foto" id="btnfoto">Mudar Foto</button>
                     <div class="file">

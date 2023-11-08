@@ -6,6 +6,7 @@ if (!isset($_SESSION)) {
     if (isset($_SESSION['usuario'])) {
         $nome = $_SESSION['usuario'];
         $foto = $_SESSION['foto'];
+        $caminho = $_SESSION['caminho'];
     }
 }
 
@@ -13,7 +14,7 @@ if (!isset($_SESSION)) {
 
 <div id="userMenu-container">
     <div id="userDetails">
-        <img src="../img/<?=$foto;?>" alt="" id="userImg">
+        <img src="<?=$caminho?>/<?=$foto?>" alt="" id="userImg">
         <div id="userDetails-txt">
             <p><?= $nome ?></p>
             <p>Pontos: XXXX</p>
