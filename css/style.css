@@ -262,6 +262,26 @@
     margin-right: 5px;
 }
 
+.cardVideo {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 50%;
+    margin: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.cardVideo-header {
+    background-color: #f2f2f2;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.cardVideo-body {
+    padding: 20px;
+}
+
 #painel-container {
     width: 100%;
 }
@@ -321,9 +341,10 @@
 
 #estatisticas {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     text-align: center;
     flex-wrap: wrap;
+    gap: 50px;
 }
 
 .painelRanking-container {
@@ -331,7 +352,12 @@
     flex-direction: column;
     text-align: center;
     background-color: #f2f2f2;
-    width: 60%;
+    width: 45%;
+}
+
+#ranking-table{
+    border-collapse: collapse;
+    width: 100%;
 }
 
 .painelQuestoes-container {
@@ -379,11 +405,11 @@
     text-align: center;
 }
 
-.card{
+.cardPainel{
     background-color: #fff;
     display: flex;
     align-items: center;
-    width: 80%;
+    width: 100%;
     margin: 10px 0;
     border-radius: 10px;
     box-shadow: inset 5px -5px 0px #d5d5d5,
@@ -417,7 +443,12 @@
     color: #EF5350;
     font-size: 40px;
     padding: 20px;
-    
+}
+
+#taxa{
+    color: #FFA726;
+    font-size: 40px;
+    padding: 20px;
 }
 
 
@@ -891,7 +922,7 @@ footer {
 /* CLASSE QUE ALTERA TABELA TOP ALUNOS */
 
 
-table {
+.ranking-table #table {
     margin: 0 20px;
     width: 100%;
     border-collapse: collapse;

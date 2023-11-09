@@ -28,21 +28,25 @@ include_once("../content/painel.php");
             <a href="../pages/ranking.php" id="btnQuestoes">Ver ranking</a>
         </div>
         <div class="painelCard-container">
-            <div class="card">
+            <div class="cardPainel">
                 <p id="certas">X</p>
                 <span>Certas</span>
                 <span class="space"></span>
                 <i id="certoCard" class="material-icons">check_circle_outline</i>
             </div>
-            <div class="card">
+            <div class="cardPainel">
                 <p id="erradas">X</p>
-                <span>Certas</span>
+                <span>Erradas</span>
                 <span class="space"></span>
                 <i id="erroCard" class="material-icons">highlight_off</i>
             </div>
+            <div class="cardPainel">
+                <p id="taxa">%</p>
+                <span>Taxa de acertos</span>
+            </div>  
         </div>
-        <div class="painelranking-container">
-            <table>
+        <div class="painelRanking-container">
+            <table id="ranking-table">
                 <thead>
                     <tr>
                         <td>Ranking</td>
@@ -61,5 +65,16 @@ include_once("../content/painel.php");
                 </tbody>
             </table>
         </div>
+        <div class="cardVideo">
+            <div class="cardVideo-header">
+                <h3>Conheça o ENADE</h3>
+            </div>
+            <div class="cardVideo-body">
+                <video width="100%" height="50%" controls>
+                    <source src="caminho/do/seu/video.mp4" type="video/mp4">
+                        Seu navegador não suporta o elemento de vídeo.
+                    </video>
+            </div>
+    </div>
     </div>
 </main>

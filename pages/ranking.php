@@ -55,11 +55,12 @@ include_once("../content/painel.php");
         <?php endfor; ?>
     </div>
     <div class="ranking-table">
-        <table>
+        <table id="table">
             <thead>
                 <tr>
                     <th>#</th>
                     <th>Nome</th>
+                    <th class="space"></th>
                     <th>Pontos</th>
                 </tr>
             </thead>
@@ -68,6 +69,7 @@ include_once("../content/painel.php");
                 <tr>
                     <td><?= $i;?></td>
                     <td class="img-td"><img class="img-table" src="../img/default.png" alt=""> Nome do aluno</td>
+                    <td class="space"></td>
                     <td>XXXX</td>
                 </tr>
                 <?php endfor;?>
