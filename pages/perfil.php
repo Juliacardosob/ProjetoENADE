@@ -2,6 +2,7 @@
 include_once("../content/header.php");
 include_once("../backend/alterar_cadastro.php");
 include_once("../backend/bd_editar.php");
+include_once("../backend/conexao.php");
 
 if (!isset($_SESSION)) {
     session_start();
