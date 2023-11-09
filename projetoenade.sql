@@ -42,8 +42,8 @@ CREATE TABLE `administrador` (
 
 CREATE TABLE `aluno` (
   `id` int(10) UNSIGNED NOT NULL,
-  `usuario` varchar(255) NOT NULL,
-  `senha` varchar(100) DEFAULT NULL,
+  `usuario` varchar(100) NOT NULL,
+  `senha` varchar(255) DEFAULT NULL,
   `nickname` varchar(10) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
   `foto` varchar(100) DEFAULT NULL
