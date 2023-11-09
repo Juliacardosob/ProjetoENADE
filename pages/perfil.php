@@ -8,8 +8,10 @@ if (!isset($_SESSION)) {
 } else {
     if (isset($_SESSION['usuario'])) {
         $nome = $_SESSION['usuario'];
-        $foto = $_SESSION['foto'];
-        $caminho = $_SESSION['caminho'];
+
+        $select_b = $conn->query("SELECT * FROM aluno WHERE usuario = '$nome'");
+        $row = $select_b->fetch(PDO::FETCH_ASSOC);
+        $foto = $row['foto'];
     }
 }
 ?>
@@ -25,7 +27,7 @@ if (!isset($_SESSION)) {
         <div class="perfil-box">
             <div class="perfil-conteudo">
                 <h1>Alterar cadastro</h1>
-                <img src="<?=$caminho?>/<?=$foto?>" alt="fotoperfil" name="foto">
+                <img src="../img/<?=$foto;?>" alt="fotoperfil" name="foto">
                 <form method="post" enctype="multipart/form-data">
                     <button class="btn-form btn-foto" id="btnfoto">Mudar Foto</button>
                     <div class="file">

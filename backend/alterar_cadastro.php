@@ -6,39 +6,33 @@ if(!isset($_SESSION)){
 }else{
     if (isset($_SESSION['usuario'])) {
         $usuario = $_SESSION['usuario'];
-        $foto = $_SESSION['foto'];
-        $caminho = $_SESSION['caminho'];
     }
 }
 
 if(isset($_POST['enviar'])){
-    $foton = $_FILES['mudarFoto']['name'];
+    $foton = $_FILES['foto']['name'];
+    $fotontmp = $_FILES['foto']['tmp_name'];
 
     if(isset($foton)){
 
-        $fotontmp = $_FILES['mudarFoto']['tmp_name'];
+        $select_b = $conn->query("SELECT * FROM aluno WHERE usuario = '$usuario'");
+        $row = $select_b->fetch(PDO::FETCH_ASSOC);
+        $fotobd = $row['foto'];
 
-        if($caminho == '../img/'){
-            $_SESSION['caminho'] = "../img/fotos_perfil/'$usuario'";
-
-            $caminho = $_SESSION['caminho'];
-            
-            mkdir($caminho, 0755, true);
+        if(strcmp($fotobd, 'default.png') == 0){
+            mkdir("../img/fotos_perfil/$usuario", 0755, true);
         }
 
-        $move = move_uploaded_file($fotontmp, "$caminho/$foton");
+        $fotonova = "fotos_perfil/$usuario/$foton";
 
-        if($move == true){
+        $move = move_uploaded_file($fotontmp, "../img/$fotonova");
 
-            $_SESSION['foto'] = $foton;
+        $update_f = $conn->prepare("UPDATE aluno SET foto = ? WHERE usuario = ?");
+        $result = $update_f->execute([$fotonova, $usuario]);
 
-            $update_f = $conn->prepare("UPDATE aluno SET foto = '$foton' WHERE usuario = '$usuario'");
-
-            $result = $update_f->execute();
-            
-            if($result == true){
-                echo 'foto atualizada';
-            }
+        if($move == true && $result == true){
+            echo 'foto atualizada';
+            $foto = $fotonova;
         }
     }else{
         echo 'Por favor, selecione uma foto.';
