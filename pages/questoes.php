@@ -1,5 +1,6 @@
 <?php
 include_once("../content/painel.php");
+include_once("../backend/contabilizaquestao.php");
 ?>
 <main>
     <div class="title">
@@ -26,6 +27,7 @@ include_once("../content/painel.php");
                 <label class="alternativas-card">
                     <input class="opcaoRadio" type="radio" name="alternativa" value="b">
                     <p>B&rpar; O tempo de desenvolvimento não deve ultrapassar seis meses.</p>
+                                            
                 </label>
                 <label class="alternativas-card">
                     <input class="opcaoRadio" type="radio" name="alternativa" value="c">
@@ -39,7 +41,7 @@ include_once("../content/painel.php");
                     <input class="opcaoRadio" type="radio" name="alternativa" value="e">
                     <p>E&rpar; A base de dados deve ser protegida para acesso apenas de usuários autorizados.</p>
                 </label>
-                <button class="btnResponder">Responder</button>
+                <button class="btnResponder" name="btnResponder">Responder</button>
             </form>
         </div>
     </div>
