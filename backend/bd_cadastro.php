@@ -17,21 +17,16 @@ if (isset($_POST["cadastrar"])) {
     $foto = $_FILES["foto"]["name"];
 
     if (!empty($foto)) {
-
-        $_SESSION['caminho'] = "../img/fotos_perfil/'$usuario'";
-
-        $caminho = $_SESSION['caminho'];
-
-        mkdir($caminho, 0755, true);
-
         $foto_s = $_FILES["foto"]["tmp_name"];
 
-        $move = move_uploaded_file($foto_s, "$caminho/$foto");
+        $caminhobd = "fotos_perfil/$usuario/$foto";
+
+        mkdir("../img/fotos_perfil/$usuario", 0755, true);
+        $move = move_uploaded_file($foto_s, "../img/$caminhobd");
 
     } else {
-        $foto = "default.png";
-
-        $_SESSION['caminho'] = '../img/';
+        
+        $caminhobd = "default.png";
     }
 
     if ($newUser->verificarSenha($senha, $conf_senha)) {
@@ -43,6 +38,10 @@ if (isset($_POST["cadastrar"])) {
             $newUser->setFoto($foto);
 
             $User->Cadastrar($newUser);
+
+            $add_f = $conn->prepare("UPDATE aluno SET foto = ? WHERE usuario = ?");
+            $add_f->execute([$caminhobd, $usuario]);
+
             header("Location: ../pages/login.php");
             $_SESSION['msg'] = "";
         } else {
