@@ -1,20 +1,23 @@
 <?php
 include_once("header.php");
+include_once("../backend/conexao.php");
+
 if (!isset($_SESSION)) {
     session_start();
 } else {
     if (isset($_SESSION['usuario'])) {
         $nome = $_SESSION['usuario'];
-        $foto = $_SESSION['foto'];
-        $caminho = $_SESSION['caminho'];
+
+        $select_b = $conn->query("SELECT * FROM aluno WHERE usuario = '$nome'");
+        $row = $select_b->fetch(PDO::FETCH_ASSOC);
+        $foto = $row['foto'];
     }
 }
-
 ?>
 
 <div id="userMenu-container">
     <div id="userDetails">
-        <img src="<?=$caminho?>/<?=$foto?>" alt="" id="userImg">
+        <img src="../img/<?=$foto;?>" alt="" id="userImg">
         <div id="userDetails-txt">
             <p><?= $nome ?></p>
             <p>Pontos: XXXX</p>
