@@ -1,6 +1,7 @@
 <?php
-include_once("../../content/header.php");
-?>
+ include_once("../content/header.php");
+
+ ?>
 
 <form action="" id="inserirQuestoes-form">
     <div class="inserirQuestoesInput-form">
@@ -49,4 +50,3 @@ include_once("../../content/header.php");
     </div>
     <button>Enviar questão</button>
 </form>
-
