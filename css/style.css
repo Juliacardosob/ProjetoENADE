@@ -262,33 +262,26 @@
     margin-right: 5px;
 }
 
-.cardVideo {
-    border: 1px solid #94958B solid #ccc;
-    border-radius: 8px;
-    width: 50%;
-    margin: 20px;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-}
-
-.cardVideo-header {
-    background-color: #f2f2f2;
-    padding: 10px;
-    border-bottom: 1px solid #94958B solid #ccc;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-}
-
-.cardVideo-body {
-    padding: 20px;
-}
 
 #painel-container {
     width: 100%;
 }
 
+#painelImage{
+    margin: 50px auto;
+    width: 90%;
+    height: 400px;
+    overflow: hidden;
+}
+
+#painelimg{
+    
+    width: 100%;
+}
+
 #painelActions-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     text-align: center;
     margin: 50px 0;
@@ -296,7 +289,7 @@
 }
 
 .painelActions {
-    padding: 20px 60px;
+    padding: 20px 120px;
     margin: 10px 20px;
     border-radius: 10px;
     background: #fdfdfd;
@@ -360,6 +353,10 @@
     width: 100%;
 }
 
+#ranking-table tr{
+    border-bottom: 1px solid #ccc;
+}
+
 .painelQuestoes-container {
     display: flex;
     width: 20%;
@@ -416,6 +413,7 @@
     inset -5px 5px 0px #ffffff;
 }
 
+
 #certas{
     color: #66BB6A;
     font-size: 40px;  
@@ -449,6 +447,53 @@
     color: #FFA726;
     font-size: 40px;
     padding: 20px;
+}
+
+.painelNews-container {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    padding: 20px;
+}
+
+.painelNews-card {
+    border-radius: 10px;
+    box-shadow: inset 5px -5px 0px #d5d5d5,
+    inset -5px 5px 0px #ffffff;
+    padding: 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.painelNewsCard-Elements{
+    margin: 15px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#painelNews-text {
+    margin-right: 15px;
+}
+
+#painelNews-button {
+    background-color: #075AB3;
+    padding: 10px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#painelNews-button:hover{
+    background-color: #0550a0;
+}
+
+#painelNews-img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
 }
 
 
@@ -1166,7 +1211,6 @@ th {
     flex-direction: column;
     margin: 20px;
 }
-
 
 /* FIM-INSERIRQUESTOES*/
 

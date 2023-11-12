@@ -65,7 +65,7 @@ include_once("../content/painel.php");
                 </tr>
             </thead>
             <tbody>
-                <?php for($i = 1; $i <= 5; $i++):?>
+                <?php for($i = 1; $i <= 100; $i++):?>
                 <tr>
                     <td><?= $i;?></td>
                     <td class="img-td"><img class="img-table" src="../img/default.png" alt=""> Nome do aluno</td>

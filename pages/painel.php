@@ -3,6 +3,9 @@ include_once("../content/painel.php");
 ?>
 
 <main id="painel-container">
+    <div id="painelImage">
+        <img id="painelimg" src="../img/enade-enade.jpg" alt="">
+    </div>
     <div id="painelActions-container">
         <div class="painelActions">
             <i class="material-icons">account_circle</i>
@@ -43,7 +46,7 @@ include_once("../content/painel.php");
             <div class="cardPainel">
                 <p id="taxa">%</p>
                 <span>Taxa de acertos</span>
-            </div>  
+            </div>
         </div>
         <div class="painelRanking-container">
             <table id="ranking-table">
@@ -65,16 +68,21 @@ include_once("../content/painel.php");
                 </tbody>
             </table>
         </div>
-        <div class="cardVideo">
-            <div class="cardVideo-header">
-                <h3>Conheça o ENADE</h3>
-            </div>
-            <div class="cardVideo-body">
-                <video width="100%" height="50%" controls>
-                    <source src="caminho/do/seu/video.mp4" type="video/mp4">
-                        Seu navegador não suporta o elemento de vídeo.
-                    </video>
-            </div>
     </div>
+    <div class="painelNews-container">
+        <div>
+            <h2>Últimas novidades</h2>
+        </div>
+        <div class="painelNews-card">
+            <div>
+                <h3>Data do Enade</h3>
+                <img id="painelNews-img" src="../img/enade-enade.jpg" alt="Descrição da imagem">
+            </div>
+            <div class="painelNewsCard-Elements">
+                <p id="painelNews-text">A aplicação do ENADE ocorre ciclicamente, em um intervalo de três anos para cada área de conhecimento. Em 2021, foram avaliados os cursos das áreas de Ciências Sociais Aplicadas, Ciências Humanas, e áreas afins. No entanto, é importante ressaltar que o ENADE abrange diversas áreas do conhecimento, incluindo Engenharias, Saúde, Ciências Exatas, e outras, em diferentes edições.</p>
+                <span class="space"></span>
+                <button id="painelNews-button">Saber mais sobre o ENADE</button>
+            </div>
+        </div>
     </div>
 </main>
