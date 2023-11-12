@@ -28,5 +28,3 @@ if (!isset($_SESSION)) {
         <a href="../pages/perfil.php" class="action-link"><i class="material-icons">account_circle</i>Perfil</a>
     </div>
 </div>
-
-?>
