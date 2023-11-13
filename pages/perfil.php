@@ -1,6 +1,5 @@
 <?php
 include_once("../content/header.php");
-include_once("../backend/alterar_cadastro.php");
 include_once("../backend/bd_editar.php");
 include_once("../backend/conexao.php");
 
@@ -8,9 +7,9 @@ if (!isset($_SESSION)) {
     session_start();
 } else {
     if (isset($_SESSION['usuario'])) {
-        $nome = $_SESSION['usuario'];
+        $id = $_SESSION['id'];
 
-        $select_b = $conn->query("SELECT * FROM aluno WHERE usuario = '$nome'");
+        $select_b = $conn->query("SELECT * FROM aluno WHERE id = '$id'");
         $row = $select_b->fetch(PDO::FETCH_ASSOC);
         $foto = $row['foto'];
     }
