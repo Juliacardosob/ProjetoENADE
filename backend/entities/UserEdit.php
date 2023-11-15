@@ -1,8 +1,8 @@
 <?php
 
-include_once("backend/models/UserInterace.php");
+require_once("../backend/models/UserInterace.php");
 
-class UserEdit implements IUser
+class UserEdit
 {
     private $Usuario;
     private $Senha;

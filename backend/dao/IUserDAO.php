@@ -1,9 +1,9 @@
 <?php
-include_once("backend/entities/User.php");
-include_once("backend/entities/UserEdit.php");
+require_once("../backend/entities/User.php");
+require_once("../backend/entities/UserEdit.php");
 
 interface IUserDAO{
-    public function Cadastrar(User $user);
+    public function cadastrarAluno(User $user);
 
     public function verificarCadastrado($usuario);
 

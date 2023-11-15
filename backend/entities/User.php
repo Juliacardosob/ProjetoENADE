@@ -1,18 +1,17 @@
 <?php
 
-include_once("backend/models/UserInterace.php");
+require_once("../backend/models/UserInterace.php");
 
 class User implements IUser
 {
-
-    private $Id;
-    private $token;
-    private $primeiroNome;
-    private $ultimoNome;
-    private $Apelido;
-    private $Senha;
-    private $Email;
-    private $Foto;
+    public $id;
+    public $token;
+    public $primeiroNome;
+    public $ultimoNome;
+    public $Apelido;
+    public $Senha;
+    public $Email;
+    public $Foto;
 
     public function setPrimeiroNome($primeiroNome){
         $this->primeiroNome = $primeiroNome;
@@ -38,6 +37,14 @@ class User implements IUser
     public function getFullName($primeiroNome, $ultimoNome)
     {
         return $this->primeiroNome . " " . $this->ultimoNome;
+    }
+
+    public function setApelido($apelido){
+        $this->Apelido = $apelido;
+    }
+
+    public function getApelido(){
+        return $this->Apelido;
     }
     
 
@@ -88,6 +95,10 @@ class User implements IUser
         } else {
             return false;
         }
+    }
+
+    public function verificarVazia($input){
+        
     }
 
 }

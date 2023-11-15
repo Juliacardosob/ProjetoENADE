@@ -1,5 +1,5 @@
 <?php
-include_once("content/body.php");
+require_once("../content/body.php");
 ?>
 
 <div id="banner">
@@ -99,5 +99,5 @@ include_once("content/body.php");
 </main>
 
 <?php
-include_once("../content/footer.php");
+require_once("../content/footer.php");
 ?>

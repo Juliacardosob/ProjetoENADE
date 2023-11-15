@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 15/11/2023 às 05:00
+-- Tempo de geração: 15/11/2023 às 17:57
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
@@ -29,10 +29,10 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `administrador` (
   `id_administrador` int(11) NOT NULL,
-  `nome` varchar(100) DEFAULT NULL,
-  `senha` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `foto` text DEFAULT NULL
+  `nome` varchar(100) NOT NULL DEFAULT '',
+  `senha` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `foto` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -43,14 +43,13 @@ CREATE TABLE `administrador` (
 
 CREATE TABLE `aluno` (
   `id_usuario` int(11) NOT NULL,
-  `token` varchar(255) DEFAULT NULL,
-  `primeiroNome` varchar(100) DEFAULT NULL,
-  `ultimoNome` varchar(100) DEFAULT NULL,
-  `senha` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `foto` text DEFAULT NULL,
-  `apelido` varchar(15) DEFAULT NULL,
-  `id_ranking` int(11) DEFAULT NULL
+  `token` varchar(255) NOT NULL,
+  `primeiroNome` varchar(100) NOT NULL,
+  `ultimoNome` varchar(100) NOT NULL,
+  `senha` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `foto` text NOT NULL,
+  `apelido` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -61,18 +60,18 @@ CREATE TABLE `aluno` (
 
 CREATE TABLE `questao` (
   `id_questao` int(11) NOT NULL,
-  `enunciado` text DEFAULT NULL,
-  `ano` int(11) DEFAULT NULL,
-  `descricao` text DEFAULT NULL,
-  `fonte` text DEFAULT NULL,
-  `alternativaA` text DEFAULT NULL,
-  `alternativaB` text DEFAULT NULL,
-  `alternativaC` text DEFAULT NULL,
-  `alternativaD` text DEFAULT NULL,
-  `alternativaE` text DEFAULT NULL,
-  `respostaCorreta` char(1) DEFAULT NULL,
-  `num_questao` int(11) DEFAULT NULL,
-  `id_administrador` int(11) DEFAULT NULL
+  `enunciado` text NOT NULL,
+  `ano` int(4) NOT NULL,
+  `descricao` text NOT NULL,
+  `fonte` text NOT NULL,
+  `alternativaA` text NOT NULL,
+  `alternativaB` text NOT NULL,
+  `alternativaC` text NOT NULL,
+  `alternativaD` text NOT NULL,
+  `alternativaE` text NOT NULL,
+  `respostaCorreta` char(1) NOT NULL,
+  `num_questao` int(15) NOT NULL,
+  `id_administrador` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -83,7 +82,8 @@ CREATE TABLE `questao` (
 
 CREATE TABLE `ranking` (
   `id_ranking` int(11) NOT NULL,
-  `pontuacao` int(11) DEFAULT NULL
+  `id_usuario` int(11) NOT NULL,
+  `pontuacao` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -93,8 +93,8 @@ CREATE TABLE `ranking` (
 --
 
 CREATE TABLE `responde` (
-  `id_usuario` int(11) DEFAULT NULL,
-  `id_questao` int(11) DEFAULT NULL
+  `id_usuario` int(11) NOT NULL,
+  `id_questao` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -111,8 +111,8 @@ ALTER TABLE `administrador`
 -- Índices de tabela `aluno`
 --
 ALTER TABLE `aluno`
-  ADD PRIMARY KEY (`id_usuario`),
-  ADD KEY `FK_Aluno_2` (`id_ranking`);
+  ADD PRIMARY KEY (`id_usuario`);
+  
 
 --
 -- Índices de tabela `questao`
@@ -125,7 +125,8 @@ ALTER TABLE `questao`
 -- Índices de tabela `ranking`
 --
 ALTER TABLE `ranking`
-  ADD PRIMARY KEY (`id_ranking`);
+  ADD PRIMARY KEY (`id_ranking`),
+ ADD KEY `FK_RANKING` (`id_usuario`);
 
 --
 -- Índices de tabela `responde`
@@ -133,6 +134,34 @@ ALTER TABLE `ranking`
 ALTER TABLE `responde`
   ADD KEY `FK_responde_1` (`id_usuario`),
   ADD KEY `FK_responde_2` (`id_questao`);
+
+--
+-- AUTO_INCREMENT para tabelas despejadas
+--
+
+--
+-- AUTO_INCREMENT de tabela `administrador`
+--
+ALTER TABLE `administrador`
+  MODIFY `id_administrador` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `aluno`
+--
+ALTER TABLE `aluno`
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `questao`
+--
+ALTER TABLE `questao`
+  MODIFY `id_questao` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `ranking`
+--
+ALTER TABLE `ranking`
+  MODIFY `id_ranking` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restrições para tabelas despejadas
@@ -149,13 +178,6 @@ ALTER TABLE `aluno`
 --
 ALTER TABLE `questao`
   ADD CONSTRAINT `FK_Questao_2` FOREIGN KEY (`id_administrador`) REFERENCES `administrador` (`id_administrador`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Restrições para tabelas `responde`
---
-ALTER TABLE `responde`
-  ADD CONSTRAINT `FK_responde_1` FOREIGN KEY (`id_usuario`) REFERENCES `aluno` (`id_usuario`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `FK_responde_2` FOREIGN KEY (`id_questao`) REFERENCES `questao` (`id_questao`) ON DELETE SET NULL ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

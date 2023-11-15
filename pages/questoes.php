@@ -1,6 +1,6 @@
 <?php
-include_once("content/painel.php");
-include_once("backend/contabilizaquestao.php");
+require_once("../content/painel.php");
+require_once("../backend/contabilizaquestao.php");
 ?>
 <main>
     <div class="title">

@@ -3,10 +3,10 @@
 include_once("conexao.php");
 
 interface IQuestao{
-    function criarQuestao();
+    function criarQuestao(Questao $questao);
 
     function editarQuestao();
 
-    function deletarQuestao();
+    function deletarQuestao($id);
 
 }

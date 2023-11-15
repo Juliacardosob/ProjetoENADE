@@ -1,5 +1,5 @@
 <?php
-include_once("body.php");
+require_once("body.php");
 if(!isset($_SESSION)){
     session_start();
 }

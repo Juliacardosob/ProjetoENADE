@@ -1,6 +1,6 @@
 <?php
-include_once("conexao.php");
-include_once("entities/UserDAO.php");
+require_once("conexao.php");
+require_once("dao/UserDAO.php");
 if (!isset($_SESSION)) {
     session_start();
 }
@@ -26,7 +26,7 @@ if (isset($_POST["entrar"])) {
             $_SESSION['msg'] = "Não cadastrado";
         }
     } else {
-        //TODO - página do admin
+        header("Location: ../adm/inserirQuestoes.php");
         echo 'é o admin';
     }
 

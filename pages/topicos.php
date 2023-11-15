@@ -1,5 +1,5 @@
 <?php
-include_once("content/painel.php");
+require_once("../content/painel.php");
 ?>
 
 <main>
@@ -12,7 +12,7 @@ include_once("content/painel.php");
                 <select id="escolha" name="escolha">
                     <option value="default" selected>Selecione um tópico</option>
                     <option value="programacao">Lógica de Programação</option>
-                    <option value="hardware">Estrutura de computadores/option>
+                    <option value="hardware">Estrutura de computadores</option>
                     <option value="computacao">Ciência da Computação</option>
                 </select>
             </div>

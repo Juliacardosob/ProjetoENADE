@@ -1,6 +1,6 @@
 <?php
-include_once("header.php");
-include_once("backend/conexao.php");
+require_once("header.php");
+require_once("../backend/conexao.php");
 
 if (!isset($_SESSION)) {
     session_start();

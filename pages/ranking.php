@@ -1,5 +1,5 @@
 <?php
-include_once("content/painel.php");
+require_once("../content/painel.php");
 ?>
 
 <main id="ranking-container">
@@ -78,5 +78,5 @@ include_once("content/painel.php");
     </div>
 </main>
 <?php
-include_once("../content/footer.php")
+require_once("../content/footer.php")
 ?>

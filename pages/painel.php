@@ -1,11 +1,9 @@
 <?php
-include_once("content/painel.php");
+require_once("../content/painel.php");
 ?>
 
 <main id="painel-container">
-    <div id="painelImage">
-        <img id="painelimg" src="../img/enade-enade.jpg" alt="">
-    </div>
+
     <div id="painelActions-container">
         <div class="painelActions">
             <i class="material-icons">account_circle</i>

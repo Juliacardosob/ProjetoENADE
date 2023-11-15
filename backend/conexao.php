@@ -1,5 +1,5 @@
 <?php
-include_once("help/url.php");
+require_once("../help/url.php");
 
     $db_host = "localhost";
     $db_username = "root";

@@ -1,12 +1,12 @@
 <?php
-include_once("content/header.php");
-
+require_once("../content/header.php");
 ?>
 <main id="inserirQuestoes-container">
     <div id="inserirQuestoes-title">
         <h1>Inserir questões</h1>
     </div>
-    <form action="" id="inserirQuestoes-form">
+    <form action="../backend/bd_questoes.php" id="inserirQuestoes-form" method="POST">
+        <input type="hidden" name="type" value="inserir">
         <div class="inserirQuestoesInput-form">
             <label for="numQuestao">Questão: </label>
             <input type="text" placeholder="Digite o número da questão" name="numQuestao">
@@ -47,9 +47,15 @@ include_once("content/header.php");
             <label for="alternativaE">Alternativa E</label>
             <input name="alternativaE" placeholder="Digite a alternativa E">
         </div>
-        <div class="inserirQuestoesInput-form">
-            <label for="foto">Imagem: </label>
-            <input id="inserirQuestoesImagem" type="file" name="foto" accept="image/png, image/jpeg">
+        <div class="inserirQuestoesAlternativas">
+            <label for="correta">Escolha a alternativa correta: </label>
+            <select name="correta">
+                <option value="alternativaA">A</option>
+                <option value="alternativaB">B</option>
+                <option value="alternativaC">C</option>
+                <option value="alternativaD">D</option>
+                <option value="alternativaE">E</option>
+            </select>
         </div>
         <div id="inserirQuestoesButton-container">
             <button>Enviar questão</button>

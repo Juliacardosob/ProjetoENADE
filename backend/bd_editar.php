@@ -1,6 +1,6 @@
 <?php
-include_once("conexao.php");
-include_once("entities/UserDAO.php");
+require_once("conexao.php");
+require_once("dao/UserDAO.php");
 
 if (!isset($_SESSION)) {
     session_start();
