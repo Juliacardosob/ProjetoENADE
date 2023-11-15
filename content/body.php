@@ -1,5 +1,5 @@
 <?php
-include_once("../help/url.php");
+include_once("help/url.php");
 ?>
 
 <!DOCTYPE html>

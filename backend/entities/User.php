@@ -1,23 +1,54 @@
 <?php
 
-include_once("../backend/models/UserInterace.php");
+include_once("backend/models/UserInterace.php");
 
 class User implements IUser
 {
 
-    private $Usuario;
+    private $Id;
+    private $token;
+    private $primeiroNome;
+    private $ultimoNome;
+    private $Apelido;
     private $Senha;
     private $Email;
     private $Foto;
 
+    public function setPrimeiroNome($primeiroNome){
+        $this->primeiroNome = $primeiroNome;
+    }
+
+    public function getPrimeiroNome(){
+        return $this->primeiroNome;
+    }
+
+    public function generateToken(){
+        return bin2hex(random_bytes(50));
+    }
+
+        
+    public function setUltimoNome($ultimoNome){
+        $this->ultimoNome = $ultimoNome;
+    }
+
+    public function getUltimoNome(){
+        return $this->ultimoNome;
+    }
+
+    public function getFullName($primeiroNome, $ultimoNome)
+    {
+        return $this->primeiroNome . " " . $this->ultimoNome;
+    }
+    
+
     public function setUsuario($usuario)
     {
-        $this->Usuario = $usuario;
+        $this->Apelido = $usuario;
     }
 
     public function getUsuario()
     {
-        return $this->Usuario;
+        return $this->Apelido;
     }
 
     public function setSenha($senha)

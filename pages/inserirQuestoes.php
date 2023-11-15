@@ -1,5 +1,5 @@
 <?php
-include_once("../content/header.php");
+include_once("content/header.php");
 
 ?>
 <main id="inserirQuestoes-container">
@@ -14,10 +14,6 @@ include_once("../content/header.php");
         <div class="inserirQuestoesInput-form">
             <label for="anoProva">Enade: </label>
             <input type="text" placeholder="Digite o ano da prova" name="anoProva">
-        </div>
-        <div class="inserirQuestoesInput-form">
-            <label for="numProva">Prova: </label>
-            <input type="text" placeholder="Digite o número da prova" name="numProva">
         </div>
         <div class="inserirQuestoesInput-form">
             <label for="desc">Descricao:</label>

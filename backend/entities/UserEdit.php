@@ -1,6 +1,6 @@
 <?php
 
-include_once("../backend/models/UserInterace.php");
+include_once("backend/models/UserInterace.php");
 
 class UserEdit implements IUser
 {

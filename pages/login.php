@@ -1,6 +1,6 @@
 <?php
-include_once("../content/body.php");
-include_once("../backend/bd_login.php");
+include_once("content/body.php");
+include_once("backend/bd_login.php");
 ?>
 <main class="login-container">
     <form class="login-form" method="post">

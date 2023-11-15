@@ -1,6 +1,6 @@
 <?php
 include_once("conexao.php");
-include_once("../backend/entities/UserDAO.php");
+include_once("entities/UserDAO.php");
 
 if (!isset($_SESSION)) {
     session_start();

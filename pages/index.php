@@ -1,5 +1,5 @@
 <?php
-include_once("../content/body.php");
+include_once("content/body.php");
 ?>
 
 <div id="banner">

@@ -7,6 +7,18 @@ interface IUser{
     public function getUsuario();
 
     public function setSenha($senha);
+
+    public function setPrimeiroNome($primeiroNome);
+
+    public function getPrimeiroNome();
+
+    public function setUltimoNome($ultimoNome);
+
+    public function getUltimoNome();
+
+    public function getFullName($primeiroNome, $ultimoNome);
+
+    public function generateToken();
     
     public function getSenha();
 

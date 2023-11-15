@@ -1,6 +1,6 @@
 <?php
-include_once("../content/body.php");
-include_once("../backend/bd_cadastro.php");
+include_once("content/body.php");
+include_once("backend/bd_cadastro.php");
 ?>
 
 <main class="login-container">

@@ -1,5 +1,5 @@
 <?php
-include_once("../content/painel.php");
+include_once("content/painel.php");
 ?>
 
 <main id="painel-container">
