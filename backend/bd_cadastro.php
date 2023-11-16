@@ -20,18 +20,20 @@ if ($type == "cadastrar") {
     $senha = filter_input(INPUT_POST, "senha");
     $conf_senha = filter_input(INPUT_POST, "confirme");
 
-    if (!empty($foto)) {
-        $foto = $_FILES["foto"]["name"];
-        $foto_s = $_FILES["foto"]["tmp_name"];
+    $foto = "default.png";
 
-        $caminhobd = "fotos_perfil/$apelido/$foto";
+    // if (!empty($foto)) {
+    //     $foto = $_FILES["foto"]["name"];
+    //     $foto_s = $_FILES["foto"]["tmp_name"];
 
-        mkdir("../img/fotos_perfil/$apelido", 0755, true);
-        $move = move_uploaded_file($foto_s, "../img/$caminhobd");
-    } else {
+    //     $caminhobd = "fotos_perfil/$apelido/$foto";
 
-        $caminhobd = "default.png";
-    }
+    //     mkdir("../img/fotos_perfil/$apelido", 0755, true);
+    //     $move = move_uploaded_file($foto_s, "../img/$caminhobd");
+    // } else {
+
+    //     $caminhobd = "default.png";
+    // }
 
     if ($newUser->verificarSenha($senha, $conf_senha)) {
         if (!$User->verificarCadastrado($apelido, $senha)) {

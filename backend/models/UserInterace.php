@@ -16,8 +16,6 @@ interface IUser{
 
     public function getSobrenome();
 
-    public function getFullName();
-
     public function generateToken();
     
     public function getSenha();

@@ -34,11 +34,6 @@ class User implements IUser
         return $this->sobrenome;
     }
 
-    public function getFullName()
-    {
-        return $this->nome . " " . $this->sobrenome;
-    }
-
     public function setApelido($apelido){
         $this->apelido = $apelido;
     }

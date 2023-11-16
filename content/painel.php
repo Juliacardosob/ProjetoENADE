@@ -3,19 +3,21 @@ require_once("header.php");
 require_once("../backend/conexao.php");
 require_once("../backend/dao/UserDAO.php");
 
-$user = new UserDAO($conn);
+$userDAO = new UserDAO($conn);
+$user = new User();
 
 if (!isset($_SESSION)) {
     session_start();
 } else {
     if (isset($_SESSION['nome'])) {
-        $nome = $_SESSION['nome'];
         $id = $_SESSION['id_usuario'];
-        $pontos = $user->getPontos($id);
+        $pontos = $userDAO->getPontos($id);
+        $nome = $_SESSION['nome'];
+        $foto = $user->getFoto();
 
-        $select_b = $conn->query("SELECT * FROM usuario WHERE apelido = '$nome'");
-        $row = $select_b->fetch(PDO::FETCH_ASSOC);
-        $foto = $row['foto'];
+    //     $select_b = $conn->query("SELECT * FROM usuario WHERE apelido = '$nome'");
+    //     $row = $select_b->fetch(PDO::FETCH_ASSOC);
+    //     $foto = $row['foto'];
     }
 }
 ?>

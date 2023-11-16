@@ -137,6 +137,26 @@ class UserDAO implements IUserDAO
         return $row['pontos'];
     }
 
+    public function buscarCemMelhores(){
+        $stmt = $this->Conn->prepare("SELECT * FROM usuario ORDER BY pontos DESC LIMIT 100");
+
+        $stmt->execute();
+
+        $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $row;
+    }
+
+    public function buscarTresMelhores(){
+        $stmt = $this->Conn->prepare("SELECT * FROM usuario ORDER BY pontos DESC LIMIT 3");
+
+        $stmt->execute();
+
+        $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $row;
+    }
+
     private function definirVariaveisSessao($nome, $foto, $id, $email)
     {
         $_SESSION['nome'] = $nome;

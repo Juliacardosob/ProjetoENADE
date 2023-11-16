@@ -205,7 +205,12 @@ class QuestaoDAO implements IQuestaoDAO
         $total = $this->QuestoesRespondidas($id_usuario);
         $acertos = $this->questoesCertas($id_usuario);
 
+
+        if($total == 0){
+            $total = 1;
+        }
         $taxa = ($acertos * 100)/$total;
+        $taxa = round($taxa);
 
         return $taxa;
 

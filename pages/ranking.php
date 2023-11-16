@@ -1,5 +1,15 @@
 <?php
 require_once("../content/painel.php");
+require_once("../backend/dao/UserDAO.php");
+
+$ranking = new UserDAO($conn);
+
+$pontosUsuario = $ranking->getPontos($id);
+
+$rankingTop100 = $ranking->buscarCemMelhores();
+
+$rankingTop3 = $ranking->buscarTresMelhores();
+
 ?>
 
 <main id="ranking-container">
@@ -16,13 +26,13 @@ require_once("../content/painel.php");
         <div class="card">
             <p>Sua colocação</p>
             <div class="rank-number">
-                <h1 id="rank">6°</h1>
+                <h1 id="rank">°</h1>
             </div>
         </div>
         <div class="card">
             <p>Seus pontos: </p>
             <div class="rank-number">
-                <h1 id="rank">10</h1>
+                <h1 id="rank"><?=$pontosUsuario?></h1>
             </div>
         </div>
         <div class="card">
@@ -32,18 +42,18 @@ require_once("../content/painel.php");
         </div>
     </div>
     <div id="top-ranked-form">
-        <?php for ($i = 1; $i <= 3; $i++) : ?>
+        <?php foreach($rankingTop3 as $top3) : ?>
             <div class="top-ranked-box">
                 <div class="top-ranked-img">
                     <img src="../img/default.png">
                     <div class="top-ranked-number">
-                        <p><?= $i; ?>°</p>
+                        <p>1°</p>
                     </div>
                 </div>
-                <p class="top-ranked-name">Nome do Aluno</p>
+                <p class="top-ranked-name"><?=$top3["nome"]?></p>
                 <div class="top-ranked-status">
                     <div class="top-ranked-points">
-                        <p class="points">XXXXX</p>
+                        <p class="points"><?=$top3["pontos"]?></p>
                         <p class="top-ranked-subtitle">Pontos</p>
                     </div>
                     <div class="top-ranked-points">
@@ -52,7 +62,7 @@ require_once("../content/painel.php");
                     </div>
                 </div>
             </div>
-        <?php endfor; ?>
+        <?php endforeach; ?>
     </div>
     <div class="ranking-table">
         <table id="table">
@@ -65,14 +75,14 @@ require_once("../content/painel.php");
                 </tr>
             </thead>
             <tbody>
-                <?php for($i = 1; $i <= 100; $i++):?>
+                <?php foreach($rankingTop100 as $top100):?>
                 <tr>
-                    <td><?= $i;?></td>
-                    <td class="img-td"><img class="img-table" src="../img/default.png" alt=""> Nome do aluno</td>
+                    <td>1</td>
+                    <td class="img-td"><img class="img-table" src="../img/default.png" alt=""><?=$top100["nome"]?></td>
                     <td class="space"></td>
-                    <td>XXXX</td>
+                    <td><?=$top100["pontos"]?></td>
                 </tr>
-                <?php endfor;?>
+                <?php endforeach;?>
             </tbody>
         </table>
     </div>
