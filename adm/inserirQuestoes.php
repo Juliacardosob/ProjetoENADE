@@ -8,10 +8,6 @@ require_once("../content/header.php");
     <form action="../backend/bd_questoes.php" id="inserirQuestoes-form" method="POST">
         <input type="hidden" name="type" value="inserir">
         <div class="inserirQuestoesInput-form">
-            <label for="numQuestao">Questão: </label>
-            <input type="text" placeholder="Digite o número da questão" name="numQuestao">
-        </div>
-        <div class="inserirQuestoesInput-form">
             <label for="anoProva">Enade: </label>
             <input type="text" placeholder="Digite o ano da prova" name="anoProva">
         </div>

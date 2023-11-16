@@ -1,27 +1,32 @@
 <?php
 require_once("conexao.php");
 require_once("dao/UserDAO.php");
+
 if (!isset($_SESSION)) {
     session_start();
 }
 
-if (isset($_POST["cadastrar"])) {
-    $User = new UserDAO($conn);
-    $newUser = new User();
+$User = new UserDAO($conn);
+$newUser = new User();
 
-    $usuario = $_POST["usuario"];
-    $email = $_POST["email"];
-    $senha = $_POST["password"];
-    $conf_senha = $_POST["confirme"];
+$type = filter_input(INPUT_POST, "type");
 
-    $foto = $_FILES["foto"]["name"];
+if ($type == "cadastrar") {
+
+    $apelido = filter_input(INPUT_POST, "apelido");
+    $nome = filter_input(INPUT_POST, "nome");
+    $sobrenome = filter_input(INPUT_POST, "sobrenome");
+    $email = filter_input(INPUT_POST, "email");
+    $senha = filter_input(INPUT_POST, "senha");
+    $conf_senha = filter_input(INPUT_POST, "confirme");
 
     if (!empty($foto)) {
+        $foto = $_FILES["foto"]["name"];
         $foto_s = $_FILES["foto"]["tmp_name"];
 
-        $caminhobd = "fotos_perfil/$usuario/$foto";
+        $caminhobd = "fotos_perfil/$apelido/$foto";
 
-        mkdir("../img/fotos_perfil/$usuario", 0755, true);
+        mkdir("../img/fotos_perfil/$apelido", 0755, true);
         $move = move_uploaded_file($foto_s, "../img/$caminhobd");
     } else {
 
@@ -29,13 +34,14 @@ if (isset($_POST["cadastrar"])) {
     }
 
     if ($newUser->verificarSenha($senha, $conf_senha)) {
-        if (!$User->verificarCadastrado($usuario)) {
-
-            $newUser->setUsuario($usuario);
+        if (!$User->verificarCadastrado($apelido, $senha)) {
+            $newUser->setApelido($apelido);
+            $newUser->setNome($nome);
+            $newUser->setSobrenome($sobrenome);
             $newUser->setEmail($email);
             $newUser->setSenha($senha);
             $newUser->setFoto($foto);
-            
+
             $User->cadastrarAluno($newUser);
 
             // $add_f = $conn->prepare("UPDATE aluno SET foto = ? WHERE usuario = ?");
@@ -44,7 +50,7 @@ if (isset($_POST["cadastrar"])) {
             header("Location: ../pages/login.php");
             $_SESSION['msg'] = "";
         } else {
-            $_SESSION['msg'] = "Aluno " . $usuario . " já cadastrado";
+            $_SESSION['msg'] = "Aluno " . $apelido . " já cadastrado";
             return;
         }
     } else {
@@ -56,12 +62,10 @@ if (isset($_POST["cadastrar"])) {
 }
 
 if (isset($_POST["cadastrarADM"])) {
-    $User = new UserDAO($conn);
-    $newUser = new User();
 
-    $usuario = $_POST["usuario"];
+    $nome = $_POST["nome"];
     $email = $_POST["email"];
-    $senha = $_POST["password"];
+    $senha = $_POST["senha"];
     $conf_senha = $_POST["confirme"];
 
     $foto = $_FILES["foto"]["name"];
@@ -69,9 +73,9 @@ if (isset($_POST["cadastrarADM"])) {
     if (!empty($foto)) {
         $foto_s = $_FILES["foto"]["tmp_name"];
 
-        $caminhobd = "fotos_perfil/$usuario/$foto";
+        $caminhobd = "fotos_perfil/$nome/$foto";
 
-        mkdir("../img/fotos_perfil/$usuario", 0755, true);
+        mkdir("../img/fotos_perfil/$nome", 0755, true);
         $move = move_uploaded_file($foto_s, "../img/$caminhobd");
     } else {
 
@@ -79,9 +83,9 @@ if (isset($_POST["cadastrarADM"])) {
     }
 
     if ($newUser->verificarSenha($senha, $conf_senha)) {
-        if (!$User->verificarCadastrado($usuario)) {
+        if (!$User->verificarCadastrado($nome, $senha)) {
 
-            $newUser->setUsuario($usuario);
+            $newUser->setNome($nome);
             $newUser->setEmail($email);
             $newUser->setSenha($senha);
             $newUser->setFoto($foto);
@@ -91,7 +95,7 @@ if (isset($_POST["cadastrarADM"])) {
             header("Location: ../pages/login.php");
             $_SESSION['msg'] = "";
         } else {
-            $_SESSION['msg'] = "ADM " . $usuario . " já cadastrado";
+            $_SESSION['msg'] = "ADM " . $nome . " já cadastrado";
             return;
         }
     } else {

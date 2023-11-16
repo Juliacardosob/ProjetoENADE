@@ -2,21 +2,21 @@
 
 interface IUser{
 
-    public function setUsuario($usuario);
+    public function setApelido($apelido);
 
-    public function getUsuario();
+    public function getApelido();
 
     public function setSenha($senha);
 
-    public function setPrimeiroNome($primeiroNome);
+    public function setNome($nome);
 
-    public function getPrimeiroNome();
+    public function getNome();
 
-    public function setUltimoNome($ultimoNome);
+    public function setSobrenome($sobrenome);
 
-    public function getUltimoNome();
+    public function getSobrenome();
 
-    public function getFullName($primeiroNome, $ultimoNome);
+    public function getFullName();
 
     public function generateToken();
     

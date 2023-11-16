@@ -7,14 +7,14 @@ if (!isset($_SESSION)) {
 }
 else{
     if(isset($_SESSION['id'])) {
-        $id = $_SESSION['id'];
-        $usuario = $_SESSION['usuario'];
+        $id = $_SESSION['id_usuario'];
+        $usuario = $_SESSION['nome'];
     }
 }
 
 if(isset($_POST["editar"])){
     $User = new UserDAO($conn);
-    $userEdit = new UserEdit();
+    $userEdit = new User();
 
     $usuario = $_POST["usuario"];
     $email = $_POST["email"];
@@ -23,14 +23,14 @@ if(isset($_POST["editar"])){
     $conf_senha = $_POST["conf_senha"];
 
     if($userEdit->verificarSenha($senha, $conf_senha)){
-        if(!$User->verificarCadastrado($usuario)){
-            $userEdit->setUsuario($usuario);
+        if(!$User->verificarCadastrado($apelido, $senha)){
+            $userEdit->setApelido($apelido);
             $userEdit->setEmail($email);
             $userEdit->setSenha($senha);
             // $userEdit->setFoto($foto);
 
             $User->atualizarCadastro($id, $userEdit);
-            $_SESSION['usuario'] = $userEdit->getUsuario();
+            $_SESSION['usuario'] = $userEdit->getApelido();
             $_SESSION['msg'] = "";
         }
         else {

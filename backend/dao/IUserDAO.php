@@ -5,12 +5,10 @@ require_once("../backend/entities/UserEdit.php");
 interface IUserDAO{
     public function cadastrarAluno(User $user);
 
-    public function verificarCadastrado($usuario);
+    public function verificarCadastrado($usuario, $senha);
 
     public function verificarAdmin($usuario, $senha);
 
-    public function verificarUsuario($usuario, $senha);
-
-    public function atualizarCadastro($id, UserEdit $user);
+    public function atualizarCadastro($id, User $user);
 
 }

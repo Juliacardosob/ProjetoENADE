@@ -14,20 +14,14 @@ if (isset($_POST["entrar"])) {
     $senha = $_POST["senha"];
 
     if (!$User->verificarAdmin($usuario, $senha)) {
-        if ($User->verificarCadastrado($usuario)) {
-            if ($User->verificarUsuario($usuario, $senha)) {
-                header("Location: ../pages/painel.php");
-                $_SESSION['msg'] = "";
-                exit;
-            } else {
-                $_SESSION['msg'] = "Senha incorreta";
-            }
+        if ($User->verificarCadastrado($usuario,$senha)) {
+            return true;
         } else {
+            return false;
             $_SESSION['msg'] = "Não cadastrado";
         }
     } else {
         header("Location: ../adm/inserirQuestoes.php");
-        echo 'é o admin';
     }
 
     $conn = null;

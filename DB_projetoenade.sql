@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 15/11/2023 às 21:41
+-- Tempo de geração: 16/11/2023 às 03:35
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
@@ -20,6 +20,20 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `projetoenade`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `administrador`
+--
+
+CREATE TABLE `administrador` (
+  `id_adm` int(11) NOT NULL,
+  `nome` varchar(100) NOT NULL,
+  `senha` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `foto` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -41,6 +55,10 @@ CREATE TABLE `questao` (
   `respostaCorreta` char(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Despejando dados para a tabela `questao`
+--
+
 -- --------------------------------------------------------
 
 --
@@ -52,9 +70,13 @@ CREATE TABLE `resposta` (
   `id_questao` int(11) NOT NULL,
   `id_usuario` int(11) NOT NULL,
   `acertou` tinyint(1) NOT NULL,
-  `pontoQuestao` int(11) NOT NULL,
-  `pontosTotais` int(11) NOT NULL
+  `pontoQuestao` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `resposta`
+--
+
 
 -- --------------------------------------------------------
 
@@ -69,12 +91,23 @@ CREATE TABLE `usuario` (
   `email` varchar(255) NOT NULL,
   `senha` varchar(255) NOT NULL,
   `foto` text NOT NULL,
-  `apelido` varchar(20) NOT NULL
+  `apelido` varchar(20) NOT NULL,
+  `pontos` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `usuario`
+--
 
 --
 -- Índices para tabelas despejadas
 --
+
+--
+-- Índices de tabela `administrador`
+--
+ALTER TABLE `administrador`
+  ADD PRIMARY KEY (`id_adm`);
 
 --
 -- Índices de tabela `questao`
@@ -101,22 +134,28 @@ ALTER TABLE `usuario`
 --
 
 --
+-- AUTO_INCREMENT de tabela `administrador`
+--
+ALTER TABLE `administrador`
+  MODIFY `id_adm` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de tabela `questao`
 --
 ALTER TABLE `questao`
-  MODIFY `id_questao` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_questao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `resposta`
 --
 ALTER TABLE `resposta`
-  MODIFY `id_resposta` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_resposta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

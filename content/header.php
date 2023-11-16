@@ -12,14 +12,14 @@ if(!isset($_SESSION)){
                 <a href="../pages/painel.php" class="navbar-link">Painel</a>
             </li>
             <li class="navbar-list">
-                <a href="../pages/topicos.php" class="navbar-link">Questões</a>
+                <a href="../pages/questoes.php" class="navbar-link">Questões</a>
             </li>
             <li class="navbar-list">
                 <a href="../pages/ranking.php" class="navbar-link">Ranking</a>
             </li>
             <span class="space">
             </span>
-            <?php if (!isset($_SESSION['usuario'])) : ?>
+            <?php if (isset($_SESSION['usuario'])) : ?>
                 <li class="navbar-list"><a href="../pages/login.php" id="nav-button" class="navbar-link">Login/Cadastro<i class="material-icons">check_circle</i></a></li>
             <?php else : ?>
                 <li class="navbar-list">

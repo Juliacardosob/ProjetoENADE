@@ -6,10 +6,12 @@ require_once("../backend/conexao.php");
 if (!isset($_SESSION)) {
     session_start();
 } else {
-    if (isset($_SESSION['usuario'])) {
-        $id = $_SESSION['id'];
+    if (isset($_SESSION['nome'])) {
+        $id = $_SESSION['id_usuario'];
+        $nome = $_SESSION['nome'];
+        $email = $_SESSION['email'];
 
-        $select_b = $conn->query("SELECT * FROM aluno WHERE id = '$id'");
+        $select_b = $conn->query("SELECT * FROM usuario WHERE id_usuario = '$id'");
         $row = $select_b->fetch(PDO::FETCH_ASSOC);
         $foto = $row['foto'];
     }
@@ -45,14 +47,14 @@ if (!isset($_SESSION)) {
                         <i class="material-icons">person</i>
                         <label for="usuario">Usuário:</label>
                     </div>
-                    <input type="text" name="usuario" class="login-input " placeholder="Alterar Usuário">
+                    <input type="text" name="usuario" class="login-input" value="<?php echo $nome?>" placeholder="Alterar Usuário">
                 </div>
                 <div class="loginInput-container cadastroInput">
                     <div class="label-icon">
                         <i class="material-icons">mail</i>
                         <label for="email">Email:</label>
                     </div>
-                    <input type="email" name="email" class="login-input " placeholder="Alterar e-mail">
+                    <input type="email" name="email" class="login-input" value="<?php echo $email?>" placeholder="Alterar e-mail">
                 </div>
                 <div class="loginInput-container cadastroInput">
                     <div class="label-icon">
@@ -60,7 +62,6 @@ if (!isset($_SESSION)) {
                         <label for="password">Senha:</label>
                     </div>
                     <input type="password" name="senha" class="login-input " placeholder="Alterar senha">
-                    <p style="margin-top: 15px; font-size: 15px;"> * caso não for alterar deixe em branco</p>
                 </div>
                 <div class="loginInput-container cadastroInput">
                     <div class="label-icon">

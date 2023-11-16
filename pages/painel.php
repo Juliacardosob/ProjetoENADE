@@ -1,5 +1,17 @@
 <?php
 require_once("../content/painel.php");
+require_once("../backend/dao/QuestaoDAO.php");
+
+$questoes = new QuestaoDAO($conn);
+
+$questoesRespondidas = $questoes->QuestoesRespondidas($id);
+
+$questoesAcertadas = $questoes->questoesCertas($id);
+
+$questoesErradas = $questoes->questoesErradas($id);
+
+$taxa = $questoes->taxaAcertos($id);
+
 ?>
 
 <main id="painel-container">
@@ -21,7 +33,7 @@ require_once("../content/painel.php");
     <div id="estatisticas">
         <div class="painelQuestoes-container">
             <div id="question-number">
-                <h1 id="number">X</h1>
+                <h1 id="number"><?=$questoesRespondidas?></h1>
             </div>
             <p id="numberSubtitle">Questões Resolvidas</p>
             <small id="call">Vamos praticar?</small>
@@ -30,19 +42,19 @@ require_once("../content/painel.php");
         </div>
         <div class="painelCard-container">
             <div class="cardPainel">
-                <p id="certas">X</p>
+                <p id="certas"><?=$questoesAcertadas?></p>
                 <span>Certas</span>
                 <span class="space"></span>
                 <i id="certoCard" class="material-icons">check_circle_outline</i>
             </div>
             <div class="cardPainel">
-                <p id="erradas">X</p>
+                <p id="erradas"><?=$questoesErradas?></p>
                 <span>Erradas</span>
                 <span class="space"></span>
                 <i id="erroCard" class="material-icons">highlight_off</i>
             </div>
             <div class="cardPainel">
-                <p id="taxa">%</p>
+                <p id="taxa"><?=$taxa?>%</p>
                 <span>Taxa de acertos</span>
             </div>
         </div>

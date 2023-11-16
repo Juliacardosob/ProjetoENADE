@@ -17,10 +17,9 @@ class QuestaoDAO implements IQuestaoDAO
 
         $questaoData = $questao->getQuestaoData();
 
-        $stmt = $this->Conn->prepare("INSERT INTO questao(num_questao,
-         ano,
+        $stmt = $this->Conn->prepare("INSERT INTO questao(ano,
          descricao,
-         fonte,
+         descricao_fonte,
          enunciado,
          alternativaA,
          alternativaB,
@@ -28,10 +27,9 @@ class QuestaoDAO implements IQuestaoDAO
          alternativaD,
          alternativaE,
          respostaCorreta)
-         VALUES(:num_questao,
-         :ano,
+         VALUES( :ano,
          :descricao,
-         :fonte,
+         :descricao_fonte,
          :enunciado,
          :alternativaA,
          :alternativaB,
@@ -40,10 +38,9 @@ class QuestaoDAO implements IQuestaoDAO
          :alternativaE,
          :respostaCorreta)");
 
-        $stmt->bindParam(':num_questao', $questaoData['num_questao']);
         $stmt->bindParam(':ano', $questaoData['ano']);
         $stmt->bindParam(':descricao', $questaoData['descricao']);
-        $stmt->bindParam(':fonte', $questaoData['font']);
+        $stmt->bindParam(':descricao_fonte', $questaoData['fonte']);
         $stmt->bindParam(':enunciado', $questaoData['enunciado']);
         $stmt->bindParam(':alternativaA', $questaoData['alternativaA']);
         $stmt->bindParam(':alternativaB', $questaoData['alternativaB']);
@@ -53,6 +50,7 @@ class QuestaoDAO implements IQuestaoDAO
         $stmt->bindParam(':respostaCorreta', $questaoData['correta']);
 
         $stmt->execute();
+        header("Location: ../adm/inserirQuestoes.php");
     }
 
     public function editarQuestao(Questao $questao)
@@ -61,7 +59,6 @@ class QuestaoDAO implements IQuestaoDAO
         $questaoData = $questao->getQuestaoData();
 
         $stmt = $this->Conn->prepare("UPDATE questao SET
-         num_questao = :num_questao,
          ano = :ano,
          descricao = :descricao,
          fonte = :fonte,
@@ -76,10 +73,9 @@ class QuestaoDAO implements IQuestaoDAO
 
         ");
 
-        $stmt->bindParam(':num_questao', $questaoData['num_questao']);
         $stmt->bindParam(':ano', $questaoData['ano']);
         $stmt->bindParam(':descricao', $questaoData['descricao']);
-        $stmt->bindParam(':fonte', $questaoData['font']);
+        $stmt->bindParam(':fonte', $questaoData['fonte']);
         $stmt->bindParam(':enunciado', $questaoData['enunciado']);
         $stmt->bindParam(':alternativaA', $questaoData['alternativaA']);
         $stmt->bindParam(':alternativaB', $questaoData['alternativaB']);
@@ -92,29 +88,127 @@ class QuestaoDAO implements IQuestaoDAO
         $stmt->execute();
     }
 
-    public function deletarQuestao($id)
+    public function deletarQuestao($id_questao)
     {
 
         $stmt = $this->Conn->prepare("DELETE FROM questao WHERE id = :id");
 
-        $stmt->bindParam(":id", $id);
+        $stmt->bindParam(":id", $id_questao, PDO::PARAM_INT);
 
         $stmt->execute();
     }
 
-    public function encontrarNumQuestao($num_questao)
-    {
-        $stmt = $this->Conn->prepare("SELECT * FROM questao WHERE num_questao = :num_questao ");
+    public function registrarResposta($id_questao, $id_usuario, $acertou, $pontos){
+        $stmt = $this->Conn->prepare("INSERT INTO resposta(id_questao, id_usuario, acertou, pontoQuestao) VALUE(:id_questao, :id_usuario, :acertou, :pontoQuestao)");
 
-        $stmt->bindParam(":num_questao", $num_questao);
+        $stmt->bindParam(":id_questao", $id_questao, PDO::PARAM_INT);
+        $stmt->bindParam(":id_usuario", $id_usuario, PDO::PARAM_INT);
+        $stmt->bindParam(":acertou", $acertou, PDO::PARAM_INT);
+        $stmt->bindParam(":pontoQuestao", $pontos, PDO::PARAM_INT);
+
+        $stmt->execute();
+    }
+
+    public function verificarAcerto($id_questao, $resposta){
+        $stmt = $this->Conn->prepare("SELECT respostaCorreta FROM questao WHERE id_questao = :id_questao");
+
+        $stmt->bindParam(":id_questao", $id_questao, PDO::PARAM_INT);
 
         $stmt->execute();
 
-        if($stmt->rowCount() > 0){
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if($row["respostaCorreta"] == $resposta){
             return true;
         }
         else{
             return false;
         }
+    }
+
+    public function obterPontos($id_usuario, $acertou)
+    {
+        $stmt = $this->Conn->prepare("SELECT SUM(pontoQuestao) AS total FROM resposta WHERE id_usuario = :id_usuario AND acertou = :acertou");
+        $stmt->bindParam(":id_usuario", $id_usuario, PDO::PARAM_INT);
+        $stmt->bindParam(":acertou", $acertou, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $resultado['total'];
+    }
+
+    public function atualizarPontos($id_usuario, $acertou)
+    {
+
+        $totalPontos = $this->obterPontos($id_usuario, $acertou);
+
+        $stmt = $this->Conn->prepare("UPDATE usuario SET pontos = :totalPontos  WHERE id_usuario = :id_usuario");
+    
+        $stmt->bindParam(":totalPontos", $totalPontos, PDO::PARAM_INT);
+        $stmt->bindParam(":id_usuario", $id_usuario, PDO::PARAM_INT);
+    
+        $stmt->execute();
+    }
+    
+
+    public function buscarTodasQuestoes()
+    {
+        $stmt = $this->Conn->prepare("SELECT * FROM questao");
+
+        $stmt->execute();
+
+        $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $row;
+    }
+
+    public function QuestoesRespondidas($id_usuario)
+    {
+        $stmt = $this->Conn->prepare("SELECT * FROM resposta WHERE id_usuario = :id_usuario");
+
+        $stmt->bindParam(":id_usuario", $id_usuario);
+
+        $stmt->execute();
+
+        return $stmt->rowCount();
+    }
+
+    public function questoesCertas($id_usuario){
+        $acertou = 1;
+
+        $stmt = $this->Conn->prepare("SELECT * FROM resposta WHERE id_usuario = :id_usuario AND acertou = :acertou");
+
+        $stmt->bindParam(":id_usuario", $id_usuario);
+        $stmt->bindParam(":acertou", $acertou);
+
+        $stmt->execute();
+
+        return $stmt->rowCount();
+    }
+
+    public function questoesErradas($id_usuario){
+        $acertou = 0;
+
+        $stmt = $this->Conn->prepare("SELECT * FROM resposta WHERE id_usuario = :id_usuario AND acertou = :acertou");
+
+        $stmt->bindParam(":id_usuario", $id_usuario);
+        $stmt->bindParam(":acertou", $acertou);
+
+        $stmt->execute();
+
+        return $stmt->rowCount();
+    }
+
+    public function taxaAcertos($id_usuario)
+    {
+        $total = $this->QuestoesRespondidas($id_usuario);
+        $acertos = $this->questoesCertas($id_usuario);
+
+        $taxa = ($acertos * 100)/$total;
+
+        return $taxa;
+
+
     }
 }

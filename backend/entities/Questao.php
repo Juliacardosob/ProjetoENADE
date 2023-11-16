@@ -5,7 +5,7 @@ class Questao{
     private $num_questao;
     private $ano;
     private $descricao;
-    private $font;
+    private $fonte;
     private $alternativaA;
     private $alternativaB;
     private $alternativaC;
@@ -45,12 +45,12 @@ class Questao{
         $this->descricao = $descricao;
     }
 
-    public function getFont() {
-        return $this->font;
+    public function getFonte() {
+        return $this->fonte;
     }
 
-    public function setFont($font) {
-        $this->font = $font;
+    public function setFonte($fonte) {
+        $this->fonte = $fonte;
     }
 
     public function getAlternativaA() {
@@ -106,7 +106,7 @@ class Questao{
             'num_questao' => $this->getNumQuestao(),
             'ano' => $this->getAno(),
             'descricao' => $this->getDescricao(),
-            'font' => $this->getFont(),
+            'fonte' => $this->getFonte(),
             'enunciado' => $this->getEnunciado(),
             'alternativaA' => $this->getAlternativaA(),
             'alternativaB' => $this->getAlternativaB(),
@@ -125,9 +125,24 @@ interface IQuestaoDAO{
 
     public function editarQuestao(Questao $questao);
 
-    public function deletarQuestao($id);
+    public function deletarQuestao($id_questao);
 
-    public function encontrarNumQuestao($num_questao);
+    public function obterPontos($id_usuario, $acertou);
 
+    public function atualizarPontos($id_usuario, $acertou);
+
+    public function verificarAcerto($id_questao, $resposta);
+
+    public function registrarResposta($id_questao, $id_usuario, $acertou, $pontos);
+
+    public function buscarTodasQuestoes();
+
+    public function QuestoesRespondidas($id_usuario);
+
+    public function questoesCertas($id_usuario);
+
+    public function questoesErradas($id_usuario);
+
+    public function taxaAcertos($id_usuario);
 }
 

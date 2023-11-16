@@ -6,19 +6,19 @@ class User implements IUser
 {
     public $id;
     public $token;
-    public $primeiroNome;
-    public $ultimoNome;
-    public $Apelido;
-    public $Senha;
-    public $Email;
-    public $Foto;
+    public $nome;
+    public $sobrenome;
+    public $apelido;
+    public $senha;
+    public $email;
+    public $foto;
 
-    public function setPrimeiroNome($primeiroNome){
-        $this->primeiroNome = $primeiroNome;
+    public function setNome($nome){
+        $this->nome = $nome;
     }
 
-    public function getPrimeiroNome(){
-        return $this->primeiroNome;
+    public function getNome(){
+        return $this->nome;
     }
 
     public function generateToken(){
@@ -26,66 +26,55 @@ class User implements IUser
     }
 
         
-    public function setUltimoNome($ultimoNome){
-        $this->ultimoNome = $ultimoNome;
+    public function setSobrenome($sobrenome){
+        $this->sobrenome = $sobrenome;
     }
 
-    public function getUltimoNome(){
-        return $this->ultimoNome;
+    public function getSobrenome(){
+        return $this->sobrenome;
     }
 
-    public function getFullName($primeiroNome, $ultimoNome)
+    public function getFullName()
     {
-        return $this->primeiroNome . " " . $this->ultimoNome;
+        return $this->nome . " " . $this->sobrenome;
     }
 
     public function setApelido($apelido){
-        $this->Apelido = $apelido;
+        $this->apelido = $apelido;
     }
 
     public function getApelido(){
-        return $this->Apelido;
-    }
-    
-
-    public function setUsuario($usuario)
-    {
-        $this->Apelido = $usuario;
-    }
-
-    public function getUsuario()
-    {
-        return $this->Apelido;
+        return $this->apelido;
     }
 
     public function setSenha($senha)
     {
-        $this->Senha = $senha;
+        $this->senha = $senha;
     }
 
     public function getSenha()
     {
-        return $this->Senha;
+        return $this->senha;
     }
 
     public function setEmail($email)
     {
-        $this->Email = $email;
+        $this->email = $email;
     }
 
     public function getEmail()
     {
-        return $this->Email;
+        return $this->email;
     }
 
     public function setFoto($foto)
     {
-        $this->Foto = $foto;
+        $this->foto = $foto;
     }
 
     public function getFoto()
     {
-        return $this->Foto;
+        return $this->foto;
     }
 
     public function verificarSenha($senha, $confirme)
@@ -96,9 +85,4 @@ class User implements IUser
             return false;
         }
     }
-
-    public function verificarVazia($input){
-        
-    }
-
 }
