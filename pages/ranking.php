@@ -10,6 +10,9 @@ $rankingTop100 = $ranking->buscarCemMelhores();
 
 $rankingTop3 = $ranking->buscarTresMelhores();
 
+$posicao3 = 1 ;
+
+$posicao100 = 1;
 ?>
 
 <main id="ranking-container">
@@ -47,7 +50,7 @@ $rankingTop3 = $ranking->buscarTresMelhores();
                 <div class="top-ranked-img">
                     <img src="../img/default.png">
                     <div class="top-ranked-number">
-                        <p>1°</p>
+                        <p><?=$posicao3?></p>
                     </div>
                 </div>
                 <p class="top-ranked-name"><?=$top3["nome"]?></p>
@@ -57,12 +60,12 @@ $rankingTop3 = $ranking->buscarTresMelhores();
                         <p class="top-ranked-subtitle">Pontos</p>
                     </div>
                     <div class="top-ranked-points">
-                        <p class="points"> X°</p>
+                        <p class="points"> <?=$posicao3;?>°</p>
                         <p class="top-ranked-subtitle">Posição</p>
                     </div>
                 </div>
             </div>
-        <?php endforeach; ?>
+        <?php $posicao3++; endforeach; ?>
     </div>
     <div class="ranking-table">
         <table id="table">
@@ -77,12 +80,12 @@ $rankingTop3 = $ranking->buscarTresMelhores();
             <tbody>
                 <?php foreach($rankingTop100 as $top100):?>
                 <tr>
-                    <td>1</td>
+                    <td><?=$posicao100;?></td>
                     <td class="img-td"><img class="img-table" src="../img/default.png" alt=""><?=$top100["nome"]?></td>
                     <td class="space"></td>
                     <td><?=$top100["pontos"]?></td>
                 </tr>
-                <?php endforeach;?>
+                <?php $posicao100++; endforeach;?>
             </tbody>
         </table>
     </div>

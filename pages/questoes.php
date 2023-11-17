@@ -18,7 +18,7 @@ if (!isset($_SESSION)) {
     </div>
     <?php foreach ($questaoDAO as $questao) : ?>
         <div class="questoes-container">
-            <div class="questoes-title">
+            <div class="questoesTitle">
                 <p class="questoesTitle">Questão <?= $questao["id_questao"] ?></p>
                 <p class="questoesSubTitle">Enade <?= $questao["ano"] ?></p>
             </div>

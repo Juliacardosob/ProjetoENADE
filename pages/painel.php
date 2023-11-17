@@ -4,6 +4,8 @@ require_once("../backend/dao/QuestaoDAO.php");
 
 $questoes = new QuestaoDAO($conn);
 
+$ranking = new UserDAO($conn);
+
 $questoesRespondidas = $questoes->QuestoesRespondidas($id);
 
 $questoesAcertadas = $questoes->questoesCertas($id);
@@ -11,6 +13,10 @@ $questoesAcertadas = $questoes->questoesCertas($id);
 $questoesErradas = $questoes->questoesErradas($id);
 
 $taxa = $questoes->taxaAcertos($id);
+
+$rankingTop3 = $ranking->buscarTresMelhores();
+
+$posicao3 = 1 ;
 
 ?>
 
@@ -68,13 +74,13 @@ $taxa = $questoes->taxaAcertos($id);
                     </tr>
                 </thead>
                 <tbody>
-                    <?php for ($i = 1; $i <= 5; $i++) : ?>
+                    <?php foreach($rankingTop3 as $top3) : ?>
                         <tr>
-                            <td><?= $i ?>°</td>
-                            <td class="img-td"><img class="img-table" src="../img/default.png" alt=""><a class="alunoNome" href="#">Nome do aluno</a></td>
-                            <td>XXXX</td>
+                            <td><?= $posicao3 ?>°</td>
+                            <td class="img-td"><img class="img-table" src="../img/default.png" alt=""><a class="alunoNome" href="#"><?=$top3["nome"]?></a></td>
+                            <td><?=$top3["pontos"]?></td>
                         </tr>
-                    <?php endfor; ?>
+                    <?php $posicao3++; endforeach; ?>
                 </tbody>
             </table>
         </div>

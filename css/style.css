@@ -822,6 +822,7 @@ footer {
     transition: 0.3s;
 }
 
+
 .BtnMes:hover {
     background-color: #f2f2f2;
 }
@@ -1063,10 +1064,6 @@ th {
 .questoesSubTitle {
     font-size: 14px;
     color: #94958B;
-}
-
-.questoes-title {
-    margin: 15px;
 }
 
 .questoes-content {

@@ -4,10 +4,6 @@ require_once("../backend/dao/QuestaoDAO.php");
 
 $questao = new QuestaoDAO($conn);
 
-$questaoDAO = $questao->buscarTodasQuestoes();
-
-shuffle($questaoDAO);
-
 $id_questao = filter_input(INPUT_POST, "id_questao");
 $acertou = 0; /*False*/
 $pontos = 0;
@@ -15,6 +11,11 @@ $pontos = 0;
 $resposta = filter_input(INPUT_POST, "alternativa");
 $id_usuario = filter_input(INPUT_POST, "id_usuario");
 $type = filter_input(INPUT_POST, "type");
+
+
+$questaoDAO = $questao->buscarTodasQuestoes();
+
+shuffle($questaoDAO);
 
 if ($type == "resposta") {
     if ($questao->verificarAcerto($id_questao, $resposta)) {
