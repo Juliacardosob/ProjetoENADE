@@ -556,6 +556,7 @@ footer {
     display: flex;
     background-image: url("../img/enade-enade.jpg");
     align-items: center;
+   
 }
 
 #btnBanner {
@@ -1285,6 +1286,41 @@ th {
 
     /* FIM RANKING */
 
+     /* INICIO INDEX */
+     #banner{
+        width: 100%;
+        
+    }
+    #info-banner{
+        left: 0;
+        margin: 50px 100px;
+    }
+    #estudanteImg{
+        display: none;
+    }
+
+    .content{
+        flex-direction: column;
+        align-items: center;
+        
+    }
+    #aside-content{
+        width: 100%;
+    }
+    .cards-container{
+        width: 100%;
+    }
+    #Text-content{
+        width: 100%;
+        max-width: 110vh;
+        padding: 30px;
+    }
+
+    #indexImg-container{
+        flex-direction: column;
+    }
+    /* FIM INDEX */
+
 }
 
 @media (min-width: 481px) and (max-width:767px) {
@@ -1338,6 +1374,37 @@ th {
     }
 
     /* FIM RANKING */
+    /* INICIO INDEX */
+    #banner{
+        width: 100%;
+    }
+    #info-banner{
+        left: 0;
+        margin: 100px;
+    }
+    #estudanteImg{
+        display: none;
+    }
+
+    .content{
+        flex-direction: column;
+        align-items: center;
+    }
+    #aside-content{
+        width: 100%;
+    }
+    .cards-container{
+        width: 100%;
+    }
+    #Text-content{
+        width: 100%;
+        max-width: 110vh;
+    }
+
+    #indexImg-container{
+        flex-direction: column;
+    }
+    /* FIM INDEX */
 }
 
 @media (min-width: 768px) and (max-width:991px) {
@@ -1374,6 +1441,39 @@ th {
     }
 
     /* FIM PERFIL */
+
+    /* INICIO INDEX */
+    #banner{
+        width: 100%;
+        
+    }
+    #info-banner{
+        left: 0;
+        margin: 50px 100px;
+    }
+    #estudanteImg{
+        display: none;
+    }
+
+    .content{
+        flex-direction: column;
+        align-items: center;
+    }
+    #aside-content{
+        width: 100%;
+    }
+    .cards-container{
+        width: 100%;
+    }
+    #Text-content{
+        width: 100%;
+        max-width: 110vh;
+    }
+
+    #indexImg-container{
+        flex-direction: column;
+    }
+    /* FIM INDEX */
 }
 
 @media (min-width: 992px) and (max-width:1199px) {
@@ -1409,11 +1509,40 @@ th {
     }
 
     /* FIM PERFIL */
+
+    /* INICIO INDEX */
+    #banner{
+        width: 100%;
+        
+    }
+    #info-banner{
+        left: 0;
+        margin: 50px 100px;
+    }
+    #estudanteImg{
+        display: none;
+    }
+    #indexImg-container{
+        flex-direction: column;
+    }
+    .indexImg2{
+        display: none;
+    }
+    /* FIM INDEX */
 }
 
 @media (min-width: 1200px) {
     .login-form {
         width: 50%;
     }
+
+    /* INICIO INDEX */
+    #indexImg-container{
+        flex-direction: row;
+    }
+    .indexImg2{
+        display: none;
+    }
+    /* FIM INDEX */
 
 }
