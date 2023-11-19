@@ -152,14 +152,16 @@ class QuestaoDAO implements IQuestaoDAO
     }
     
 
-    public function buscarTodasQuestoes()
+    public function buscarTodasQuestoes($id_usuario)
     {
-        $stmt = $this->Conn->prepare("SELECT * FROM questao");
-
+        $stmt = $this->Conn->prepare("SELECT * FROM questao WHERE id_questao NOT IN (SELECT id_questao FROM resposta WHERE id_usuario = :id_usuario)");
+    
+        $stmt->bindParam(":id_usuario", $id_usuario);
+    
         $stmt->execute();
-
+    
         $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
+    
         return $row;
     }
 

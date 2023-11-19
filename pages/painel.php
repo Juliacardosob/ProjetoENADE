@@ -21,7 +21,6 @@ $posicao3 = 1 ;
 ?>
 
 <main id="painel-container">
-
     <div id="painelActions-container">
         <div class="painelActions">
             <i class="material-icons">account_circle</i>
@@ -43,7 +42,7 @@ $posicao3 = 1 ;
             </div>
             <p id="numberSubtitle">Questões Resolvidas</p>
             <small id="call">Vamos praticar?</small>
-            <a href="../pages/topicos.php" id="btnQuestoes">Responder questões</a>
+            <a href="../pages/questoes.php" id="btnQuestoes">Responder questões</a>
             <a href="../pages/ranking.php" id="btnQuestoes">Ver ranking</a>
         </div>
         <div class="painelCard-container">
@@ -61,7 +60,7 @@ $posicao3 = 1 ;
             </div>
             <div class="cardPainel">
                 <p id="taxa"><?=$taxa?>%</p>
-                <span>Taxa de acertos</span>
+                <span>de acertos</span>
             </div>
         </div>
         <div class="painelRanking-container">
@@ -77,7 +76,7 @@ $posicao3 = 1 ;
                     <?php foreach($rankingTop3 as $top3) : ?>
                         <tr>
                             <td><?= $posicao3 ?>°</td>
-                            <td class="img-td"><img class="img-table" src="../img/default.png" alt=""><a class="alunoNome" href="#"><?=$top3["nome"]?></a></td>
+                            <td class="img-td"><img class="img-table" src="../img/default.png" alt=""><a class="alunoNome" href="#"><?=$top3["nome"]?> <?= $top3["sobrenome"]?></a></td>
                             <td><?=$top3["pontos"]?></td>
                         </tr>
                     <?php $posicao3++; endforeach; ?>

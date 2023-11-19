@@ -135,7 +135,7 @@ interface IQuestaoDAO{
 
     public function registrarResposta($id_questao, $id_usuario, $acertou, $pontos);
 
-    public function buscarTodasQuestoes();
+    public function buscarTodasQuestoes($id_usuario);
 
     public function QuestoesRespondidas($id_usuario);
 

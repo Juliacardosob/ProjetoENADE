@@ -1,6 +1,5 @@
 <?php
 require_once("../backend/entities/User.php");
-require_once("../backend/entities/UserEdit.php");
 
 interface IUserDAO
 {
@@ -14,7 +13,7 @@ interface IUserDAO
 
     public function cadastrarAdmin(User $admin);
 
-    public function getPontos($id_usuario);
+    public function getDados($id_usuario);
 
     public function buscarCemMelhores();
     

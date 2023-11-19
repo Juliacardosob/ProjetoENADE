@@ -10,7 +10,7 @@ require_once("../backend/bd_login.php");
         </div>
     <?php endif;?>
         <div class="login-title">
-            <img src="../img/logo.png" alt="" class="logo">
+            <img src="../img/logoENADE.png" alt="" class="logoENADE">
             <h1>Bem-vindo<small>Preencha com suas informações</small></h1>
         </div>
         <div class="loginInput-container">

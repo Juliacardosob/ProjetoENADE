@@ -12,7 +12,7 @@ require_once("../backend/bd_cadastro.php");
             </div>
         <?php endif; ?>
         <div class="login-title" id="cadastro-title">
-            <img src="../img/logo.png" alt="" class="logo">
+            <img src="../img/logoENADE.png" alt="" class="logoENADE">
             <h1>Crie uma conta<small>Preencha com suas informações</small></h1>
         </div>
         <div id="cadastro-form">
@@ -22,7 +22,7 @@ require_once("../backend/bd_cadastro.php");
                         <i class="material-icons">person</i>
                         <label for="usuario">Apelido:</label>
                     </div>
-                    <input type="text" name="apelido" class="login-input " placeholder="Preencha com seu Usuário" required>
+                    <input type="text" name="apelido" class="login-input " placeholder="Digite seu Usuário" required>
                 </div>
                 <div class="loginInput-container cadastroInput">
                     <div class="label-icon">
@@ -38,13 +38,6 @@ require_once("../backend/bd_cadastro.php");
                     </div>
                     <input type="text" name="sobrenome" class="login-input " placeholder="Digite seu sobrenome" required>
                 </div>
-                <div class="loginInput-container cadastroInput">
-                    <div class="label-icon">
-                        <i class="material-icons">photo</i>
-                        <label for="foto">Escolha sua foto</label>
-                    </div>
-                    <input type="file" name="foto" accept="image/png, image/jpeg">
-                </div>
             </div>
             <div class="userData">
                 <div class="loginInput-container cadastroInput">
@@ -52,14 +45,14 @@ require_once("../backend/bd_cadastro.php");
                         <i class="material-icons">mail</i>
                         <label for="email">Email:</label>
                     </div>
-                    <input type="email" name="email" class="login-input " placeholder="Preencha com seu email" required>
+                    <input type="email" name="email" class="login-input " placeholder="Digite seu email" required>
                 </div>
                 <div class="loginInput-container cadastroInput">
                     <div class="label-icon">
                         <i class="material-icons">lock</i>
                         <label for="senha">Senha:</label>
                     </div>
-                    <input type="password" name="senha" class="login-input " placeholder="Preencha com sua senha" required>
+                    <input type="password" name="senha" class="login-input " placeholder="Digite sua senha" required>
                 </div>
                 <div class="loginInput-container cadastroInput">
                     <div class="label-icon">

@@ -4,7 +4,7 @@ require_once("../backend/dao/UserDAO.php");
 
 $ranking = new UserDAO($conn);
 
-$pontosUsuario = $ranking->getPontos($id);
+$Usuario = $ranking->getDados($id);
 
 $rankingTop100 = $ranking->buscarCemMelhores();
 
@@ -18,30 +18,18 @@ $posicao100 = 1;
 <main id="ranking-container">
     <div class="title">
         <h1>Ranking</h1>
-        <div class="Title-card">
-            <p>Ranking do mês</p>
-            <button class="BtnMes">Novembro</button>
-            <button class="BtnMes">Outubro</button>
-            <button class="BtnMes">Setembro</button>
-        </div>
     </div>
     <div class="personal-stats">
         <div class="card">
-            <p>Sua colocação</p>
-            <div class="rank-number">
-                <h1 id="rank">°</h1>
-            </div>
-        </div>
-        <div class="card">
             <p>Seus pontos: </p>
             <div class="rank-number">
-                <h1 id="rank"><?=$pontosUsuario?></h1>
+                <h1 id="rank"><?=$Usuario["pontos"]?></h1>
             </div>
         </div>
         <div class="card">
             <p>Todos os pontos são zerados no primeiro dia do mês.
                 Sua pontuação no ranking será atualizada todo dia, caso seus pontos ainda não tenham sido computados, aguarde :)
-                Questões respondidas certas = 10 pontos.</p>
+                Questões respondidas certas = 1 ponto.</p>
         </div>
     </div>
     <div id="top-ranked-form">
@@ -53,7 +41,7 @@ $posicao100 = 1;
                         <p><?=$posicao3?></p>
                     </div>
                 </div>
-                <p class="top-ranked-name"><?=$top3["nome"]?></p>
+                <p class="top-ranked-name"><?=$top3["nome"]?> <?=$top3["sobrenome"]?></p>
                 <div class="top-ranked-status">
                     <div class="top-ranked-points">
                         <p class="points"><?=$top3["pontos"]?></p>
@@ -72,7 +60,7 @@ $posicao100 = 1;
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Nome</th>
+                    <th class="img-td">Nome</th>
                     <th class="space"></th>
                     <th>Pontos</th>
                 </tr>
@@ -81,7 +69,7 @@ $posicao100 = 1;
                 <?php foreach($rankingTop100 as $top100):?>
                 <tr>
                     <td><?=$posicao100;?></td>
-                    <td class="img-td"><img class="img-table" src="../img/default.png" alt=""><?=$top100["nome"]?></td>
+                    <td class="img-td"><img class="img-table" src="../img/default.png" alt=""><?=$top100["nome"]?> <?=$top100["sobrenome"]?></td>
                     <td class="space"></td>
                     <td><?=$top100["pontos"]?></td>
                 </tr>

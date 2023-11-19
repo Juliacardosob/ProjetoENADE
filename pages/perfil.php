@@ -3,17 +3,15 @@ require_once("../content/header.php");
 require_once("../backend/bd_editar.php");
 require_once("../backend/conexao.php");
 
+$user = new UserDAO($conn);
+
 if (!isset($_SESSION)) {
     session_start();
 } else {
-    if (isset($_SESSION['nome'])) {
-        $id = $_SESSION['id_usuario'];
-        $nome = $_SESSION['nome'];
-        $email = $_SESSION['email'];
+    if (isset($_SESSION["id_usuario"])) {
+        $id = $_SESSION["id_usuario"];
 
-        $select_b = $conn->query("SELECT * FROM usuario WHERE id_usuario = '$id'");
-        $row = $select_b->fetch(PDO::FETCH_ASSOC);
-        $foto = $row['foto'];
+        $Usuario = $user->getDados($id);
     }
 }
 ?>
@@ -29,7 +27,7 @@ if (!isset($_SESSION)) {
         <div class="perfil-box">
             <div class="perfil-conteudo">
                 <h1>Alterar cadastro</h1>
-                <img src="../img/<?=$foto;?>" alt="fotoperfil" name="foto">
+                <img src="../img/<?= $Usuario["foto"]; ?>" alt="fotoperfil" name="foto">
                 <form method="post" enctype="multipart/form-data">
                     <button class="btn-form btn-foto" id="btnfoto">Mudar Foto</button>
                     <div class="file">
@@ -40,41 +38,65 @@ if (!isset($_SESSION)) {
             </div>
         </div>
         <hr>
-        <form method="POST" class="perfil-box">
-            <div class="perfil-conteudo">
-                <div class="loginInput-container  cadastroInput">
-                    <div class="label-icon">
-                        <i class="material-icons">person</i>
-                        <label for="usuario">Usuário:</label>
+        <div class="perfilForm-inputs">
+            <form method="POST" class="userData" action="../backend/bd_editar.php">
+                <input type="hidden" name="type" value="editarDados">
+                <div class="perfil-conteudo">
+                    <div class="loginInput-container  cadastroInput">
+                        <div class="label-icon">
+                            <i class="material-icons">person</i>
+                            <label for="apelido">Usuário:</label>
+                        </div>
+                        <input type="text" name="apelido" class="login-input" value="<?= $Usuario["apelido"] ?>" placeholder="Alterar Usuário">
                     </div>
-                    <input type="text" name="usuario" class="login-input" value="<?php echo $nome?>" placeholder="Alterar Usuário">
-                </div>
-                <div class="loginInput-container cadastroInput">
-                    <div class="label-icon">
-                        <i class="material-icons">mail</i>
-                        <label for="email">Email:</label>
+                    <div class="loginInput-container cadastroInput">
+                        <div class="label-icon">
+                            <i class="material-icons">mail</i>
+                            <label for="email">Email:</label>
+                        </div>
+                        <input type="email" name="email" class="login-input" value="<?= $Usuario["email"] ?>" placeholder="Alterar e-mail">
                     </div>
-                    <input type="email" name="email" class="login-input" value="<?php echo $email?>" placeholder="Alterar e-mail">
-                </div>
-                <div class="loginInput-container cadastroInput">
-                    <div class="label-icon">
-                        <i class="material-icons">lock</i>
-                        <label for="password">Senha:</label>
+                    <div class="loginInput-container cadastroInput">
+                        <div class="label-icon">
+                            <i class="material-icons">person</i>
+                            <label for="nome">Nome:</label>
+                        </div>
+                        <input type="text" name="nome" class="login-input" value="<?= $Usuario["nome"] ?>" placeholder="Alterar nome">
                     </div>
-                    <input type="password" name="senha" class="login-input " placeholder="Alterar senha">
-                </div>
-                <div class="loginInput-container cadastroInput">
-                    <div class="label-icon">
-                        <i class="material-icons">lock</i>
-                        <label for="password">Senha:</label>
+                    <div class="loginInput-container cadastroInput">
+                        <div class="label-icon">
+                            <i class="material-icons">person</i>
+                            <label for="sobrenome">Sobrenome:</label>
+                        </div>
+                        <input type="text" name="sobrenome" class="login-input" value="<?= $Usuario["sobrenome"] ?>" placeholder="Alterar sobrenome">
                     </div>
-                    <input type="password" name="conf_senha" class="login-input " placeholder="Confirme senha">
+                    <button style="display: flex; align-items:center; justify-content:center; gap:10px" class="btn-form"><i class="material-icons">check_circle</i>
+                        <p>Atualizar dados</p>
+                    </button>
                 </div>
-
-                <button style="display: flex; align-items:center; justify-content:center; gap:10px" class="btn-form btn-atualizar" name="editar"><i class="material-icons">check_circle</i>
-                    <p>Atualizar dados</p>
-                </button>
-            </div>
-        </form>
+            </form>
+            <form method="POST" class="userData" action="../backend/bd_editar.php">
+                <input type="hidden" name="type" value="editarSenha">
+                <div class="perfil-conteudo">
+                    <div class="loginInput-container cadastroInput">
+                        <div class="label-icon">
+                            <i class="material-icons">lock</i>
+                            <label for="password">Senha:</label>
+                        </div>
+                        <input type="password" name="senha" class="login-input " placeholder="Altere sua senha">
+                    </div>
+                    <div class="loginInput-container cadastroInput">
+                        <div class="label-icon">
+                            <i class="material-icons">lock</i>
+                            <label for="password">Confirme:</label>
+                        </div>
+                        <input type="password" name="confirme" class="login-input " placeholder="Confirme sua senha">
+                    </div>
+                    <button style="display: flex; align-items:center; justify-content:center; gap:10px" class="btn-form"><i class="material-icons">check_circle</i>
+                        <p>Atualizar senha</p>
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
 </main>

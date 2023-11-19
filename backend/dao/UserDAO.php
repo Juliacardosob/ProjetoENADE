@@ -23,16 +23,35 @@ class UserDAO implements IUserDAO
 
         if ($stmt->rowCount() > 0) {
             if (password_verify($senha, $row["senha"])) {
-                $this->definirVariaveisSessao($apelido, $row["foto"], $row["id_usuario"], $row["email"], $row["pontos"]);
+                $this->definirVariaveisSessao($row["id_usuario"]);
                 header("Location: ../pages/painel.php");
-                return true; /**Senha correta */
-            }
-            else{
-                return false; /**Senha incorreta */
+                return true;
+                /**Senha correta */
+            } else {
+                return false;
+                /**Senha incorreta */
             }
         } else {
             return false;
             /**Usuário não cadastrado */
+        }
+    }
+
+    public function verificarUsuario($apelido)
+    {
+        $stmt = $this->Conn->prepare("SELECT * FROM usuario WHERE apelido = :apelido");
+
+        $stmt->bindParam(":apelido", $apelido);
+
+        $stmt->execute();
+
+        if($stmt->rowCount() > 0){
+            return true;
+            /**Usuario encontrado */
+        }
+        else{
+            return false;
+            /**Usuario não encontrado */
         }
     }
 
@@ -47,11 +66,11 @@ class UserDAO implements IUserDAO
 
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         if ($stmt->rowCount() > 0) {
-            if(password_verify($senha, $row["senha"])){
+            if (password_verify($senha, $row["senha"])) {
                 return true;
-            }
-            else{
-                return false; /**Senha incorreta */
+            } else {
+                return false;
+                /**Senha incorreta */
             }
         } else {
             return false;
@@ -103,41 +122,62 @@ class UserDAO implements IUserDAO
     public function atualizarCadastro($id, User $user)
     {
 
-        $stmt = $this->Conn->prepare("UPDATE usuario SET nome = :nome, email = :email, senha = :senha, foto = :foto WHERE id = :id");
+        $stmt = $this->Conn->prepare("UPDATE usuario SET nome = :nome, sobrenome = :sobrenome, email = :email, apelido = :apelido WHERE id_usuario = :id");
 
         $nome = $user->getNome();
+        $sobrenome = $user->getSobrenome();
         $email = $user->getEmail();
-        $senha = $user->getSenha();
-        $foto = $user->getFoto();
+        $usuario = $user->getApelido();
 
         $stmt->bindParam(":nome", $nome);
+        $stmt->bindParam(":sobrenome", $sobrenome);
         $stmt->bindParam(":email", $email);
-        $stmt->bindParam(":senha", $senha);
-        $stmt->bindParam(":foto", $foto);
+        $stmt->bindParam(":apelido", $usuario);
         $stmt->bindParam(":id", $id);
 
         $stmt->execute();
 
         if ($stmt->rowCount() > 0) {
-            $this->definirVariaveisSessao($nome, $foto, $id, $email);
+            $this->definirVariaveisSessao($id);
         } else {
             $_SESSION['msg'] = "Erro ao atualizar ";
         }
     }
 
-    public function getPontos($id_usuario){
-        $stmt = $this->Conn->prepare("SELECT pontos FROM usuario WHERE id_usuario = :id_usuario");
-        
+    public function atualizarSenha($id, User $user)
+    {
+
+        $stmt = $this->Conn->prepare("UPDATE usuario SET senha = :senha WHERE id_usuario = :id");
+
+        $senha = $user->getSenha();
+
+        $stmt->bindParam(":senha", $senha);
+        $stmt->bindParam(":id", $id);
+
+        $stmt->execute();
+
+        if ($stmt->rowCount() > 0) {
+            $_SESSION['msg'] = "" /*funcionou*/;
+        } else {
+            $_SESSION['msg'] = "Erro ao atualizar ";
+        }
+    }
+
+    public function getDados($id_usuario)
+    {
+        $stmt = $this->Conn->prepare("SELECT * FROM usuario WHERE id_usuario = :id_usuario");
+
         $stmt->bindParam(":id_usuario", $id_usuario);
 
         $stmt->execute();
 
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        return $row['pontos'];
+        return $row;
     }
 
-    public function buscarCemMelhores(){
+    public function buscarCemMelhores()
+    {
         $stmt = $this->Conn->prepare("SELECT * FROM usuario ORDER BY pontos DESC LIMIT 100");
 
         $stmt->execute();
@@ -147,7 +187,8 @@ class UserDAO implements IUserDAO
         return $row;
     }
 
-    public function buscarTresMelhores(){
+    public function buscarTresMelhores()
+    {
         $stmt = $this->Conn->prepare("SELECT * FROM usuario ORDER BY pontos DESC LIMIT 3");
 
         $stmt->execute();
@@ -157,11 +198,8 @@ class UserDAO implements IUserDAO
         return $row;
     }
 
-    private function definirVariaveisSessao($nome, $foto, $id, $email)
+    private function definirVariaveisSessao($id)
     {
-        $_SESSION['nome'] = $nome;
-        $_SESSION['foto'] = $foto;
-        $_SESSION['email'] = $email;
-        $_SESSION['id_usuario'] = $id;
+        $_SESSION["id_usuario"] = $id;
     }
 }

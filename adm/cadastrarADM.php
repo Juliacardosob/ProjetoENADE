@@ -10,8 +10,8 @@ require_once("../content/body.php");
             </div>
         <?php endif; ?>
         <div class="login-title" id="cadastro-title">
-            <img src="../img/logo.png" alt="" class="logo">
-            <h1>Crie uma conta<small>Preencha com suas informações</small></h1>
+            <img src="../img/logoENADE.png" alt="" class="logoENADE">
+            <h1>Bem-vindo Administrador<small>Preencha com suas informações</small></h1>
         </div>
         <div id="cadastro-form">
             <div class="userData">

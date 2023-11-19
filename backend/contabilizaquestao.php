@@ -12,16 +12,21 @@ $resposta = filter_input(INPUT_POST, "alternativa");
 $id_usuario = filter_input(INPUT_POST, "id_usuario");
 $type = filter_input(INPUT_POST, "type");
 
+if(!isset($id_usuario)){
+    $questaoDAO = $questao->buscarTodasQuestoes($_SESSION["id_usuario"]);
+}
+else{
+    $questaoDAO = $questao->buscarTodasQuestoes($id_usuario);
+}
 
-$questaoDAO = $questao->buscarTodasQuestoes();
 
-shuffle($questaoDAO);
+// shuffle($questaoDAO);
 
 if ($type == "resposta") {
     if ($questao->verificarAcerto($id_questao, $resposta)) {
         /*acertou*/
         $acertou = 1; /**TRUE */
-        $pontos = 10;
+        $pontos = 1;
 
         $questao->registrarResposta($id_questao, $id_usuario, $acertou, $pontos);
         $questao->atualizarPontos($id_usuario, $acertou);

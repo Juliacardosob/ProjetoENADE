@@ -5,57 +5,56 @@ require_once("dao/UserDAO.php");
 if (!isset($_SESSION)) {
     session_start();
 }
-else{
-    if(isset($_SESSION['id'])) {
-        $id = $_SESSION['id_usuario'];
-        $usuario = $_SESSION['nome'];
-    }
-}
 
-if(isset($_POST["editar"])){
-    $User = new UserDAO($conn);
-    $userEdit = new User();
+$id = $_SESSION["id_usuario"];
 
-    $usuario = $_POST["usuario"];
-    $email = $_POST["email"];
-    // $foto = $_POST["foto"];
-    $senha = $_POST["senha"];
-    $conf_senha = $_POST["conf_senha"];
 
-    if($userEdit->verificarSenha($senha, $conf_senha)){
-        if(!$User->verificarCadastrado($apelido, $senha)){
-            $userEdit->setApelido($apelido);
-            $userEdit->setEmail($email);
-            $userEdit->setSenha($senha);
-            // $userEdit->setFoto($foto);
 
-            $User->atualizarCadastro($id, $userEdit);
-            $_SESSION['usuario'] = $userEdit->getApelido();
-            $_SESSION['msg'] = "";
-        }
-        else {
-            $_SESSION['msg'] = "Usuário: " . $usuario . " já cadastrado";
-            return;
-        }
-    }
-    else{
-        $_SESSION['msg'] = "As senhas não correspondem";
-    }
+$User = new UserDAO($conn);
+$userEdit = new User();
+
+$type = filter_input(INPUT_POST, "type");
+
+if ($type == "editarDados") {
+
+    $apelido = filter_input(INPUT_POST, "apelido");
+    $email = filter_input(INPUT_POST, "email");
+    $nome = filter_input(INPUT_POST, "nome");
+    $sobrenome = filter_input(INPUT_POST, "sobrenome");
+    
+        $userEdit->setApelido($apelido);
+        $userEdit->setEmail($email);
+        $userEdit->setNome($nome);
+        $userEdit->setSobrenome($sobrenome);
+
+        $User->atualizarCadastro($id, $userEdit);
+        header("Location: ../pages/perfil.php");
+        $_SESSION['msg'] = "";
 
     $conn = null;
- }
+} elseif ($type == "editarSenha") {
 
- if(isset($_POST['enviar'])){
+    $senha = filter_input(INPUT_POST, "senha");
+    $confirme = filter_input(INPUT_POST, "confirme");
+    if ($userEdit->verificarSenha($senha, $confirme)) {
+        $userEdit->setSenha($senha);
+        $User->atualizarSenha($id, $userEdit);
+        header("Location: ../pages/perfil.php");
+    } else {
+        /**Senha não conferem */
+    }
+    $conn = null;
+} elseif ($type == "enviar") {
     $foton = $_FILES['foto']['name'];
     $fotontmp = $_FILES['foto']['tmp_name'];
 
-    if(isset($foton)){
+    if (isset($foton)) {
 
         $select_b = $conn->query("SELECT * FROM aluno WHERE id = '$id'");
         $row = $select_b->fetch(PDO::FETCH_ASSOC);
         $fotobd = $row['foto'];
 
-        if(strcmp($fotobd, 'default.png') == 0){
+        if (strcmp($fotobd, 'default.png') == 0) {
             mkdir("../img/fotos_perfil/$id", 0755, true);
         }
 
@@ -66,14 +65,14 @@ if(isset($_POST["editar"])){
         $update_f = $conn->prepare("UPDATE aluno SET foto = ? WHERE id = ?");
         $result = $update_f->execute([$fotonova, $id]);
 
-        if($move == true && $result == true){
+        if ($move == true && $result == true) {
             echo 'foto atualizada';
             $foto = $fotonova;
         }
-    }else{
+    } else {
         echo 'Por favor, selecione uma foto.';
     }
     $conn = null;
+} else {
+    /*erro*/
 }
- 
-    

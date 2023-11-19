@@ -5,9 +5,8 @@ require_once("../backend/contabilizaquestao.php");
 if (!isset($_SESSION)) {
     session_start();
 } else {
-    if (isset($_SESSION['nome'])) {
-        $nome = $_SESSION['nome'];
-        $id_usuario = $_SESSION['id_usuario'];
+    if (isset($_SESSION["id_usuario"])) {
+        $id_usuario = $_SESSION["id_usuario"];
     }
 }
 
