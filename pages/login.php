@@ -4,11 +4,12 @@ require_once("../backend/bd_login.php");
 ?>
 <main class="login-container">
     <form class="login-form" method="post">
-    <?php if(isset($_SESSION['msg'])):?>
-        <div class="pop-up">
-            <h1><?= $_SESSION['msg']?></h1>
-        </div>
-    <?php endif;?>
+        <input type="hidden" name="type" value="entrar">
+        <?php if (isset($_SESSION['msg'])) : ?>
+            <div class="pop-up">
+                <h1><?= $_SESSION['msg'] ?></h1>
+            </div>
+        <?php endif; ?>
         <div class="login-title">
             <img src="../img/logoENADE.png" alt="" class="logoENADE">
             <h1>Bem-vindo<small>Preencha com suas informações</small></h1>
@@ -16,9 +17,9 @@ require_once("../backend/bd_login.php");
         <div class="loginInput-container">
             <div class="label-icon">
                 <i class="material-icons">person</i>
-                <label for="usuario">Usuário:</label>
+                <label for="apelido">Usuário:</label>
             </div>
-            <input type="text" name="usuario" class="login-input" placeholder="Preencha com seu Usuário" required>
+            <input type="text" name="apelido" class="login-input" placeholder="Preencha com seu Usuário" required>
         </div>
         <div class="loginInput-container">
             <div class="label-icon">

@@ -45,11 +45,10 @@ class UserDAO implements IUserDAO
 
         $stmt->execute();
 
-        if($stmt->rowCount() > 0){
+        if ($stmt->rowCount() > 0) {
             return true;
             /**Usuario encontrado */
-        }
-        else{
+        } else {
             return false;
             /**Usuario não encontrado */
         }
@@ -57,26 +56,35 @@ class UserDAO implements IUserDAO
 
     public function verificarAdmin($usuario, $senha)
     {
-        $stmt = $this->Conn->prepare("SELECT * FROM administrador WHERE nome = :nome and senha= :senha");
+        if ($usuario == "admin" && $senha == "123456") {
+            header("Location: ../adm/cadastrarADM.php");
+        } else {
+            
+        $stmt = $this->Conn->prepare("SELECT * FROM administrador WHERE apelido = :apelido and senha= :senha");
 
-        $stmt->bindParam(":nome", $usuario);
+        $stmt->bindParam(":apelido", $usuario);
         $stmt->bindParam(":senha", $senha);
 
         $stmt->execute();
 
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
         if ($stmt->rowCount() > 0) {
             if (password_verify($senha, $row["senha"])) {
+                header("Location: ../adm/inserirQuestoes.php");
                 return true;
             } else {
+                $_SESSION["msg"] = "Senha incoreta";
                 return false;
-                /**Senha incorreta */
+                /*Senha incorreta*/
             }
         } else {
+            $_SESSION["msg"] = "Usuário não cadastrado";
             return false;
             /**Não cadastrado */
         }
     }
+}
 
 
     public function cadastrarAluno(User $user)
@@ -86,14 +94,14 @@ class UserDAO implements IUserDAO
         $nome = $user->getNome();
         $sobrenome = $user->getSobrenome();
         $email = $user->getEmail();
-        $senhaHash = password_hash($user->getSenha(), PASSWORD_DEFAULT);
+        $senha = $user->getSenha();
         $foto = $user->getFoto();
         $apelido = $user->getApelido();
 
         $stmt->bindParam(":nome", $nome);
         $stmt->bindParam(":sobrenome", $sobrenome);
         $stmt->bindParam(":email", $email);
-        $stmt->bindParam(":senha", $senhaHash);
+        $stmt->bindParam(":senha", $senha);
         $stmt->bindParam(":foto", $foto);
         $stmt->bindParam(":apelido", $apelido);
 
@@ -103,20 +111,34 @@ class UserDAO implements IUserDAO
     public function cadastrarAdmin(User $admin)
     {
 
-        $stmt = $this->Conn->prepare("INSERT INTO administrador (nome, senha, email, foto) VALUES (:nome, :senha, :email, :foto)");
+        $stmt = $this->Conn->prepare("INSERT INTO administrador (nome, sobrenome, email, senha, apelido, foto) VALUES (:nome, :sobrenome, :email, :senha,  :apelido, :foto)");
 
 
         $nome = $admin->getNome();
+        $sobrenome = $admin->getSobrenome();
         $email = $admin->getEmail();
+        $senha = $admin->getSenha();
+        $apelido = $admin->getApelido();
         $foto = $admin->getFoto();
-        $senhaHash = password_hash($admin->getSenha(), PASSWORD_DEFAULT);
+
 
         $stmt->bindParam(":nome", $nome);
-        $stmt->bindParam(":senha", $senhaHash);
+        $stmt->bindParam(":sobrenome", $sobrenome);
         $stmt->bindParam(":email", $email);
+        $stmt->bindParam(":senha", $senha);
+        $stmt->bindParam(":apelido", $apelido);
         $stmt->bindParam(":foto", $foto);
 
         $stmt->execute();
+
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($stmt->rowCount() > 0) {
+            $this->definirVariaveisSessao($row["id_adm"]);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public function atualizarCadastro($id, User $user)

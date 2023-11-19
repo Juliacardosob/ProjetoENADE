@@ -10,7 +10,7 @@ if (isset($_POST["entrar"])) {
 
     $User = new UserDAO($conn);
 
-    $usuario = $_POST["usuario"];
+    $usuario = $_POST["apelido"];
     $senha = $_POST["senha"];
 
     if (!$User->verificarAdmin($usuario, $senha)) {

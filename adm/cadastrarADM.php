@@ -1,9 +1,11 @@
 <?php
 require_once("../content/body.php");
+require_once("../backend/bd_cadastro.php");
 ?>
 
 <main class="login-container">
-    <form class="login-form" action="../backend/bd_cadastro.php" method="post" enctype="multipart/form-data">
+    <form class="login-form"  method="post" enctype="multipart/form-data">
+        <input type="hidden" name="type" value="cadastrarADM">
         <?php if (isset($_SESSION['msg'])) : ?>
             <div class="pop-up">
                 <h1><?= $_SESSION['msg'] ?></h1>
@@ -18,32 +20,39 @@ require_once("../content/body.php");
                 <div class="loginInput-container  cadastroInput">
                     <div class="label-icon">
                         <i class="material-icons">person</i>
-                        <label for="usuario">Usuário:</label>
+                        <label for="apelido">Usuário:</label>
                     </div>
-                    <input type="text" name="usuario" class="login-input " placeholder="Preencha com seu Usuário" required>
+                    <input type="text" name="apelido" class="login-input " placeholder="Digite seu Usuário" required>
                 </div>
                 <div class="loginInput-container cadastroInput">
+                    <div class="label-icon">
+                        <i class="material-icons">person</i>
+                        <label for="nome">Nome:</label>
+                    </div>
+                    <input type="text" name="nome" class="login-input " placeholder="Digite seu primeiro nome" required>
+                </div>
+                <div class="loginInput-container cadastroInput">
+                    <div class="label-icon">
+                        <i class="material-icons">person</i>
+                        <label for="sobrenome">Sobrenome:</label>
+                    </div>
+                    <input type="text" name="sobrenome" class="login-input " placeholder="Digite seu sobrenome" required>
+                </div>
+            </div>
+            <div class="userData">
+            <div class="loginInput-container cadastroInput">
                     <div class="label-icon">
                         <i class="material-icons">mail</i>
                         <label for="email">Email:</label>
                     </div>
-                    <input type="email" name="email" class="login-input " placeholder="Preencha com seu email" required>
+                    <input type="email" name="email" class="login-input " placeholder="Digite seu email" required>
                 </div>
-                <div class="loginInput-container cadastroInput">
-                    <div class="label-icon">
-                        <i class="material-icons">photo</i>
-                        <label for="foto">Escolha sua foto</label>
-                    </div>
-                    <input type="file" name="foto" accept="image/png, image/jpeg">
-                </div>
-            </div>
-            <div class="userData">
                 <div class="loginInput-container cadastroInput">
                     <div class="label-icon">
                         <i class="material-icons">lock</i>
-                        <label for="password">Senha:</label>
+                        <label for="senha">Senha:</label>
                     </div>
-                    <input type="password" name="password" class="login-input " placeholder="Preencha com sua senha" required>
+                    <input type="password" name="senha" class="login-input " placeholder="Digite sua senha" required>
                 </div>
                 <div class="loginInput-container cadastroInput">
                     <div class="label-icon">
@@ -52,27 +61,11 @@ require_once("../content/body.php");
                     </div>
                     <input type="password" name="confirme" class="login-input " placeholder="Confirme sua senha" required>
                 </div>
-                <div class="loginInput-container cadastroInput">
-                    <div class="label-icon">
-                        <i class="material-icons">person</i>
-                        <label for="genero">Gênero</label>
-                    </div>
-                    <select id="genero" name="genero">
-                        <option value="default" selected>Selecione um gênero</option>
-                        <option value="masculino">Masculino</option>
-                        <option value="feminino">Feminino</option>
-                        <option value="opcional">Prefiro não dizer</option>
-                    </select>
-                </div>
             </div>
         </div>
-        <div class="checkpolitica">
-            <input type="checkbox" name="check" class="check" required>
-            <label for="check">Li, entendi e concordo com a <u><b><a href="#">Política de privacidade</a></u></b></label>
-        </div>
-        <button class="btn-form" name="cadastrarADM">Cadastrar</button>
+        <button class="btn-form">Cadastrar</button>
         <div class="voltarusuario">
-            <span>Já tem usuário? <u><b><a href="login.php">Faça o login</a></u></b></span>
+            <span>Já tem usuário? <u><b><a href="../pages/login.php">Faça o login</a></u></b></span>
         </div>
     </form>
 </main>

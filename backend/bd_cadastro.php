@@ -1,4 +1,7 @@
 <?php
+
+use function PHPSTORM_META\type;
+
 require_once("conexao.php");
 require_once("dao/UserDAO.php");
 
@@ -63,31 +66,35 @@ if ($type == "cadastrar") {
     $conn = null;
 }
 
-if (isset($_POST["cadastrarADM"])) {
+if ($type == "cadastrarADM") {
 
-    $nome = $_POST["nome"];
-    $email = $_POST["email"];
-    $senha = $_POST["senha"];
-    $conf_senha = $_POST["confirme"];
+    $apelido = filter_input(INPUT_POST,  "apelido");
+    $nome = filter_input(INPUT_POST, "nome");
+    $sobrenome = filter_input(INPUT_POST, "sobrenome");
+    $email = filter_input(INPUT_POST, "email");
+    $senha = filter_input(INPUT_POST, "senha");
+    $confirme = filter_input(INPUT_POST, "confirme");
 
-    $foto = $_FILES["foto"]["name"];
+    $foto = "default.png";
 
-    if (!empty($foto)) {
-        $foto_s = $_FILES["foto"]["tmp_name"];
+    // if (!empty($foto)) {
+    //     $foto_s = $_FILES["foto"]["tmp_name"];
 
-        $caminhobd = "fotos_perfil/$nome/$foto";
+    //     $caminhobd = "fotos_perfil/$nome/$foto";
 
-        mkdir("../img/fotos_perfil/$nome", 0755, true);
-        $move = move_uploaded_file($foto_s, "../img/$caminhobd");
-    } else {
+    //     mkdir("../img/fotos_perfil/$nome", 0755, true);
+    //     $move = move_uploaded_file($foto_s, "../img/$caminhobd");
+    // } else {
 
-        $caminhobd = "default.png";
-    }
+    //     $caminhobd = "default.png";
+    // }
 
-    if ($newUser->verificarSenha($senha, $conf_senha)) {
+    if ($newUser->verificarSenha($senha, $confirme)) {
         if (!$User->verificarCadastrado($nome, $senha)) {
 
+            $newUser->setApelido($apelido);
             $newUser->setNome($nome);
+            $newUser->setSobrenome($sobrenome);
             $newUser->setEmail($email);
             $newUser->setSenha($senha);
             $newUser->setFoto($foto);

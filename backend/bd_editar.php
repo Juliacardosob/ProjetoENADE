@@ -21,7 +21,8 @@ if ($type == "editarDados") {
     $email = filter_input(INPUT_POST, "email");
     $nome = filter_input(INPUT_POST, "nome");
     $sobrenome = filter_input(INPUT_POST, "sobrenome");
-    
+    if(!$User->verificarUsuario($apelido)){
+
         $userEdit->setApelido($apelido);
         $userEdit->setEmail($email);
         $userEdit->setNome($nome);
@@ -29,8 +30,12 @@ if ($type == "editarDados") {
 
         $User->atualizarCadastro($id, $userEdit);
         header("Location: ../pages/perfil.php");
-        $_SESSION['msg'] = "";
-
+        $_SESSION['msg'] = "Atualizado com sucesso";
+    }
+    else{
+        header("Location: ../pages/perfil.php");
+        $_SESSION['msg'] = "Nome de usuário já existe";
+    }
     $conn = null;
 } elseif ($type == "editarSenha") {
 

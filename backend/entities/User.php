@@ -13,32 +13,39 @@ class User implements IUser
     public $email;
     public $foto;
 
-    public function setNome($nome){
+    public function setNome($nome)
+    {
         $this->nome = $nome;
     }
 
-    public function getNome(){
+    public function getNome()
+    {
         return $this->nome;
     }
 
-    public function generateToken(){
+    public function generateToken()
+    {
         return bin2hex(random_bytes(50));
     }
 
-        
-    public function setSobrenome($sobrenome){
+
+    public function setSobrenome($sobrenome)
+    {
         $this->sobrenome = $sobrenome;
     }
 
-    public function getSobrenome(){
+    public function getSobrenome()
+    {
         return $this->sobrenome;
     }
 
-    public function setApelido($apelido){
+    public function setApelido($apelido)
+    {
         $this->apelido = $apelido;
     }
 
-    public function getApelido(){
+    public function getApelido()
+    {
         return $this->apelido;
     }
 
@@ -69,7 +76,11 @@ class User implements IUser
 
     public function getFoto()
     {
-        return $this->foto;
+        if (empty($foto)) {
+            return $foto = "default.png";
+        } else {
+            return $this->foto = $foto;
+        }
     }
 
     public function verificarSenha($senha, $confirme)
