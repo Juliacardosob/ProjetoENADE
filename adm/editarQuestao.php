@@ -1,47 +1,63 @@
 <?php
-require_once("../content/header.php");
+require_once("../content/painel.php");
+require_once("../backend/entities/Questao.php");
+require_once("../backend/dao/QuestaoDAO.php");
+
+$id = filter_input(INPUT_GET, "id");
+
+$questao;
+
+$questaoDAO = new QuestaoDAO($conn);
+
+if (empty($id)) {
+    /*questão não encontrada */
+} else {
+    $questao = $questaoDAO->buscarQuestao($id);
+}
 ?>
+
 <main id="inserirQuestoes-container">
     <div id="inserirQuestoes-title">
-        <h1>Inserir questões</h1>
+        <h1>Editar questão</h1>
     </div>
     <form action="../backend/bd_questoes.php" id="inserirQuestoes-form" method="POST">
-        <input type="hidden" name="type" value="inserir">
+        <input type="hidden" name="type" value="editar">
+        <input type="hidden" name="id" value="<?=$id?>">
         <div class="inserirQuestoesInput-form">
             <label for="anoProva">Enade: </label>
-            <input type="text" placeholder="Digite o ano da prova" name="anoProva">
+            <input type="text" placeholder="Digite o ano da prova" name="anoProva" value="<?= $questao["ano"]?>">
         </div>
         <div class="inserirQuestoesInput-form">
             <label for="desc">Descricao:</label>
-            <textarea name="desc" placeholder="Digite o texto da questão" rows="5" cols="15"></textarea>
+            <textarea name="desc" placeholder="Digite o texto da questão" rows="5" cols="15"><?= $questao["descricao"]?></textarea>
         </div>
         <div class="inserirQuestoesInput-form">
             <label for="descFonte">Fonte:</label>
-            <textarea name="descFonte" placeholder="Digite a fonte do texto, caso houver" rows="5" cols="10"></textarea>
+            <textarea name="descFonte" placeholder="Digite a fonte do texto, caso houver" rows="5" cols="10"><?= $questao["descricao_fonte"]?></textarea>
         </div>
         <div class="inserirQuestoesInput-form">
             <label for="enunciado">Enunciado:</label>
-            <textarea name="enunciado" placeholder="Digite o enunciado da questão" rows="5" cols="10"></textarea>
+            <textarea name="enunciado" placeholder="Digite o enunciado da questão" rows="5" cols="10"><?= $questao["enunciado"]?></textarea>
         </div>
         <div class="inserirQuestoesAlternativas">
             <label for="alternativaA">Alternativa A</label>
-            <input name="alternativaA" placeholder="Digite a alternativa A">
+            <input name="alternativaA" placeholder="Digite a alternativa A" value="<?= $questao["alternativaA"]?>">
         </div>
         <div class="inserirQuestoesAlternativas">
             <label for="alternativaB">Alternativa B</label>
-            <input name="alternativaB" placeholder="Digite a alternativa B">
+            <input name="alternativaB" placeholder="Digite a alternativa B" value="<?= $questao["alternativaB"]?>">
         </div>
         <div class="inserirQuestoesAlternativas">
             <label for="alternativaC">Alternativa C</label>
-            <input name="alternativaC" placeholder="Digite a alternativa C">
+            <input name="alternativaC" placeholder="Digite a alternativa C" value="<?= $questao["alternativaC"]?>">
         </div>
         <div class="inserirQuestoesAlternativas">
             <label for="alternativaD">Alternativa D</label>
-            <input name="alternativaD" placeholder="Digite a alternativa D">
+            <input name="alternativaD" placeholder="Digite a alternativa D" value="<?= $questao["alternativaD"]?>">
         </div>
         <div class="inserirQuestoesAlternativas">
             <label for="alternativaE">Alternativa E</label>
-            <input name="alternativaE" placeholder="Digite a alternativa E">
+            <input name="alternativaE" placeholder="Digite a alternativa E" value="<?= $questao["alternativaE"]?>">
         </div>
         <div class="inserirQuestoesAlternativas">
             <label for="correta">Escolha a alternativa correta: </label>
@@ -54,7 +70,7 @@ require_once("../content/header.php");
             </select>
         </div>
         <div id="inserirQuestoesButton-container">
-            <button>Enviar questão</button>
+            <button>Editar questão</button>
         </div>
     </form>
 </main>

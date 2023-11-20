@@ -11,45 +11,11 @@ $id = $_SESSION["id_usuario"];
 
 
 $User = new UserDAO($conn);
-$userEdit = new User();
+$newUser = new User();
 
 $type = filter_input(INPUT_POST, "type");
 
-if ($type == "editarDados") {
-
-    $apelido = filter_input(INPUT_POST, "apelido");
-    $email = filter_input(INPUT_POST, "email");
-    $nome = filter_input(INPUT_POST, "nome");
-    $sobrenome = filter_input(INPUT_POST, "sobrenome");
-    if(!$User->verificarUsuario($apelido)){
-
-        $userEdit->setApelido($apelido);
-        $userEdit->setEmail($email);
-        $userEdit->setNome($nome);
-        $userEdit->setSobrenome($sobrenome);
-
-        $User->atualizarCadastro($id, $userEdit);
-        header("Location: ../pages/perfil.php");
-        $_SESSION['msg'] = "Atualizado com sucesso";
-    }
-    else{
-        header("Location: ../pages/perfil.php");
-        $_SESSION['msg'] = "Nome de usuário já existe";
-    }
-    $conn = null;
-} elseif ($type == "editarSenha") {
-
-    $senha = filter_input(INPUT_POST, "senha");
-    $confirme = filter_input(INPUT_POST, "confirme");
-    if ($userEdit->verificarSenha($senha, $confirme)) {
-        $userEdit->setSenha($senha);
-        $User->atualizarSenha($id, $userEdit);
-        header("Location: ../pages/perfil.php");
-    } else {
-        /**Senha não conferem */
-    }
-    $conn = null;
-} elseif ($type == "enviar") {
+if ($type == "enviar") {
     $foton = $_FILES['foto']['name'];
     $fotontmp = $_FILES['foto']['tmp_name'];
 

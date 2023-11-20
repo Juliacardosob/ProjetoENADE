@@ -1,6 +1,6 @@
 <?php
 require_once("../content/header.php");
-require_once("../backend/bd_editar.php");
+require_once("../backend/bd_usuario.php");
 require_once("../backend/conexao.php");
 
 $user = new UserDAO($conn);
@@ -39,7 +39,7 @@ if (!isset($_SESSION)) {
         </div>
         <hr>
         <div class="perfilForm-inputs">
-            <form method="POST" class="userData" action="../backend/bd_editar.php">
+            <form method="POST" class="userData" action="../backend/bd_usuario.php">
                 <input type="hidden" name="type" value="editarDados">
                 <div class="perfil-conteudo">
                     <div class="loginInput-container  cadastroInput">
@@ -75,7 +75,7 @@ if (!isset($_SESSION)) {
                     </button>
                 </div>
             </form>
-            <form method="POST" class="userData" action="../backend/bd_editar.php">
+            <form method="POST" class="userData" action="../backend/bd_usuario.php">
                 <input type="hidden" name="type" value="editarSenha">
                 <div class="perfil-conteudo">
                     <div class="loginInput-container cadastroInput">

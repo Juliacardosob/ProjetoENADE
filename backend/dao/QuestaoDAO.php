@@ -15,8 +15,6 @@ class QuestaoDAO implements IQuestaoDAO
     public function criarQuestao(Questao $questao)
     {
 
-        $questaoData = $questao->getQuestaoData();
-
         $stmt = $this->Conn->prepare("INSERT INTO questao(ano,
          descricao,
          descricao_fonte,
@@ -29,7 +27,7 @@ class QuestaoDAO implements IQuestaoDAO
          respostaCorreta)
          VALUES( :ano,
          :descricao,
-         :descricao_fonte,
+         :fonte,
          :enunciado,
          :alternativaA,
          :alternativaB,
@@ -38,30 +36,39 @@ class QuestaoDAO implements IQuestaoDAO
          :alternativaE,
          :respostaCorreta)");
 
-        $stmt->bindParam(':ano', $questaoData['ano']);
-        $stmt->bindParam(':descricao', $questaoData['descricao']);
-        $stmt->bindParam(':descricao_fonte', $questaoData['fonte']);
-        $stmt->bindParam(':enunciado', $questaoData['enunciado']);
-        $stmt->bindParam(':alternativaA', $questaoData['alternativaA']);
-        $stmt->bindParam(':alternativaB', $questaoData['alternativaB']);
-        $stmt->bindParam(':alternativaC', $questaoData['alternativaC']);
-        $stmt->bindParam(':alternativaD', $questaoData['alternativaD']);
-        $stmt->bindParam(':alternativaE', $questaoData['alternativaE']);
-        $stmt->bindParam(':respostaCorreta', $questaoData['correta']);
+        $ano = $questao->getAno();
+        $descricao = $questao->getDescricao();
+        $fonte = $questao->getFonte();
+        $enunciado = $questao->getEnunciado();
+        $alternativaA= $questao->getAlternativaA();
+        $alternativaB= $questao->getAlternativaB();
+        $alternativaC= $questao->getAlternativaC();
+        $alternativaD= $questao->getAlternativaD();
+        $alternativaE= $questao->getAlternativaE();
+        $respostaCorreta= $questao->getCorreta();
+
+        $stmt->bindParam(':ano', $ano);
+        $stmt->bindParam(':descricao', $descricao);
+        $stmt->bindParam(':fonte', $fonte);
+        $stmt->bindParam(':enunciado', $enunciado);
+        $stmt->bindParam(':alternativaA', $alternativaA);
+        $stmt->bindParam(':alternativaB', $alternativaB);
+        $stmt->bindParam(':alternativaC', $alternativaC);
+        $stmt->bindParam(':alternativaD', $alternativaD);
+        $stmt->bindParam(':alternativaE', $alternativaE);
+        $stmt->bindParam(':respostaCorreta', $respostaCorreta);
 
         $stmt->execute();
         header("Location: ../adm/inserirQuestoes.php");
     }
 
-    public function editarQuestao(Questao $questao)
+    public function editarQuestao($id_questao, Questao $questao)
     {
-
-        $questaoData = $questao->getQuestaoData();
 
         $stmt = $this->Conn->prepare("UPDATE questao SET
          ano = :ano,
          descricao = :descricao,
-         fonte = :fonte,
+         descricao_fonte = :fonte,
          enunciado = :enunciado,
          alternativaA = :alternativaA,
          alternativaB = :alternativaB,
@@ -69,21 +76,30 @@ class QuestaoDAO implements IQuestaoDAO
          alternativaD = :alternativaD,
          alternativaE = :alternativaE,
          respostaCorreta = :respostaCorreta
-         WHERE id = :id
+         WHERE id_questao = :id");
+        
+        $ano = $questao->getAno();
+        $descricao = $questao->getDescricao();
+        $fonte = $questao->getFonte();
+        $enunciado = $questao->getEnunciado();
+        $alternativaA= $questao->getAlternativaA();
+        $alternativaB= $questao->getAlternativaB();
+        $alternativaC= $questao->getAlternativaC();
+        $alternativaD= $questao->getAlternativaD();
+        $alternativaE= $questao->getAlternativaE();
+        $respostaCorreta= $questao->getCorreta();
 
-        ");
-
-        $stmt->bindParam(':ano', $questaoData['ano']);
-        $stmt->bindParam(':descricao', $questaoData['descricao']);
-        $stmt->bindParam(':fonte', $questaoData['fonte']);
-        $stmt->bindParam(':enunciado', $questaoData['enunciado']);
-        $stmt->bindParam(':alternativaA', $questaoData['alternativaA']);
-        $stmt->bindParam(':alternativaB', $questaoData['alternativaB']);
-        $stmt->bindParam(':alternativaC', $questaoData['alternativaC']);
-        $stmt->bindParam(':alternativaD', $questaoData['alternativaD']);
-        $stmt->bindParam(':alternativaE', $questaoData['alternativaE']);
-        $stmt->bindParam(':respostaCorreta', $questaoData['correta']);
-        $stmt->bindParam(':id', $questaoData['id']);
+        $stmt->bindParam(':ano', $ano);
+        $stmt->bindParam(':descricao', $descricao);
+        $stmt->bindParam(':fonte', $fonte);
+        $stmt->bindParam(':enunciado', $enunciado);
+        $stmt->bindParam(':alternativaA', $alternativaA);
+        $stmt->bindParam(':alternativaB', $alternativaB);
+        $stmt->bindParam(':alternativaC', $alternativaC);
+        $stmt->bindParam(':alternativaD', $alternativaD);
+        $stmt->bindParam(':alternativaE', $alternativaE);
+        $stmt->bindParam(':respostaCorreta', $respostaCorreta);
+        $stmt->bindParam(':id', $id_questao);
 
         $stmt->execute();
     }
@@ -91,11 +107,24 @@ class QuestaoDAO implements IQuestaoDAO
     public function deletarQuestao($id_questao)
     {
 
-        $stmt = $this->Conn->prepare("DELETE FROM questao WHERE id = :id");
+        $stmt = $this->Conn->prepare("DELETE FROM questao WHERE id_questao = :id");
 
         $stmt->bindParam(":id", $id_questao, PDO::PARAM_INT);
 
         $stmt->execute();
+    }
+
+    public function buscarQuestao($id_questao)
+    {
+        $stmt = $this->Conn->prepare("SELECT * FROM questao WHERE id_questao = :id");
+
+        $stmt->bindParam(":id", $id_questao, PDO::PARAM_INT);
+
+        $stmt->execute();
+
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $row;
     }
 
     public function registrarResposta($id_questao, $id_usuario, $acertou, $pontos){
@@ -152,7 +181,7 @@ class QuestaoDAO implements IQuestaoDAO
     }
     
 
-    public function buscarTodasQuestoes($id_usuario)
+    public function buscarQuestoesNaoRespondidas($id_usuario)
     {
         $stmt = $this->Conn->prepare("SELECT * FROM questao WHERE id_questao NOT IN (SELECT id_questao FROM resposta WHERE id_usuario = :id_usuario)");
     
@@ -162,6 +191,17 @@ class QuestaoDAO implements IQuestaoDAO
     
         $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
+        return $row;
+    }
+
+    public function buscarTodasQuestoes()
+    {
+        $stmt = $this->Conn->prepare("SELECT * FROM  questao");
+
+        $stmt->execute();
+
+        $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
         return $row;
     }
 

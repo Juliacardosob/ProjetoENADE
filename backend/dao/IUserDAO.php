@@ -5,6 +5,10 @@ interface IUserDAO
 {
     public function cadastrarAluno(User $user);
 
+    public function buscarAluno($id_usuario);
+    
+    public function deletarAluno($id_usuario);
+
     public function verificarCadastrado($usuario, $senha);
 
     public function verificarAdmin($usuario, $senha);

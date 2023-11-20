@@ -40,3 +40,16 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+var resetBotao = document.getElementById("resetarPontos");
+
+resetBotao.addEventListener("click",function(){
+    var resposta = confirm("Têm certeza disso?");
+
+    if(resposta){
+        window.location.href("../backend/bd_questoes.php");
+    }
+    else{
+        window.location.href("../backend/adm/gerenciarUsuarios.php");
+    }
+})
+

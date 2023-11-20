@@ -5,6 +5,7 @@ require_once("IUserDAO.php");
 class UserDAO implements IUserDAO
 {
     private $Conn;
+    private $ADM = false;
 
     public function __construct(PDO $conn)
     {
@@ -23,7 +24,7 @@ class UserDAO implements IUserDAO
 
         if ($stmt->rowCount() > 0) {
             if (password_verify($senha, $row["senha"])) {
-                $this->definirVariaveisSessao($row["id_usuario"]);
+                $this->definirVariaveisSessao($row["id_usuario"], $this->ADM);
                 header("Location: ../pages/painel.php");
                 return true;
                 /**Senha correta */
@@ -60,26 +61,26 @@ class UserDAO implements IUserDAO
             header("Location: ../adm/cadastrarADM.php");
         } else {
             
-        $stmt = $this->Conn->prepare("SELECT * FROM administrador WHERE apelido = :apelido and senha= :senha");
+        $stmt = $this->Conn->prepare("SELECT * FROM administrador WHERE apelido = :apelido");
 
         $stmt->bindParam(":apelido", $usuario);
-        $stmt->bindParam(":senha", $senha);
-
+        
         $stmt->execute();
 
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($stmt->rowCount() > 0) {
             if (password_verify($senha, $row["senha"])) {
-                header("Location: ../adm/inserirQuestoes.php");
+                $this->ADM = true;
+                header("Location: ../pages/painel.php");
+                $this->definirVariaveisSessao($row["id_adm"], $this->ADM);
                 return true;
             } else {
-                $_SESSION["msg"] = "Senha incoreta";
                 return false;
                 /*Senha incorreta*/
             }
         } else {
-            $_SESSION["msg"] = "Usuário não cadastrado";
+            $this->ADM = false;
             return false;
             /**Não cadastrado */
         }
@@ -134,7 +135,6 @@ class UserDAO implements IUserDAO
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($stmt->rowCount() > 0) {
-            $this->definirVariaveisSessao($row["id_adm"]);
             return true;
         } else {
             return false;
@@ -160,7 +160,7 @@ class UserDAO implements IUserDAO
         $stmt->execute();
 
         if ($stmt->rowCount() > 0) {
-            $this->definirVariaveisSessao($id);
+            $this->definirVariaveisSessao($id, $this->ADM);
         } else {
             $_SESSION['msg'] = "Erro ao atualizar ";
         }
@@ -198,13 +198,15 @@ class UserDAO implements IUserDAO
         return $row;
     }
 
-    public function buscarCemMelhores()
+    public function getDadosADM($id_usuario)
     {
-        $stmt = $this->Conn->prepare("SELECT * FROM usuario ORDER BY pontos DESC LIMIT 100");
+        $stmt = $this->Conn->prepare("SELECT * FROM administrador WHERE id_adm = :id_usuario");
+
+        $stmt->bindParam(":id_usuario", $id_usuario);
 
         $stmt->execute();
 
-        $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
         return $row;
     }
@@ -220,8 +222,53 @@ class UserDAO implements IUserDAO
         return $row;
     }
 
-    private function definirVariaveisSessao($id)
+    public function buscarCemMelhores()
+    {
+        $stmt = $this->Conn->prepare("SELECT * FROM usuario ORDER BY pontos DESC LIMIT 100");
+
+        $stmt->execute();
+
+        $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $row;
+    }
+
+    public function buscarTodos()
+    {
+        $stmt = $this->Conn->prepare("SELECT * FROM usuario");
+        
+        $stmt->execute();
+
+        $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $row;
+    }
+
+    public function buscarAluno($id_usuario)
+    {
+        $stmt = $this->Conn->prepare("SELECT * FROM usuario WHERE id_usuario = :id");
+
+        $stmt->bindParam(":id", $id_usuario);
+
+        $stmt->execute();
+
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $row;
+    }
+
+    public function deletarAluno($id_usuario)
+    {
+        $stmt = $this->Conn->prepare("DELETE FROM usuario WHERE id_usuario = :id");
+
+        $stmt->bindParam(":id", $id_usuario);
+
+        $stmt->execute();
+    }
+
+    private function definirVariaveisSessao($id, $ADM)
     {
         $_SESSION["id_usuario"] = $id;
+        $_SESSION["adm"] = $ADM;
     }
 }

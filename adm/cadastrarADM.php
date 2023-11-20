@@ -1,6 +1,6 @@
 <?php
 require_once("../content/body.php");
-require_once("../backend/bd_cadastro.php");
+require_once("../backend/bd_usuario.php");
 ?>
 
 <main class="login-container">

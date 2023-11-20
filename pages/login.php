@@ -1,6 +1,6 @@
 <?php
 require_once("../content/body.php");
-require_once("../backend/bd_login.php");
+require_once("../backend/bd_usuario.php");
 ?>
 <main class="login-container">
     <form class="login-form" method="post">
@@ -19,14 +19,14 @@ require_once("../backend/bd_login.php");
                 <i class="material-icons">person</i>
                 <label for="apelido">Usuário:</label>
             </div>
-            <input type="text" name="apelido" class="login-input" placeholder="Preencha com seu Usuário" required>
+            <input type="text" name="apelido" class="login-input" placeholder="Digite seu Usuário" required>
         </div>
         <div class="loginInput-container">
             <div class="label-icon">
                 <i class="material-icons">lock</i>
                 <label for="senha">Senha:</label>
             </div>
-            <input type="password" name="senha" class="login-input" placeholder="Preencha com sua senha" required>
+            <input type="password" name="senha" class="login-input" placeholder="Digite sua senha" required>
         </div>
         <button class="btn-form" name="entrar">Entrar</button>
         <div class="voltarusuario">

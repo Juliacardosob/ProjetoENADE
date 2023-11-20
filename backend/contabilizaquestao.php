@@ -13,10 +13,10 @@ $id_usuario = filter_input(INPUT_POST, "id_usuario");
 $type = filter_input(INPUT_POST, "type");
 
 if(!isset($id_usuario)){
-    $questaoDAO = $questao->buscarTodasQuestoes($_SESSION["id_usuario"]);
+    $questaoDAO = $questao->buscarQuestoesNaoRespondidas($_SESSION["id_usuario"]);
 }
 else{
-    $questaoDAO = $questao->buscarTodasQuestoes($id_usuario);
+    $questaoDAO = $questao->buscarQuestoesNaoRespondidas($id_usuario);
 }
 
 

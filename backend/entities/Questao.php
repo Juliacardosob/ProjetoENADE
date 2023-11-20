@@ -100,32 +100,16 @@ class Questao{
     public function setCorreta($correta) {
         $this->correta = $correta;
     }
-
-    public function getQuestaoData() {
-        $data = array(
-            'num_questao' => $this->getNumQuestao(),
-            'ano' => $this->getAno(),
-            'descricao' => $this->getDescricao(),
-            'fonte' => $this->getFonte(),
-            'enunciado' => $this->getEnunciado(),
-            'alternativaA' => $this->getAlternativaA(),
-            'alternativaB' => $this->getAlternativaB(),
-            'alternativaC' => $this->getAlternativaC(),
-            'alternativaD' => $this->getAlternativaD(),
-            'alternativaE' => $this->getAlternativaE(),
-            'correta' => $this->getCorreta(),
-        );
-
-        return $data;
-    }
 }
 
 interface IQuestaoDAO{
     public function criarQuestao(Questao $questao);
 
-    public function editarQuestao(Questao $questao);
+    public function editarQuestao($id_questao, Questao $questao);
 
     public function deletarQuestao($id_questao);
+
+    public function buscarQuestao($id_questao);
 
     public function obterPontos($id_usuario, $acertou);
 
@@ -135,7 +119,7 @@ interface IQuestaoDAO{
 
     public function registrarResposta($id_questao, $id_usuario, $acertou, $pontos);
 
-    public function buscarTodasQuestoes($id_usuario);
+    public function buscarQuestoesNaoRespondidas($id_usuario);
 
     public function QuestoesRespondidas($id_usuario);
 

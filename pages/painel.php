@@ -4,65 +4,110 @@ require_once("../backend/dao/QuestaoDAO.php");
 
 $questoes = new QuestaoDAO($conn);
 
-$ranking = new UserDAO($conn);
-
 $questoesRespondidas = $questoes->QuestoesRespondidas($id);
 
 $questoesAcertadas = $questoes->questoesCertas($id);
 
 $questoesErradas = $questoes->questoesErradas($id);
 
+$todasQuestoes = $questoes->buscarTodasQuestoes();
+$numQuestoes = 0;
+foreach ($todasQuestoes as $questao) {
+    $numQuestoes++;
+}
+
+$todosAlunos = $userDAO->buscarTodos();
+$numUsuarios = 0;
+foreach($todosAlunos as $alunos){
+    $numUsuarios++;
+}
+
 $taxa = $questoes->taxaAcertos($id);
 
-$rankingTop3 = $ranking->buscarTresMelhores();
+$rankingTop3 = $userDAO->buscarTresMelhores();
 
-$posicao3 = 1 ;
+$posicao3 = 1;
 
 ?>
 
 <main id="painel-container">
     <div id="painelActions-container">
-        <div class="painelActions">
-            <i class="material-icons">account_circle</i>
-            <p class="painelActions-text">Perfil</p>
-        </div>
-        <div class="painelActions">
-            <i class="material-icons">format_list_bulleted</i>
-            <p class="painelActions-text">Questões</p>
-        </div>
-        <div class="painelActions">
-            <i class="material-icons">emoji_events</i>
-            <p class="painelActions-text">Ranking</p>
-        </div>
+        <a style="text-decoration: none;" href="../pages/perfil.php">
+            <div class="painelActions">
+                <i class="material-icons">account_circle</i>
+                <p class="painelActions-text">Perfil</p>
+            </div>
+        </a>
+        <?php if ($adm == true) : ?>
+            <a style="text-decoration: none;" href="../adm/gerenciarQuestoes.php">
+                <div class="painelActions">
+                    <i class="material-icons">settings</i>
+                    <p class="painelActions-text">Gerenciar questões</p>
+                </div>
+            </a>
+        <?php else : ?>
+            <a style="text-decoration: none;" href="../pages/questoes.php">
+                <div class="painelActions">
+                    <i class="material-icons">format_list_bulleted</i>
+                    <p class="painelActions-text">Questões</p>
+                </div>
+            </a>
+        <?php endif ?>
+        <a style="text-decoration: none;" href="../pages/ranking.php">
+            <div class="painelActions">
+                <i class="material-icons">emoji_events</i>
+                <p class="painelActions-text">Ranking</p>
+            </div>
+        </a>
     </div>
     <div id="estatisticas">
-        <div class="painelQuestoes-container">
-            <div id="question-number">
-                <h1 id="number"><?=$questoesRespondidas?></h1>
+        <?php if ($adm == true) : ?>
+            <div class="painelQuestoes-container">
+                <div class="question-number">
+                    <h1 class="number"><?= $numQuestoes ?></h1>
+                </div>
+                <p class="numberSubtitle">Questões cadastradas</p>
+                <small class="call">Cadastrar mais?</small>
+                <a href="../adm/inserirQuestoes.php"class="btnQuestoes">Cadastrar questões</a>
+                <a href="../adm/gerenciarQuestoes.php" class="btnQuestoes">Gerenciar questões</a>
             </div>
-            <p id="numberSubtitle">Questões Resolvidas</p>
-            <small id="call">Vamos praticar?</small>
-            <a href="../pages/questoes.php" id="btnQuestoes">Responder questões</a>
-            <a href="../pages/ranking.php" id="btnQuestoes">Ver ranking</a>
-        </div>
-        <div class="painelCard-container">
-            <div class="cardPainel">
-                <p id="certas"><?=$questoesAcertadas?></p>
-                <span>Certas</span>
-                <span class="space"></span>
-                <i id="certoCard" class="material-icons">check_circle_outline</i>
+            <div class="painelQuestoes-container">
+                <div class="question-number">
+                    <h1 class="number"><?= $numUsuarios?></h1>
+                </div>
+                <p class="numberSubtitle">Usuários cadastrados</p>
+                <small class="call">Gerenciar Alunos</small>
+                <a href="../adm/gerenciarUsuarios.php" class="btnQuestoes">Gerenciar Alunos</a>
             </div>
-            <div class="cardPainel">
-                <p id="erradas"><?=$questoesErradas?></p>
-                <span>Erradas</span>
-                <span class="space"></span>
-                <i id="erroCard" class="material-icons">highlight_off</i>
+        <?php else : ?>
+            <div class="painelQuestoes-container">
+                <div class="question-number">
+                    <h1 class="number"><?= $questoesRespondidas ?></h1>
+                </div>
+                <p class="numberSubtitle">Questões Resolvidas</p>
+                <small class="call">Vamos praticar?</small>
+                <a href="../pages/questoes.php" class="btnQuestoes">Responder questões</a>
+                <a href="../pages/ranking.php" class="btnQuestoes">Ver ranking</a>
             </div>
-            <div class="cardPainel">
-                <p id="taxa"><?=$taxa?>%</p>
-                <span>de acertos</span>
+            <div class="painelCard-container">
+                <div class="cardPainel">
+                    <p id="certas"><?= $questoesAcertadas ?></p>
+                    <span>Certas</span>
+                    <span class="space"></span>
+                    <i id="certoCard" class="material-icons">check_circle_outline</i>
+                </div>
+                <div class="cardPainel">
+                    <p id="erradas"><?= $questoesErradas ?></p>
+                    <span>Erradas</span>
+                    <span class="space"></span>
+                    <i id="erroCard" class="material-icons">highlight_off</i>
+                </div>
+                <div class="cardPainel">
+                    <p id="taxa"><?= $taxa ?>%</p>
+                    <span>de acertos</span>
+                </div>
             </div>
-        </div>
+        <?php endif ?>
         <div class="painelRanking-container">
             <table id="ranking-table">
                 <thead>
@@ -73,13 +118,14 @@ $posicao3 = 1 ;
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach($rankingTop3 as $top3) : ?>
+                    <?php foreach ($rankingTop3 as $top3) : ?>
                         <tr>
                             <td><?= $posicao3 ?>°</td>
-                            <td class="img-td"><img class="img-table" src="../img/default.png" alt=""><a class="alunoNome" href="#"><?=$top3["nome"]?> <?= $top3["sobrenome"]?></a></td>
-                            <td><?=$top3["pontos"]?></td>
+                            <td class="img-td"><img class="img-table" src="../img/default.png" alt=""><a class="alunoNome" href="#"><?= $top3["nome"] ?> <?= $top3["sobrenome"] ?></a></td>
+                            <td><?= $top3["pontos"] ?></td>
                         </tr>
-                    <?php $posicao3++; endforeach; ?>
+                    <?php $posicao3++;
+                    endforeach; ?>
                 </tbody>
             </table>
         </div>
