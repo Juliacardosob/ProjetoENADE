@@ -25,7 +25,7 @@ if (!isset($_SESSION)) {
 
 <div id="userMenu-container">
     <div id="userDetails">
-        <img src="../img/<?= $Usuario['foto']; ?>" alt="" id="userImg">
+        <img src="../img/fotos_perfil/<?= $Usuario["foto"];?>" id="userImg" alt="fotoperfil" name="foto">
         <div id="userDetails-txt">
             <p><?= $Usuario['nome'] ?> <?= $Usuario['sobrenome'] ?></p>
             <?php if ($adm == false) : ?>

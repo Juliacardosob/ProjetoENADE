@@ -38,7 +38,7 @@ $posicao100 = 1;
         <?php foreach ($rankingTop3 as $top3) : ?>
             <div class="top-ranked-box">
                 <div class="top-ranked-img">
-                    <img src="../img/default.png">
+                    <img src="../img/fotos_perfil/<?=$top3["foto"]?>">
                     <div class="top-ranked-number">
                         <p><?= $posicao3 ?></p>
                     </div>
@@ -72,7 +72,7 @@ $posicao100 = 1;
                 <?php foreach ($rankingTop100 as $top100) : ?>
                     <tr>
                         <td><?= $posicao100; ?></td>
-                        <td class="img-td"><img class="img-table" src="../img/default.png" alt=""><?= $top100["nome"] ?> <?= $top100["sobrenome"] ?></td>
+                        <td class="img-td"><img class="img-table" src="../img/fotos_perfil/<?=$top100["foto"]?>" alt=""><?= $top100["nome"] ?> <?= $top100["sobrenome"] ?></td>
                         <td class="space"></td>
                         <td><?= $top100["pontos"] ?></td>
                     </tr>

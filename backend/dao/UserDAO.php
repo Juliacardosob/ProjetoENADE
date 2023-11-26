@@ -14,6 +14,8 @@ class UserDAO implements IUserDAO
 
     public function verificarCadastrado($apelido, $senha)
     {
+        
+
         $stmt = $this->Conn->prepare("SELECT * FROM usuario WHERE apelido = :apelido");
 
         $stmt->bindParam(":apelido", $apelido);
@@ -27,19 +29,23 @@ class UserDAO implements IUserDAO
                 $this->definirVariaveisSessao($row["id_usuario"], $this->ADM);
                 header("Location: ../pages/painel.php");
                 return true;
-                /**Senha correta */
             } else {
                 return false;
-                /**Senha incorreta */
+
+                $_SESSION["msg"] = "Senha incorreta";
+                $_SESSION["type"] = "Error";
             }
         } else {
             return false;
-            /**Usuário não cadastrado */
+            $_SESSION["msg"] = "Usuário não cadastrado";
+            $_SESSION["type"] = "Error";
         }
     }
 
     public function verificarUsuario($apelido)
     {
+
+
         $stmt = $this->Conn->prepare("SELECT * FROM usuario WHERE apelido = :apelido");
 
         $stmt->bindParam(":apelido", $apelido);
@@ -51,6 +57,7 @@ class UserDAO implements IUserDAO
             /**Usuario encontrado */
         } else {
             return false;
+
             /**Usuario não encontrado */
         }
     }
@@ -179,10 +186,20 @@ class UserDAO implements IUserDAO
         $stmt->execute();
 
         if ($stmt->rowCount() > 0) {
-            $_SESSION['msg'] = "" /*funcionou*/;
+            ;
         } else {
             $_SESSION['msg'] = "Erro ao atualizar ";
         }
+    }
+
+    public function atualizarFoto($id, $foto){
+
+        $stmt = $this->Conn->prepare("UPDATE usuario SET foto = :foto WHERE id_usuario = :id");
+
+        $stmt->bindParam(":foto", $foto);
+        $stmt->bindParam(":id", $id);
+
+        $stmt->execute();
     }
 
     public function getDados($id_usuario)

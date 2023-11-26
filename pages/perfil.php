@@ -19,17 +19,13 @@ if (!isset($_SESSION)) {
 
 <main class="perfil-container">
     <div class="perfil-form">
-        <?php if (isset($_SESSION['msg'])) : ?>
-            <div class="pop-up">
-                <h1><?= $_SESSION['msg'] ?></h1>
-            </div>
-        <?php endif; ?>
+
         <div class="perfil-box">
             <div class="perfil-conteudo">
                 <h1>Alterar cadastro</h1>
-                <img src="../img/<?= $Usuario["foto"]; ?>" alt="fotoperfil" name="foto">
-                <form method="post" enctype="multipart/form-data">
-                    <button class="btn-form btn-foto" id="btnfoto">Mudar Foto</button>
+                <img src="../img/fotos_perfil/<?= $Usuario["foto"]; ?>" alt="fotoperfil" name="foto">
+                <form action="../backend/bd_usuario.php" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="type" value="photo">
                     <div class="file">
                         <input type="file" name="foto" id="mudarFoto" accept=".png, .jpeg, .jpg">
                         <button name="enviar">Enviar</button>

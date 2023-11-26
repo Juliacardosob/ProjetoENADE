@@ -1,13 +1,15 @@
 <?php
 require_once("../content/body.php");
 require_once("../backend/bd_usuario.php");
+
+
 ?>
 <main class="login-container">
     <form class="login-form" method="post">
         <input type="hidden" name="type" value="entrar">
-        <?php if (isset($_SESSION['msg'])) : ?>
-            <div class="pop-up">
-                <h1><?= $_SESSION['msg'] ?></h1>
+        <?php if (isset($_SESSION["msg"])): ?>
+            <div>
+                <h1 class="msg<?= $_SESSION["type"] ?>"><?= $_SESSION["msg"] ?></h1>
             </div>
         <?php endif; ?>
         <div class="login-title">

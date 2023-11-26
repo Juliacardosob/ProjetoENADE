@@ -121,7 +121,7 @@ $posicao3 = 1;
                     <?php foreach ($rankingTop3 as $top3) : ?>
                         <tr>
                             <td><?= $posicao3 ?>°</td>
-                            <td class="img-td"><img class="img-table" src="../img/default.png" alt=""><a class="alunoNome" href="#"><?= $top3["nome"] ?> <?= $top3["sobrenome"] ?></a></td>
+                            <td class="img-td"><img class="img-table" src="../img/fotos_perfil/<?= $top3["foto"]?>" alt=""><a class="alunoNome" href="#"><?= $top3["nome"] ?> <?= $top3["sobrenome"] ?></a></td>
                             <td><?= $top3["pontos"] ?></td>
                         </tr>
                     <?php $posicao3++;

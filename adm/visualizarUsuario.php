@@ -34,7 +34,7 @@ $taxa = $questoes->taxaAcertos($id);
         <div class="perfil-box">
             <div class="perfil-conteudo">
                 <h1><?= $usuario["nome"] ?> <?= $usuario["sobrenome"] ?></h1>
-                <img src="../img/<?= $usuario["foto"]; ?>" alt="fotoperfil" name="foto">
+                <img src="../img/fotos_perfil/<?= $usuario["foto"]; ?>" alt="fotoperfil" name="foto">
             </div>
         </div>
         <div class="painelQuestoes-container">
