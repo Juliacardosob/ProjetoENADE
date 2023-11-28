@@ -41,8 +41,8 @@ if (!isset($_SESSION)) {
         </ul>
     </nav>
 </header>
-<?php if (isset($_SESSION["msg"])) : ?>
+<!-- <?php if (isset($_SESSION["msg"])) : ?>
     <div class="pop-up">
         <h1 class="msg<?= $_SESSION["type"] ?>"><?= $_SESSION["msg"] ?></h1>
     </div>
-<?php endif; ?>
+<?php endif; ?> -->
