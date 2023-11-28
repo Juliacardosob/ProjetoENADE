@@ -1343,8 +1343,6 @@ th {
         width: 100%;
     }
 
-
-
     /* PERFIL */
 
     .perfil-container {
@@ -1368,17 +1366,50 @@ th {
 
     /* FIM PERFIL */
 
-    /* INICIO RANKING */
 
-    .personal-stats {
+     /* 'SUB-HEADER' COM BTN RANKING E GERENCIAR QUESTOES */
+    #userMenu-container{
+        flex-wrap: wrap;
+        height:auto;
         flex-direction: column;
-        align-content: center;
+        padding:3rem;
+    }
+    #userDetails-txt{
+        align-items: center;
+    }
+    #userActions {
+        flex-direction: column;
+    }
+    #userDetails{
+        flex-direction: column;
+    }
+    /* FIM 'SUB-HEADER' COM BTN RANKING E GERENCIAR QUESTOES */
+   
+    /*INICIO RANKING*/ 
+    .personal-stats{
+        flex-direction: column;
+        width: 100%;
+        margin: 0;
+        align-items: center;
+    }
+    .personal-stats .card {
+        width: 80%;
+        margin: 2rem 0;
+    }
+    .personal-stats .card:last-child {
+        width: 80%;
     }
 
-    .top-ranked-form {
-        flex-direction: column;
-        align-content: center;
-    }
+   .top-ranked-box{
+    width: 100%;
+   }
+
+   #top-ranked-form{
+    gap: 50px;
+    margin: 0 20px;
+   }
+
+
 
     /* FIM RANKING */
 
@@ -1456,20 +1487,52 @@ th {
 
     /* FIM PERFIL */
 
+      /* 'SUB-HEADER' COM BTN RANKING E GERENCIAR QUESTOES */
+      #userMenu-container{
+        flex-wrap: wrap;
+        height:auto;
+        flex-direction: column;
+        padding:3rem;
+    }
+    #userDetails-txt{
+        align-items: center;
+    }
+    #userActions {
+        flex-direction: column;
+    }
+    #userDetails{
+        flex-direction: column;
+    }
+    /* FIM 'SUB-HEADER' COM BTN RANKING E GERENCIAR QUESTOES */
+
     /* INICIO RANKING */
 
-    .personal-stats {
+     .personal-stats{
         flex-direction: column;
-        align-content: center;
-
+        width: 100%;
+        margin: 0;
+        align-items: center;
+    }
+    .personal-stats .card {
+        width: 80%;
+        margin: 2rem 0;
+    }
+    .personal-stats .card:last-child {
+        width: 80%;
     }
 
-    .top-ranked-form {
-        flex-direction: column;
-        align-content: center;
-    }
+   .top-ranked-box{
+    width: 100%;
+   }
+
+   #top-ranked-form{
+    gap: 50px;
+    margin: 0 20px;
+   }
+
 
     /* FIM RANKING */
+
     /* INICIO INDEX */
     #banner{
         width: 100%;
@@ -1538,6 +1601,34 @@ th {
 
     /* FIM PERFIL */
 
+    /* INICIO RANKING */
+
+    .personal-stats{
+        flex-direction: column;
+        width: 100%;
+        margin: 0;
+        align-items: center;
+    }
+    .personal-stats .card {
+        width: 80%;
+        margin: 2rem 0;
+    }
+    .personal-stats .card:last-child {
+        width: 80%;
+    }
+
+   .top-ranked-box{
+    width: 100%;
+   }
+
+   #top-ranked-form{
+    gap: 50px;
+    margin: 0 20px;
+   }
+
+
+    /* FIM RANKING */
+
     /* INICIO INDEX */
     #banner{
         width: 100%;
@@ -1605,6 +1696,33 @@ th {
     }
 
     /* FIM PERFIL */
+
+    /* INICIO RANKING */
+
+    .personal-stats{
+        flex-direction: column;
+        width: 100%;
+        margin: 0;
+        align-items: center;
+    }
+    .personal-stats .card {
+        width: 80%;
+        margin: 2rem 0;
+    }
+    .personal-stats .card:last-child {
+        width: 80%;
+    }
+
+   .top-ranked-box{
+    width: 100%;
+   }
+
+   #top-ranked-form{
+    gap: 50px;
+    margin: 0 20px;
+   }
+
+    /* FIM RANKING */
 
     /* INICIO INDEX */
     #banner{
