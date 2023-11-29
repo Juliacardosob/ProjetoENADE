@@ -1481,6 +1481,30 @@ th {
 
     /* FIM PAINEL */
 
+    /* INICIO GERENCIAR QUESTAO || USUARIO */
+    .ranking-table{
+        max-width: 100%;
+        overflow-x: auto;
+        display:block;
+    }
+    /* FIM GERENCIAR QUESTAO || USUARIO */
+
+    /* HEADER */
+    #navList-container{
+        flex-direction: column;
+    }
+
+    .navbar-list{
+        width: 100%;
+    }
+
+    .navbar-link{
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* FIM HEADER */
+
 }
 
 @media (min-width: 481px) and (max-width:767px) {
@@ -1631,6 +1655,23 @@ th {
 
 
     /* FIM PAINEL */
+
+    /* HEADER */
+    #navList-container{
+        flex-direction: column;
+    }
+
+    .navbar-list{
+        width: 100%;
+    }
+
+    .navbar-link{
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* FIM HEADER */
+
 }
 
 @media (min-width: 768px) and (max-width:991px) {
