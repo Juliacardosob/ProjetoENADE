@@ -120,7 +120,7 @@
 
 .btn-form,
 .login-form {
-    border-radius: 15px;
+    border-radius: 0px;
 }
 
 .login-input,
@@ -142,15 +142,13 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    background-color: #94958B;
+    background-color: #ffffff;
     height: 100vh;
 }
 
 .login-form {
     background-color: #fff;
     border: 1px solid #94958B solid #94958B;
-    box-shadow: 8px 8px 34px #707070,
-        -8px -8px 34px #5e5e5e;
 }
 
 .login-title h1 {
@@ -1318,7 +1316,6 @@ th {
 
     .login-form {
         width: 100%;
-        height: 100%;
     }
 
     .label-icon {
@@ -1333,15 +1330,22 @@ th {
         width: 80%;
     }
 
-    /*FIM-LOGIN*/
+   
+    .login-input {
+        width: 100%;
+    }
 
     #cadastro-form {
         flex-direction: column;
     }
 
-    .login-input {
-        width: 100%;
+    #cadastro-title{
+        margin-top: 200px;
     }
+    
+    /*FIM-LOGIN*/
+
+    
 
     /* PERFIL */
 
