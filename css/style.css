@@ -1409,7 +1409,9 @@ th {
     margin: 0 20px;
    }
 
-
+   .rank-number{
+    padding: 1rem;
+   }
 
     /* FIM RANKING */
 
@@ -1447,6 +1449,37 @@ th {
         flex-direction: column;
     }
     /* FIM INDEX */
+
+    /*INICIO PAINEL*/
+
+    .painelRanking-container{
+        width: auto;
+    }
+    .painelNews-card{
+        flex-direction: column;
+    }
+    #estatisticas{
+        flex-direction: column;
+    }
+
+    #painelNews-button{
+        margin: 25px 25px 25px 0;
+    }
+
+    .painelQuestoes-container{
+        margin: 0 auto;
+        width: 20rem;
+        padding: 2rem;
+    }
+
+    .painelCard-container{
+        margin: 0 auto;
+        width: 20rem;
+        padding: 2rem;
+    }
+
+
+    /* FIM PAINEL */
 
 }
 
@@ -1530,6 +1563,9 @@ th {
     margin: 0 20px;
    }
 
+   .rank-number{
+    padding: 1rem;
+   }
 
     /* FIM RANKING */
 
@@ -1564,6 +1600,37 @@ th {
         flex-direction: column;
     }
     /* FIM INDEX */
+
+    /*INICIO PAINEL*/
+
+    .painelRanking-container{
+        width: auto;
+    }
+    .painelNews-card{
+        flex-direction: column;
+    }
+    #estatisticas{
+        flex-direction: column;
+    }
+
+    #painelNews-button{
+        margin: 25px 25px 25px 0;
+    }
+
+    .painelQuestoes-container{
+        margin: 0 auto;
+        width: 20rem;
+        padding: 2rem;
+    }
+
+    .painelCard-container{
+        margin: 0 auto;
+        width: 20rem;
+        padding: 2rem;
+    }
+
+
+    /* FIM PAINEL */
 }
 
 @media (min-width: 768px) and (max-width:991px) {
@@ -1626,6 +1693,10 @@ th {
     margin: 0 20px;
    }
 
+   .rank-number{
+    padding: 1rem;
+   }
+
 
     /* FIM RANKING */
 
@@ -1661,6 +1732,31 @@ th {
         flex-direction: column;
     }
     /* FIM INDEX */
+
+    /*INICIO PAINEL*/
+
+    .painelNews-card{
+        flex-direction: column;
+    }
+
+    #painelNews-button{
+        margin: 25px 25px 25px 0;
+    }
+
+    .painelQuestoes-container{
+        margin: 0 auto;
+        width: 20rem;
+        padding: 2rem;
+    }
+
+    .painelCard-container{
+        margin: 0 auto;
+        width: 20rem;
+        padding: 2rem;
+    }
+
+
+    /* FIM PAINEL */
 }
 
 @media (min-width: 992px) and (max-width:1199px) {
@@ -1720,6 +1816,10 @@ th {
    #top-ranked-form{
     gap: 50px;
     margin: 0 20px;
+   }
+
+   .rank-number{
+    padding: 1rem;
    }
 
     /* FIM RANKING */
